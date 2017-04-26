@@ -1,0 +1,16 @@
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\obj\Debug\LaboruTKM.Model.csprojResolveAssemblyReference.cache
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Model.dll.config
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Model.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Model.pdb
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\EntityFramework.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Common.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Data.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\MySql.Data.Entity.EF6.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\MySql.Data.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Common.pdb
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\LaboruTKM.Data.pdb
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\EntityFramework.xml
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\obj\Debug\LaboruTKM.Model.dll
+c:\users\usuario\documents\visual studio 2012\Projects\LaboruTKM\LaboruTKM.Model\obj\Debug\LaboruTKM.Model.pdb

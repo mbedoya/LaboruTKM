@@ -45,3 +45,14 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Visual Studio
+LaboruTKM.v11.suo
+LaboruTKM.Common/bin
+LaboruTKM.Common/obj
+LaboruTKM.Data/bin
+LaboruTKM.Data/obj
+LaboruTKM.Web/bin
+LaboruTKM.Web/obj
+LaboruTKM.Test/bin
+LaboruTKM.Test/obj
