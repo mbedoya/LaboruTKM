@@ -12,5 +12,6 @@ namespace LaboruTKM.Data
     {
         public DbSet<EvaluationDTO> Evaluations { get; set; }
         public DbSet<SectionDTO> Sections { get; set; }
+        public DbSet<CompanyDTO> Companies { get; set; }
     }
 }

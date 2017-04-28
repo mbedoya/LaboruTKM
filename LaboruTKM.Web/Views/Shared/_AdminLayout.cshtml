@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using LaboruTKM.Web.Common
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -19,6 +21,9 @@
 
     <!-- Custom CSS -->
     <link href="@Url.Content("~/Static/dist/css/sb-admin-2.css")" rel="stylesheet">
+
+    <!-- Laboru CSS -->
+    <link href="@Url.Content("~/Static/dist/css/laboru-tkm.css")" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
     <link href="@Url.Content("~/Static/vendor/morrisjs/morris.css")" rel="stylesheet">
@@ -50,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Laboru Tech - Talent & Knowledge Management</a>
+                <a class="navbar-brand" href="#">@UIHelpers.GetGlobalizedText("title")</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -264,126 +269,15 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Buscar...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="@Url.Content("~/Admin")"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Content("~/Admin/Evaluations")"><i class="fa fa-edit fa-fw"></i> Evaluaciones</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Content("~/Admin/Evaluations")"><i class="fa fa-users fa-fw"></i> Empresas</a>
-                        </li>
-                        <li>
-                            <a href="@Url.Content("~/Admin/Evaluations")"><i class="fa fa-cog fa-fw"></i> Configuración</a>
-                        </li>
-                        @*
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        *@
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
+            @Html.Partial("_AdminLeftMenu")
             <!-- /.navbar-static-side -->
         </nav>
 
         <div id="page-wrapper">
+
+            <div id="waiting" class="text-center" style="display:none" >
+                <img src="@Url.Content("~/Static/dist/images/ellipsis.gif")" >
+            </div>
 
             @RenderBody()
 
@@ -395,9 +289,6 @@
 
     <!-- jQuery -->
     <script src="@Url.Content("~/Static/vendor/jquery/jquery.min.js")"></script>
-
-    <!-- jQuery -->
-    <script src="@Url.Content("~/Static/js/moment-locales.min.js")"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="@Url.Content("~/Static/vendor/bootstrap/js/bootstrap.min.js")" ></script>
@@ -417,6 +308,9 @@
 
     <script>
 
+        var siteUrlPrefix = '@Url.Content("~/")';
+        siteUrlPrefix = siteUrlPrefix.substring(1, siteUrlPrefix.length);
+
         function ajaxPost(controller, method, data, fx) {
 
             $.ajax({
@@ -430,6 +324,8 @@
                 error: function (a, b, c) {
                     fx(false, a);
                 }
+            }).done(function () {
+                //hideLoading();
             });
         }
 
@@ -446,7 +342,77 @@
                 error: function (a, b, c) {
                     fx(false, a);
                 }
+            }).done(function () {
+                //hideLoading();
             });
+        }
+
+        function getDateDiff(date) {
+
+            var date = moment(date);
+            var now = moment();
+
+            var months = now.diff(date, 'months');
+
+            if (months == 0) {
+
+                var days = now.diff(date, 'days');
+
+                console.log(days);
+
+                if (days == 0) {
+
+                    var hours = now.diff(date, 'hours');
+
+                    if (hours == 0) {
+
+                        var minutes = now.diff(date, 'minutes');
+
+                        if (minutes == 0) {
+
+                            return "recién";
+
+                        } else {
+                            return "hace " + minutes + " minutos";
+                        }
+
+                    } else {
+                        return "hace " + hours + " horas";
+                    }
+
+
+                } else {
+
+                    if (days < 15) {
+                        return 'hace ' + days + ' días';
+                    } else {
+                        return date.locale(getLanguage()).format('MMM DD YYYY');
+                    }
+                }
+
+            } else {
+                return date.locale(getLanguage()).format('MMM DD YYYY');
+            }
+
+
+        }
+
+        function showLoading() {
+            $("#waiting").css('display', 'block');
+        }
+
+        function hideLoading() {
+            $("#waiting").css('display', 'none');
+        }
+
+        function getLanguage() {
+            var language = '@UIHelpers.GetBrowserUICulture()';
+            return language;
+        }
+
+        function getGlobalizedText(name) {
+            var language = '@UIHelpers.GetBrowserUICulture()';            
+            return lang[language][name];
         }
 
     </script>

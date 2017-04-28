@@ -108,12 +108,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\Admin\AdminController.cs" />
-    <Compile Include="Controllers\Admin\EvaluationController.cs" />
+    <Compile Include="Common\UIHelpers.cs" />
+    <Compile Include="Controllers\Admin\AdminHomeController.cs" />
+    <Compile Include="Controllers\Admin\AdminEvaluationController.cs" />
+    <Compile Include="Controllers\Admin\Api\CompanyController.cs" />
+    <Compile Include="Controllers\Admin\Api\EvaluationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AdminResource.en.Designer.cs">
+      <DependentUpon>AdminResource.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\AdminResource.Designer.cs">
+      <DependentUpon>AdminResource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -122,10 +135,13 @@
     <Content Include="Global.asax" />
     <Content Include="Static\data\flot-data.js" />
     <Content Include="Static\data\morris-data.js" />
+    <Content Include="Static\dist\css\laboru-tkm.css" />
     <Content Include="Static\dist\css\sb-admin-2.css" />
     <Content Include="Static\dist\css\sb-admin-2.min.css" />
     <Content Include="Static\dist\js\sb-admin-2.js" />
     <Content Include="Static\dist\js\sb-admin-2.min.js" />
+    <Content Include="Static\js\lang.js" />
+    <Content Include="Static\js\moment-locales.min.js" />
     <Content Include="Static\js\sb-admin-2.js" />
     <Content Include="Static\pages\blank.html" />
     <Content Include="Static\pages\buttons.html" />
@@ -247,7 +263,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\LaboruTKM.pubxml" />
@@ -302,7 +318,9 @@
     <Content Include="Static\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Views\Admin\Evaluations.cshtml" />
+    <Content Include="Views\AdminHome\Evaluations.cshtml" />
+    <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
+    <Content Include="Views\AdminHome\Companies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">
@@ -313,6 +331,16 @@
       <Project>{175723d6-765c-4510-b341-e1ac11189b82}</Project>
       <Name>LaboruTKM.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AdminResource.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminResource.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\AdminResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AdminResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

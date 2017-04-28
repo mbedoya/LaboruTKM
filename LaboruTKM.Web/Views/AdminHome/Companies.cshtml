@@ -1,0 +1,154 @@
+﻿@using LaboruTKM.Web.Common
+
+@{
+    ViewBag.Title = "Evaluations";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section css{
+
+    <!-- DataTables CSS -->
+    <link href="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.css")" rel="stylesheet">
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@UIHelpers.GetGlobalizedText("companies")</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6 text-right">
+                        <input class="btn btn-default header-btn" type="button" value="+" />
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table class="table table-hover table-bordered" id="evals-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>@UIHelpers.GetGlobalizedText("name")</th>
+                            <th>@UIHelpers.GetGlobalizedText("created")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <!-- /.table-responsive -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+@section scripts{
+
+    <!-- Lang -->
+    <script src="@Url.Content("~/Static/js/lang.js")"></script>
+
+    <!-- Moments -->
+    <script src="@Url.Content("~/Static/js/moment-locales.min.js")"></script>
+
+    <!-- jQuery DataTables -->
+    <script src="@Url.Content("~/Static/vendor/datatables/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.js")"></script>
+
+    <script>
+
+        var controllerName = "api/Company";
+
+        var rowTemplate = '<tr >' +
+                                '<td>_id</td>' +
+                                '<td>_name</td>' +
+                                '<td class="center">_date_created</td>' +
+                                '</tr>';
+
+        function getHtmlEvalElement(obj) {
+
+            var date = moment(obj.DateCreated);
+            var now = moment();
+
+            return rowTemplate.replace("_id", obj.Id)
+                .replace("_name", obj.Name)
+                .replace("_date_created", getDateDiff(obj.DateCreated));
+        }
+
+        function checkTableSelection(table) {
+            table.on('select', function (e, dt, type, cell, originalEvent) {
+                console.log(originalEvent);
+                if (originalEvent.target.nodeName.toLowerCase() === 'img') {
+                    e.preventDefault();
+                }
+            });
+        }
+
+        function getAllEvaluations() {
+
+            showLoading();
+            ajaxGet(controllerName, {}, function (success, data) {
+
+                hideLoading();
+                if (success) {
+
+                    if (data && data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var obj = data[i];
+                            var htmlElement = getHtmlEvalElement(obj);
+
+                            $("#evals-table tbody").append(htmlElement);
+                        }
+
+                        var table;
+
+                        if (lang[getLanguage().toString()] != null) {
+                            table = $("#evals-table").DataTable({
+                                "language": lang[getLanguage().toString()].datatables,
+                                select: true
+                            });
+                        } else {
+                            table = $("#evals-table").DataTable({ select: true});
+                        }
+                        checkTableSelection(table);
+
+                    } else {
+                        console.log("no elements in table");
+                    }
+
+                } else {
+
+                    console.log("error");
+                    console.log(data);
+                }
+
+            });
+        }
+
+        function init() {
+            getAllEvaluations();
+            getLanguage();
+        }
+
+        $(document).ready(function () {
+            init();
+        });
+
+    </script>
+
+}

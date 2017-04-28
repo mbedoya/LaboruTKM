@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace LaboruTKM.Web.Controllers.Admin
 {
-    public class AdminController : Controller
+    public class AdminCompanyController : Controller
     {
         //
-        // GET: /Admin/
+        // GET: /AdminCompany/
 
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Evaluations()
-        {
-            return View();
-        }
     }
 }

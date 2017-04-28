@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Net;
 using System.Net.Http;
 
-namespace LaboruTKM.Web.Controllers.Admin
+namespace LaboruTKM.Web.Controllers.Admin.Api
 {
     public class EvaluationController : ApiController
     {
