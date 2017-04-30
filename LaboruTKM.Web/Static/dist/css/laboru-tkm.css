@@ -9,3 +9,7 @@ h1 {
     height: 30px;
     width: 55px;
 }
+
+.navbar-brand {
+    padding: 10px 15px !important;
+}

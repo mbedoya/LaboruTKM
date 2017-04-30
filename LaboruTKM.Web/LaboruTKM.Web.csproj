@@ -109,10 +109,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\UIHelpers.cs" />
+    <Compile Include="Controllers\Admin\AdminCompanyController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
     <Compile Include="Controllers\Admin\AdminEvaluationController.cs" />
     <Compile Include="Controllers\Admin\Api\CompanyController.cs" />
     <Compile Include="Controllers\Admin\Api\EvaluationController.cs" />
+    <Compile Include="Controllers\Company\CompanyUIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -127,6 +129,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Resources\CompanyResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompanyResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\CompanyResource.en.Designer.cs">
+      <DependentUpon>CompanyResource.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -138,8 +150,11 @@
     <Content Include="Static\dist\css\laboru-tkm.css" />
     <Content Include="Static\dist\css\sb-admin-2.css" />
     <Content Include="Static\dist\css\sb-admin-2.min.css" />
+    <Content Include="Static\dist\images\ellipsis.gif" />
+    <Content Include="Static\dist\images\logo-intrepidez.png" />
     <Content Include="Static\dist\js\sb-admin-2.js" />
     <Content Include="Static\dist\js\sb-admin-2.min.js" />
+    <Content Include="Static\js\common.js" />
     <Content Include="Static\js\lang.js" />
     <Content Include="Static\js\moment-locales.min.js" />
     <Content Include="Static\js\sb-admin-2.js" />
@@ -321,6 +336,10 @@
     <Content Include="Views\AdminHome\Evaluations.cshtml" />
     <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
     <Content Include="Views\AdminHome\Companies.cshtml" />
+    <Content Include="Views\AdminCompany\Index.cshtml" />
+    <Content Include="Views\Shared\_CompanyLayout.cshtml" />
+    <Content Include="Views\CompanyUI\Login.cshtml" />
+    <Content Include="Views\CompanyUI\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">
@@ -340,6 +359,14 @@
     <EmbeddedResource Include="Resources\AdminResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AdminResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CompanyResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompanyResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\CompanyResource.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CompanyResource.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

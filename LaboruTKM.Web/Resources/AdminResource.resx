@@ -132,14 +132,29 @@
   <data name="description" xml:space="preserve">
     <value>Descripción</value>
   </data>
+  <data name="email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
   <data name="exams" xml:space="preserve">
     <value>Evaluaciones</value>
+  </data>
+  <data name="login" xml:space="preserve">
+    <value>Iniciar sesión</value>
   </data>
   <data name="name" xml:space="preserve">
     <value>Nombre</value>
   </data>
+  <data name="password" xml:space="preserve">
+    <value>Clave</value>
+  </data>
+  <data name="rememberMe" xml:space="preserve">
+    <value>Recordarme</value>
+  </data>
   <data name="search" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="signIn" xml:space="preserve">
+    <value>Por favor ingresa tus datos</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Laboru Tech - Administración del talento humano y conocimiento</value>

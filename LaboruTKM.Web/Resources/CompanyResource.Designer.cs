@@ -22,14 +22,14 @@ namespace LaboruTKM.Web.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AdminResource {
+    internal class CompanyResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AdminResource() {
+        internal CompanyResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace LaboruTKM.Web.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LaboruTKM.Web.Resources.AdminResource", typeof(AdminResource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LaboruTKM.Web.Resources.CompanyResource", typeof(CompanyResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,51 +61,6 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Empresas.
-        /// </summary>
-        internal static string companies {
-            get {
-                return ResourceManager.GetString("companies", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Configuración.
-        /// </summary>
-        internal static string configuration {
-            get {
-                return ResourceManager.GetString("configuration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Creado.
-        /// </summary>
-        internal static string created {
-            get {
-                return ResourceManager.GetString("created", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Tablero de control.
-        /// </summary>
-        internal static string dashboard {
-            get {
-                return ResourceManager.GetString("dashboard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Descripción.
-        /// </summary>
-        internal static string description {
-            get {
-                return ResourceManager.GetString("description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Correo electrónico.
         /// </summary>
         internal static string email {
@@ -115,29 +70,11 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluaciones.
-        /// </summary>
-        internal static string exams {
-            get {
-                return ResourceManager.GetString("exams", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Iniciar sesión.
         /// </summary>
-        internal static string login {
+        internal static string logIn {
             get {
-                return ResourceManager.GetString("login", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Nombre.
-        /// </summary>
-        internal static string name {
-            get {
-                return ResourceManager.GetString("name", resourceCulture);
+                return ResourceManager.GetString("logIn", resourceCulture);
             }
         }
         
@@ -160,29 +97,11 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Buscar.
-        /// </summary>
-        internal static string search {
-            get {
-                return ResourceManager.GetString("search", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Por favor ingresa tus datos.
         /// </summary>
         internal static string signIn {
             get {
                 return ResourceManager.GetString("signIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Laboru Tech - Administración del talento humano y conocimiento.
-        /// </summary>
-        internal static string title {
-            get {
-                return ResourceManager.GetString("title", resourceCulture);
             }
         }
     }

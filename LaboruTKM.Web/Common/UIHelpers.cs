@@ -23,6 +23,18 @@ namespace LaboruTKM.Web.Common
             return result;
         }
 
+        public static IHtmlString GetCompanyGlobalizedText(string name)
+        {
+            string uiCulture = GetBrowserUICulture();
+            HtmlString result = new HtmlString(CompanyResource.ResourceManager.GetString(name));
+            if (uiCulture != "es")
+            {
+                result = new HtmlString(CompanyResource.ResourceManager.GetString(name, new System.Globalization.CultureInfo(uiCulture)));
+            }
+
+            return result;
+        }
+
         public static string GetBrowserUICulture()
         {
             string[] languages = HttpContext.Current.Request.UserLanguages;

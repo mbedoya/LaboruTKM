@@ -11,7 +11,7 @@ namespace LaboruTKM.Web.Controllers.Admin.Api
 {
     public class CompanyController : ApiController
     {
-        Company model = new Company();
+        LaboruTKM.Model.Company model = new LaboruTKM.Model.Company();
         string apiUrl = "/api/company/";
 
         public IEnumerable<CompanyDTO> Get()

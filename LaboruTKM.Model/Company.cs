@@ -53,5 +53,15 @@ namespace LaboruTKM.Model
 
             return element;
         }
+
+        public CompanyDTO Login(string email, string password)
+        {
+            CompanyDTO element =
+                (from p in db.Companies
+                 where p.ContactEmail == email
+                 select p).FirstOrDefault();
+
+            return element;
+        }
     }
 }
