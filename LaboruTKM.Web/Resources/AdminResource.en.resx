@@ -157,6 +157,9 @@
     <value>Please sign in</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Laboru Tech - Talent &amp; Knowledge Management</value>
+    <value>Talent &amp; Knowledge Management</value>
+  </data>
+  <data name="viewDetails" xml:space="preserve">
+    <value>View details</value>
   </data>
 </root>

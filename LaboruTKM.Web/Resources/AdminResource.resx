@@ -157,6 +157,9 @@
     <value>Por favor ingresa tus datos</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Laboru Tech - Administración del talento humano y conocimiento</value>
+    <value>Administración del talento humano y conocimiento</value>
+  </data>
+  <data name="viewDetails" xml:space="preserve">
+    <value>Ver detalles</value>
   </data>
 </root>

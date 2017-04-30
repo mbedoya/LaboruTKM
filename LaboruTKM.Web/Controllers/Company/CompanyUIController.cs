@@ -1,4 +1,5 @@
 ﻿using LaboruTKM.Common;
+using LaboruTKM.Web.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,18 +11,14 @@ namespace LaboruTKM.Web.Controllers.Company
     public class CompanyUIController : Controller
     {
         LaboruTKM.Model.Company model = new LaboruTKM.Model.Company();
+        public const string LoginPage = "Login";
 
         //
         // GET: /CompanyUI/
 
         public ActionResult Index()
         {
-            if (Session["company"] == null)
-            {
-                return View("Login");
-            }
-
-            return View((CompanyDTO)Session["company"]);
+            return CheckAndRoute();
         }
 
         public ActionResult Login()
@@ -29,13 +26,33 @@ namespace LaboruTKM.Web.Controllers.Company
             return View();
         }
 
+        public ActionResult Recruitment()
+        {
+            return CheckAndRoute();
+        }
+
+        public ActionResult Logout()
+        {
+            Session[SessionConstants.Company] = null;
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet );
+        }
+
         public ActionResult SignIn(string email, string password)
         {
             CompanyDTO element = model.Login(email, password);
-
-            Session["company"] = element;
+            Session[SessionConstants.Company] = element;
 
             return Json(element, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CheckAndRoute()
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return View(LoginPage);
+            }
+
+            return View((CompanyDTO)Session[SessionConstants.Company]);
         }
 
     }

@@ -100,7 +100,7 @@
         function getAllEvaluations() {
 
             showLoading();
-            ajaxGet(controllerName, {}, function (success, data) {
+            ajaxGet(controllerName, "", {}, function (success, data) {
 
                 hideLoading();
                 if (success) {

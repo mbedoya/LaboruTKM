@@ -61,47 +61,20 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Correo electrónico.
+        ///   Busca una cadena traducida similar a Mis Empleados.
         /// </summary>
-        internal static string email {
+        internal static string myEmployees {
             get {
-                return ResourceManager.GetString("email", resourceCulture);
+                return ResourceManager.GetString("myEmployees", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Iniciar sesión.
+        ///   Busca una cadena traducida similar a Reclutamiento.
         /// </summary>
-        internal static string logIn {
+        internal static string recruitment {
             get {
-                return ResourceManager.GetString("logIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Clave.
-        /// </summary>
-        internal static string password {
-            get {
-                return ResourceManager.GetString("password", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Recordarme.
-        /// </summary>
-        internal static string rememberMe {
-            get {
-                return ResourceManager.GetString("rememberMe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Por favor ingresa tus datos.
-        /// </summary>
-        internal static string signIn {
-            get {
-                return ResourceManager.GetString("signIn", resourceCulture);
+                return ResourceManager.GetString("recruitment", resourceCulture);
             }
         }
     }

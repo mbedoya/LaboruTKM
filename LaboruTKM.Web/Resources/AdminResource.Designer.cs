@@ -178,11 +178,20 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Laboru Tech - Administración del talento humano y conocimiento.
+        ///   Busca una cadena traducida similar a Administración del talento humano y conocimiento.
         /// </summary>
         internal static string title {
             get {
                 return ResourceManager.GetString("title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ver detalles.
+        /// </summary>
+        internal static string viewDetails {
+            get {
+                return ResourceManager.GetString("viewDetails", resourceCulture);
             }
         }
     }

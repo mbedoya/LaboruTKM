@@ -91,13 +91,3 @@ function showLoading() {
 function hideLoading() {
     $("#waiting").css('display', 'none');
 }
-
-function getLanguage() {
-    var language = '@UIHelpers.GetBrowserUICulture()';
-    return language;
-}
-
-function getGlobalizedText(name) {
-    var language = '@UIHelpers.GetBrowserUICulture()';
-    return lang[language][name];
-}

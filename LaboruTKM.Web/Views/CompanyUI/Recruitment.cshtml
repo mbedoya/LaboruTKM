@@ -1,8 +1,8 @@
 ﻿@using LaboruTKM.Web.Common
 
 @{
-    ViewBag.Title = "Evaluations";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Recruitement";
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
 }
 
 @section css{
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">@UIHelpers.GetGlobalizedText("exams")</h1>
+        <h1 class="page-header">@UIHelpers.GetCompanyGlobalizedText("recruitment")</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -26,26 +26,85 @@
             <div class="panel-heading">
 
                 <div class="row">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6 text-right"><input class="btn btn-default header-btn" type="button" value="+" /> </div>
+                    <div class="col-md-6">
+                        Mis Candidatos
+                    </div>
+
                 </div>
 
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-                <table class="table table-hover table-bordered" id="evals-table">
+                <table class="table table-hover" id="candidates-table">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>@UIHelpers.GetGlobalizedText("name")</th>
-                            <th>@UIHelpers.GetGlobalizedText("description")</th>
-                            <th>@UIHelpers.GetGlobalizedText("created")</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Última actualización</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td><a href="#">Andrea Herrera</a></td>
+                            <td>Analista</td>
+                            <td>No iniciado</td>
+                            <td>Abril 30 2017</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Felipe Gómez</a></td>
+                            <td>Desarrollador</td>
+                            <td>Invitación enviada</td>
+                            <td>Abril 29 2017</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Camila Restrepo</a></td>
+                            <td>Analista</td>
+                            <td>Evaluación finalizada</td>
+                            <td>Abril 29 2017</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Lorena Giraldo</a></td>
+                            <td>Desarrollador</td>
+                            <td>No inciado</td>
+                            <td>Abril 25 2017</td>
+                        </tr>
                     </tbody>
                 </table>
                 <!-- /.table-responsive -->
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6">
+                         Buscar en Laboru
+                        </div>
+                    </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="@UIHelpers.GetGlobalizedText("search")...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+
+                    </div>
+
+                </div>
+
             </div>
         </div>
 
@@ -92,7 +151,7 @@
         function getAllEvaluations() {
 
             showLoading();
-            ajaxGet(controllerName, "", {}, function (success, data) {
+            ajaxGet(controllerName, {}, function (success, data) {
 
                 hideLoading();
                 if (success) {
@@ -115,7 +174,7 @@
                             $("#evals-table").DataTable();
                         }
 
-                        
+
                     } else {
                         console.log("no elements in table");
                     }
@@ -131,15 +190,19 @@
 
         function init() {
 
-            console.log(lang);
-            getAllEvaluations();
-            getLanguage();
+            console.log(getLanguage());
+
+            $("#candidates-table").DataTable({
+                "language": lang[getLanguage()].datatables
+            });
+
+            //getAllEvaluations();
+            //getLanguage();
         }
 
         $(document).ready(function () {
 
             init();
-
 
         });
 

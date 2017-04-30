@@ -108,6 +108,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\SessionConstants.cs" />
     <Compile Include="Common\UIHelpers.cs" />
     <Compile Include="Controllers\Admin\AdminCompanyController.cs" />
     <Compile Include="Controllers\Admin\AdminHomeController.cs" />
@@ -152,6 +153,7 @@
     <Content Include="Static\dist\css\sb-admin-2.min.css" />
     <Content Include="Static\dist\images\ellipsis.gif" />
     <Content Include="Static\dist\images\logo-intrepidez.png" />
+    <Content Include="Static\dist\images\logo-laboru.png" />
     <Content Include="Static\dist\js\sb-admin-2.js" />
     <Content Include="Static\dist\js\sb-admin-2.min.js" />
     <Content Include="Static\js\common.js" />
@@ -340,6 +342,10 @@
     <Content Include="Views\Shared\_CompanyLayout.cshtml" />
     <Content Include="Views\CompanyUI\Login.cshtml" />
     <Content Include="Views\CompanyUI\Index.cshtml" />
+    <Content Include="Views\Shared\Loading.cshtml" />
+    <Content Include="Views\Shared\_AdminTopMenu.cshtml" />
+    <Content Include="Views\Shared\_CompanyLeftMenu.cshtml" />
+    <Content Include="Views\CompanyUI\Recruitment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">
