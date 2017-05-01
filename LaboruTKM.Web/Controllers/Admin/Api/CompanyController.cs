@@ -39,7 +39,7 @@ namespace LaboruTKM.Web.Controllers.Admin.Api
 
         public HttpResponseMessage Put(CompanyDTO element)
         {
-            if (!model.Exists(element.Id))
+            if (!model.Exists(element.CompanyId))
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
@@ -54,7 +54,7 @@ namespace LaboruTKM.Web.Controllers.Admin.Api
         {
             element = model.Add(element);
             HttpResponseMessage response = Request.CreateResponse<CompanyDTO>(HttpStatusCode.Created, element);
-            response.Headers.Location = new Uri(Request.RequestUri + apiUrl + element.Id.ToString());
+            response.Headers.Location = new Uri(Request.RequestUri + apiUrl + element.CompanyId.ToString());
 
             return response;
         }

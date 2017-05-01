@@ -116,6 +116,7 @@
     <Compile Include="Controllers\Admin\Api\CompanyController.cs" />
     <Compile Include="Controllers\Admin\Api\EvaluationController.cs" />
     <Compile Include="Controllers\Company\CompanyUIController.cs" />
+    <Compile Include="Controllers\Person\PersonUIController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -350,6 +351,8 @@
     <Content Include="Views\CompanyUI\RecruitmentDone.cshtml" />
     <Content Include="Views\CompanyUI\Candidate.cshtml" />
     <Content Include="Views\CompanyUI\Person.cshtml" />
+    <Content Include="Views\CompanyUI\AddApplicant.cshtml" />
+    <Content Include="Views\CompanyUI\JobOpenings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

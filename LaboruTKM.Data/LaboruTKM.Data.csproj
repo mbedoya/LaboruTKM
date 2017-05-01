@@ -57,14 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EvaluationDB.cs" />
-    <Compile Include="Migrations\201704262133301_AddEvalutionAndTable.cs" />
-    <Compile Include="Migrations\201704262133301_AddEvalutionAndTable.Designer.cs">
-      <DependentUpon>201704262133301_AddEvalutionAndTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704282004198_AddCompanyTable.cs" />
-    <Compile Include="Migrations\201704282004198_AddCompanyTable.Designer.cs">
-      <DependentUpon>201704282004198_AddCompanyTable.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\MySqlHistoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,14 +70,6 @@
       <Project>{e5839697-2ff4-4940-a058-92ec61033b06}</Project>
       <Name>LaboruTKM.Common</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704262133301_AddEvalutionAndTable.resx">
-      <DependentUpon>201704262133301_AddEvalutionAndTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704282004198_AddCompanyTable.resx">
-      <DependentUpon>201704282004198_AddCompanyTable.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

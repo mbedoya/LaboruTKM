@@ -9,24 +9,28 @@ using System.Threading.Tasks;
 
 namespace LaboruTKM.Common
 {
-    [Table("company")]
-    public class CompanyDTO
+    [Table("JobOffer")]
+    public class JobOfferDTO
     {
         [Key]
-        public int CompanyId { get; set; }
+        public int JobOfferId { get; set; }
 
         [Required]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         [DefaultValue("CURRENT_TIMESTAMP")]
         public DateTime DateCreated { get; set; }
 
+        [ForeignKey("Company")]
         [Required]
-        public string Logo { get; set; }
+        public int CompanyId { get; set; }
+        public CompanyDTO Company { get; set; }
 
-        public string ContactName { get; set; }
-
+        [ForeignKey("Role")]
         [Required]
-        public string ContactEmail { get; set; }
+        public int RoleId { get; set; }
+        public RoleDTO Role { get; set; }
     }
 }

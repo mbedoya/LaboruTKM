@@ -1,0 +1,248 @@
+﻿@using LaboruTKM.Web.Common
+
+@{
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+<!-- https://v4-alpha.getbootstrap.com/components/forms/ -->
+
+@section css{
+
+    <!-- DataTables CSS -->
+    <link href="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.css")" rel="stylesheet">
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Adicionar candidato</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        Datos del candidato y rol
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">@UIHelpers.GetGlobalizedText("email")</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">@UIHelpers.GetGlobalizedText("name")</label>
+                        <input type="text" class="form-control" id="name" >
+                    </div>                    
+                    <div class="form-group">
+                        <label for="exampleSelect1">Cargo al que aspira</label>
+                        <select class="form-control" id="exampleSelect1">
+                            <option>Desarrollador .Net</option>
+                            <option>Desarrollador Java</option>
+                            <option>Analista QA</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea">Razones para seleccionar al candidato</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                    </div>
+                    
+                </form>
+
+            </div>
+            <!-- /.panel-body -->
+
+            <div class="panel-footer">
+                <input class="btn btn-primary" type="button" value="Guardar" />
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        También puedes adicionar un xPer de Laboru 
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="@UIHelpers.GetGlobalizedText("search")...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                        <!-- /input-group -->
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6" style="margin-top: 10px; margin-bottom: 10px;">
+                        Algunos de nuestros candidatos
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <table class="table table-hover" id="laboru-table">
+                        <thead>
+                            <tr>
+                                <th>@UIHelpers.GetGlobalizedText("name")</th>
+                                <th>Rol</th>
+                                <th>Miembro desde</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="@Url.Content("~/CompanyUI/Person")">Juana Gil</a></td>
+                                <td>Analista Experta en Mercadeo</td>
+                                <td>Abril 30 2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Susana Gómez</a></td>
+                                <td>Desarrollador Senior Java</td>
+                                <td>Abril 29 2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Johana Amariles</a></td>
+                                <td>Analista financiera</td>
+                                <td>Abril 29 2017</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Carlos Giraldo</a></td>
+                                <td>Desarrollador Android</td>
+                                <td>Abril 25 2017</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+@section scripts{
+
+    <!-- Lang -->
+    <script src="@Url.Content("~/Static/js/lang.js")"></script>
+
+    <!-- Moments -->
+    <script src="@Url.Content("~/Static/js/moment-locales.min.js")"></script>
+
+    <!-- jQuery DataTables -->
+    <script src="@Url.Content("~/Static/vendor/datatables/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.js")"></script>
+
+    <script>
+
+        var controllerName = "api/Evaluation";
+
+        var rowTemplate = '<tr >' +
+                                '<td>_id</td>' +
+                                '<td>_name</td>' +
+                                '<td>_description</td>' +
+                                '<td class="center">_date_created</td>' +
+                                '</tr>';
+
+        function getHtmlEvalElement(obj) {
+
+            var date = moment(obj.DateCreated);
+            var now = moment();
+
+            return rowTemplate.replace("_id", obj.Id)
+                .replace("_name", obj.Name)
+                .replace("_description", obj.Description)
+                .replace("_date_created", getDateDiff(obj.DateCreated));
+        }
+
+        function getAllEvaluations() {
+
+            showLoading();
+            ajaxGet(controllerName, {}, function (success, data) {
+
+                hideLoading();
+                if (success) {
+
+                    if (data && data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var obj = data[i];
+                            var htmlElement = getHtmlEvalElement(obj);
+
+                            $("#evals-table tbody").append(htmlElement);
+                        }
+
+                        if (lang[getLanguage().toString()] != null) {
+                            $("#evals-table").DataTable({
+                                "language": lang[getLanguage().toString()].datatables
+                            });
+                        } else {
+                            $("#evals-table").DataTable();
+                        }
+
+
+                    } else {
+                        console.log("no elements in table");
+                    }
+
+                } else {
+
+                    console.log("error");
+                    console.log(data);
+                }
+
+            });
+        }
+
+        function init() {
+
+            console.log(getLanguage());
+
+            $("#candidates-table").DataTable({
+                "language": lang[getLanguage()].datatables
+            });
+
+            //getAllEvaluations();
+            //getLanguage();
+        }
+
+        $(document).ready(function () {
+
+            init();
+
+        });
+
+    </script>
+
+}

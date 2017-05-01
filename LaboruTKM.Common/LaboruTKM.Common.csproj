@@ -50,9 +50,14 @@
   <ItemGroup>
     <Compile Include="BaseDTO.cs" />
     <Compile Include="BaseNamedDTO.cs" />
+    <Compile Include="ApplicantDTO.cs" />
     <Compile Include="CompanyDTO.cs" />
     <Compile Include="EvaluationDTO.cs" />
+    <Compile Include="JobOfferDTO.cs" />
+    <Compile Include="PersonDetailDTO.cs" />
+    <Compile Include="PersonDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleDTO.cs" />
     <Compile Include="SectionDTO.cs" />
   </ItemGroup>
   <ItemGroup>

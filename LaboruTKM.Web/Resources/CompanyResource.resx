@@ -123,6 +123,9 @@
   <data name="done" xml:space="preserve">
     <value>Finalizados</value>
   </data>
+  <data name="jobOpenings" xml:space="preserve">
+    <value>Cargos disponibles</value>
+  </data>
   <data name="myEmployees" xml:space="preserve">
     <value>Mis Empleados</value>
   </data>

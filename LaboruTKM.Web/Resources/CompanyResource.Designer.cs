@@ -79,6 +79,15 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Cargos disponibles.
+        /// </summary>
+        internal static string jobOpenings {
+            get {
+                return ResourceManager.GetString("jobOpenings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Mis Empleados.
         /// </summary>
         internal static string myEmployees {

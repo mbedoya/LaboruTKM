@@ -16,7 +16,7 @@ namespace LaboruTKM.Model
         {
             var list =
                 from c in db.Companies
-                orderby c.Id ascending
+                orderby c.CompanyId ascending
                 select c;
 
             return list;
@@ -26,7 +26,7 @@ namespace LaboruTKM.Model
         {
             var element =
                 (from e in db.Companies
-                 where e.Id == id
+                 where e.CompanyId == id
                  select e).FirstOrDefault();
 
             return element;

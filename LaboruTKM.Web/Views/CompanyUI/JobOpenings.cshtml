@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">@UIHelpers.GetCompanyGlobalizedText("recruitment")</h1>
+        <h1 class="page-header">@UIHelpers.GetCompanyGlobalizedText("jobOpenings")</h1>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -22,45 +22,44 @@
     <div class="col-lg-12">
 
         <div class="panel panel-default">
+            
             <div class="panel-heading">
 
                 <div class="row">
                     <div class="col-md-6">
-                        Procesos finalizados
+                        
                     </div>
-
+                    <div class="col-md-6 text-right">
+                        <a class="btn btn-primary" href="@Url.Content("~/CompanyUI/AddApplicant")"> Adicionar proceso</a>
+                    </div>
                 </div>
 
             </div>
+            <!-- /.panel-heading -->
+
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <table class="table table-hover" id="candidates-table">
                     <thead>
                         <tr>
                             <th>@UIHelpers.GetGlobalizedText("name")</th>
-                            <th>Rol</th>
-                            <th>Estado</th>
-                            <th>Última actualización</th>
+                            <th>Descripción</th>
+                            <th>Candidatos en proceso</th>
+                            <th>Disponible desde</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><a href="@Url.Content("~/CompanyUI/Candidate")">Juliana Muñoz</a></td>
-                            <td>Analista</td>
-                            <td><i class="fa fa-check-circle"></i> Contratado</td>
+                            <td>Desarollador .Net</td>
+                            <td>Creación de páginas web con Asp.Net MVC</td>
+                            <td>12</td>
                             <td>Abril 30 2017</td>
                         </tr>
                         <tr>
-                            <td><a href="#">Felipe Salazar</a></td>
-                            <td>Desarrollador</td>
-                            <td>No contratado</td>
-                            <td>Abril 29 2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="@Url.Content("~/CompanyUI/Candidate")">Camila Rivera</a></td>
-                            <td>Analista</td>
-                            <td>No contratado</td>
-                            <td>Abril 29 2017</td>
+                            <td>Analista QA</td>
+                            <td>Certificación de calidad en Java y .Net. Requiere conocimientos avanzados en TDD</td>
+                            <td>3</td>
+                            <td>Abril 30 2017</td>
                         </tr>
                     </tbody>
                 </table>

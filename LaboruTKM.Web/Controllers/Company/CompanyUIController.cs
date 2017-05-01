@@ -11,6 +11,9 @@ namespace LaboruTKM.Web.Controllers.Company
     public class CompanyUIController : Controller
     {
         LaboruTKM.Model.Company model = new LaboruTKM.Model.Company();
+        LaboruTKM.Model.Person personModel = new Model.Person();
+
+
         public const string LoginPage = "Login";
         public const string DemoKey = "Demo";
         public const string DemoCompany = "intrepidez";
@@ -39,8 +42,20 @@ namespace LaboruTKM.Web.Controllers.Company
             return CheckAndRoute();
         }
 
-        public ActionResult Person()
+        public ActionResult AddApplicant()
         {
+            return CheckAndRoute();
+        }
+
+        public ActionResult JobOpenings()
+        {
+            return CheckAndRoute();
+        }
+
+        public ActionResult Person(int id)
+        {
+            ViewBag.Person = personModel.Get(id);
+
             return CheckAndRoute();
         }
 
@@ -60,7 +75,7 @@ namespace LaboruTKM.Web.Controllers.Company
         {
             CompanyDTO element = model.Login(email, password);
             Session[SessionConstants.Company] = element;
-            if (rememberMe)
+            if (element != null && rememberMe)
             {
                 AddRememberMeCookie(email);
             }
