@@ -9,5 +9,6 @@ namespace LaboruTKM.Web.Common
     {
         public const string User = "User";
         public const string Company = "Company";
+        public const string Demo = "Demo";
     }
 }

@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">@UIHelpers.GetGlobalizedText("rememberMe")
+                                        <input id="remember" name="remember" type="checkbox" value="Remember Me">@UIHelpers.GetGlobalizedText("rememberMe")
                                     </label>
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
@@ -114,9 +114,10 @@
 
             var email = $("#email").val();
             var password = $("#password").val();
+            var rememberMe = $("#remember").is(':checked');
 
             showLoading();
-            ajaxGet(controllerName, "SignIn", { email: email, password: password }, function (success, data) {
+            ajaxGet(controllerName, "SignIn", { email: email, password: password, rememberMe: rememberMe }, function (success, data) {
 
                 hideLoading();
                 if (success) {
@@ -144,7 +145,25 @@
             });
         }
 
+        function setEmailFromCookie() {
+            var cookies = document.cookie;
+            if (cookies.indexOf("email", 0) > -1) {
+                var array = cookies.split(';');
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].split('=')[0].toLowerCase().trim() == "email") {
+                        $("#email").val(array[i].split('=')[1]);
+                    }
+                }               
+            }
+        }
+
+        function init() {
+            setEmailFromCookie();
+        }
+
         $(document).ready(function () {
+
+            init();
 
             $("#btnLogin").on("click", function () {
                 processLogin();

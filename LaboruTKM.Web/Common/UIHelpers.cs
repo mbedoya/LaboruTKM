@@ -36,8 +36,6 @@ namespace LaboruTKM.Web.Common
             }
 
             return languages[0];
-
-            //return "es";
         }
     }
 }

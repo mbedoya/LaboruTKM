@@ -61,6 +61,24 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Activos.
+        /// </summary>
+        internal static string active {
+            get {
+                return ResourceManager.GetString("active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Finalizados.
+        /// </summary>
+        internal static string done {
+            get {
+                return ResourceManager.GetString("done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Mis Empleados.
         /// </summary>
         internal static string myEmployees {

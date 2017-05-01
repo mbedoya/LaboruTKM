@@ -138,6 +138,50 @@
     <!-- Common JavaScript -->
     <script src="@Url.Content("~/Static/js/common.js")" ></script>
 
+    <script>
+
+        var uiControllerName = "CompanyUI";
+        var loginUrl = "@Url.Content("~/CompanyUI/Login")";
+
+        function processLogout() {
+
+            console.log("logging out");
+
+            showLoading();
+            ajaxGet(uiControllerName, "Logout", {}, function (success, data) {
+
+                hideLoading();
+                if (success) {
+
+                    if (data) {
+                        console.log(loginUrl);
+                        location.href = loginUrl;
+                    } else {
+                        console.log("not found");
+                    }
+
+                } else {
+                    if (data.status == 404) {
+                        console.log("not found");
+                    } else {
+                        if (data.status == 200) {
+                            console.log("not found");
+                        } else {
+                            console.log(data);
+                        }
+
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#btnlogout").on("click", function () {
+                processLogout();
+            });
+        });
+    </script>
+
     @RenderSection("scripts", false)
 
 </body>

@@ -18,7 +18,16 @@
                 <a href="@Url.Content("~/CompanyUI/")"><i class="fa fa-dashboard fa-fw"></i> @UIHelpers.GetGlobalizedText("dashboard")</a>
             </li>
             <li>
-                <a href="@Url.Content("~/CompanyUI/Recruitment")"><i class="fa fa-user-plus fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("recruitment")</a>
+                <a href="#"><i class="fa fa-user-plus fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("recruitment")<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="@Url.Content("~/CompanyUI/Recruitment")"> @UIHelpers.GetCompanyGlobalizedText("active")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Content("~/CompanyUI/RecruitmentDone")"> @UIHelpers.GetCompanyGlobalizedText("done")</a>
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
             </li>
             <li>
                 <a href="@Url.Content("~/CompanyUI/Employees")"><i class="fa fa-users fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("myEmployees")</a>

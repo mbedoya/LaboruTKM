@@ -1,0 +1,171 @@
+﻿@using LaboruTKM.Web.Common
+
+@{
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+@section css{
+
+    <!-- DataTables CSS -->
+    <link href="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.css")" rel="stylesheet">
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">@UIHelpers.GetCompanyGlobalizedText("recruitment")</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        Procesos finalizados
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table class="table table-hover" id="candidates-table">
+                    <thead>
+                        <tr>
+                            <th>@UIHelpers.GetGlobalizedText("name")</th>
+                            <th>Rol</th>
+                            <th>Estado</th>
+                            <th>Última actualización</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Juliana Muñoz</a></td>
+                            <td>Analista</td>
+                            <td><i class="fa fa-check-circle"></i> Contratado</td>
+                            <td>Abril 30 2017</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Felipe Salazar</a></td>
+                            <td>Desarrollador</td>
+                            <td>No contratado</td>
+                            <td>Abril 29 2017</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Camila Rivera</a></td>
+                            <td>Analista</td>
+                            <td>No contratado</td>
+                            <td>Abril 29 2017</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- /.table-responsive -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+@section scripts{
+
+    <!-- Lang -->
+    <script src="@Url.Content("~/Static/js/lang.js")"></script>
+
+    <!-- Moments -->
+    <script src="@Url.Content("~/Static/js/moment-locales.min.js")"></script>
+
+    <!-- jQuery DataTables -->
+    <script src="@Url.Content("~/Static/vendor/datatables/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.js")"></script>
+
+    <script>
+
+        var controllerName = "api/Evaluation";
+
+        var rowTemplate = '<tr >' +
+                                '<td>_id</td>' +
+                                '<td>_name</td>' +
+                                '<td>_description</td>' +
+                                '<td class="center">_date_created</td>' +
+                                '</tr>';
+
+        function getHtmlEvalElement(obj) {
+
+            var date = moment(obj.DateCreated);
+            var now = moment();
+
+            return rowTemplate.replace("_id", obj.Id)
+                .replace("_name", obj.Name)
+                .replace("_description", obj.Description)
+                .replace("_date_created", getDateDiff(obj.DateCreated));
+        }
+
+        function getAllEvaluations() {
+
+            showLoading();
+            ajaxGet(controllerName, {}, function (success, data) {
+
+                hideLoading();
+                if (success) {
+
+                    if (data && data.length > 0) {
+
+                        for (var i = 0; i < data.length; i++) {
+
+                            var obj = data[i];
+                            var htmlElement = getHtmlEvalElement(obj);
+
+                            $("#evals-table tbody").append(htmlElement);
+                        }
+
+                        if (lang[getLanguage().toString()] != null) {
+                            $("#evals-table").DataTable({
+                                "language": lang[getLanguage().toString()].datatables
+                            });
+                        } else {
+                            $("#evals-table").DataTable();
+                        }
+
+
+                    } else {
+                        console.log("no elements in table");
+                    }
+
+                } else {
+
+                    console.log("error");
+                    console.log(data);
+                }
+
+            });
+        }
+
+        function init() {
+
+            console.log(getLanguage());
+
+            $("#candidates-table").DataTable({
+                "language": lang[getLanguage()].datatables
+            });
+
+            //getAllEvaluations();
+            //getLanguage();
+        }
+
+        $(document).ready(function () {
+
+            init();
+
+        });
+
+    </script>
+
+}

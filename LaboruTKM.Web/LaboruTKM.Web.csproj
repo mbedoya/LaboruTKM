@@ -148,6 +148,7 @@
     <Content Include="Global.asax" />
     <Content Include="Static\data\flot-data.js" />
     <Content Include="Static\data\morris-data.js" />
+    <Content Include="Static\dist\css\laboru-tkm-profile.css" />
     <Content Include="Static\dist\css\laboru-tkm.css" />
     <Content Include="Static\dist\css\sb-admin-2.css" />
     <Content Include="Static\dist\css\sb-admin-2.min.css" />
@@ -346,6 +347,9 @@
     <Content Include="Views\Shared\_AdminTopMenu.cshtml" />
     <Content Include="Views\Shared\_CompanyLeftMenu.cshtml" />
     <Content Include="Views\CompanyUI\Recruitment.cshtml" />
+    <Content Include="Views\CompanyUI\RecruitmentDone.cshtml" />
+    <Content Include="Views\CompanyUI\Candidate.cshtml" />
+    <Content Include="Views\CompanyUI\Person.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

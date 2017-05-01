@@ -10,7 +10,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/en/LaboruTKM.Web.resources.dll">
-      <publishTime>04/30/2017 12:30:41</publishTime>
+      <publishTime>04/30/2017 21:40:44</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/26/2017 15:27:41</publishTime>
@@ -52,7 +52,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2017 11:07:38</publishTime>
     </File>
     <File Include="bin/LaboruTKM.Web.dll">
-      <publishTime>04/30/2017 12:30:41</publishTime>
+      <publishTime>04/30/2017 21:40:44</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/26/2017 14:41:52</publishTime>
@@ -108,8 +108,11 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Static/data/morris-data.js">
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
+    <File Include="Static/dist/css/laboru-tkm-profile.css">
+      <publishTime>04/30/2017 21:30:16</publishTime>
+    </File>
     <File Include="Static/dist/css/laboru-tkm.css">
-      <publishTime>04/29/2017 20:58:28</publishTime>
+      <publishTime>04/30/2017 21:30:50</publishTime>
     </File>
     <File Include="Static/dist/css/sb-admin-2.css">
       <publishTime>04/04/2017 10:45:02</publishTime>
@@ -618,14 +621,23 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Views/AdminHome/Index.cshtml">
       <publishTime>04/30/2017 07:01:15</publishTime>
     </File>
+    <File Include="Views/CompanyUI/Candidate.cshtml">
+      <publishTime>04/30/2017 21:33:59</publishTime>
+    </File>
     <File Include="Views/CompanyUI/Index.cshtml">
-      <publishTime>04/30/2017 11:59:35</publishTime>
+      <publishTime>04/30/2017 20:20:16</publishTime>
     </File>
     <File Include="Views/CompanyUI/Login.cshtml">
-      <publishTime>04/30/2017 11:58:32</publishTime>
+      <publishTime>04/30/2017 19:48:28</publishTime>
+    </File>
+    <File Include="Views/CompanyUI/Person.cshtml">
+      <publishTime>04/30/2017 21:36:26</publishTime>
     </File>
     <File Include="Views/CompanyUI/Recruitment.cshtml">
-      <publishTime>04/30/2017 11:06:23</publishTime>
+      <publishTime>04/30/2017 21:40:11</publishTime>
+    </File>
+    <File Include="Views/CompanyUI/RecruitmentDone.cshtml">
+      <publishTime>04/30/2017 20:38:19</publishTime>
     </File>
     <File Include="Views/Shared/Loading.cshtml">
       <publishTime>04/30/2017 06:36:35</publishTime>
@@ -640,10 +652,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2017 09:54:45</publishTime>
     </File>
     <File Include="Views/Shared/_CompanyLayout.cshtml">
-      <publishTime>04/30/2017 10:56:25</publishTime>
+      <publishTime>04/30/2017 20:02:28</publishTime>
     </File>
     <File Include="Views/Shared/_CompanyLeftMenu.cshtml">
-      <publishTime>04/30/2017 10:20:23</publishTime>
+      <publishTime>04/30/2017 20:16:44</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>04/28/2017 10:19:07</publishTime>
