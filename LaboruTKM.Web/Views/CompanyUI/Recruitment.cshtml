@@ -26,10 +26,10 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        Mis Candidatos
+                        @UIHelpers.GetCompanyGlobalizedText("applicants")
                     </div>
                     <div class="col-md-6 text-right">
-                        <a class="btn btn-primary" href="@Url.Content("~/CompanyUI/AddApplicant")">Adicionar candidato</a>
+                        <a class="btn btn-primary" href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
                     </div>
                 </div>
 
@@ -104,59 +104,7 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-
-                <div class="row">
-                    <div class="col-md-6">
-                        Buscar candidatos (xPers) en Laboru 
-                    </div>
-                    <div class="col-md-6 text-right">
-                        <a href="#">Búsqueda avanzada</a>
-                    </div>
-                </div>
-
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-
-                <table class="table table-hover" id="laboru-table">
-                    <thead>
-                        <tr>
-                            <th>@UIHelpers.GetGlobalizedText("name")</th>
-                            <th>Título</th>
-                            <th>Miembro desde</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><a href="@Url.Content("~/CompanyUI/Person")">Juana Gil</a></td>
-                            <td>Analista Experta en Mercadeo</td>
-                            <td>Abril 30 2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Susana Gómez</a></td>
-                            <td>Desarrollador Senior Java</td>
-                            <td>Abril 29 2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Johana Amariles</a></td>
-                            <td>Analista financiera</td>
-                            <td>Abril 29 2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Carlos Giraldo</a></td>
-                            <td>Desarrollador Android</td>
-                            <td>Abril 25 2017</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-
-
-            </div>
-        </div>
+       @Html.Partial("LaboruXPers");
 
     </div>
     <!-- /.col-lg-12 -->
@@ -178,67 +126,11 @@
 
     <script>
 
-        var controllerName = "api/Evaluation";
-
-        var personRowTemplate = '<tr >' +
-                                '<td><a href="@Url.Content("~/CompanyUI/Person/_id")"> _name</a></td>' +
-                                '<td>_title</td>' +
-                                '<td class="center">_date_created</td>' +
-                                '</tr>';
-
-        function getHtmlPersonElement(obj) {
-
-            var date = moment(obj.DateCreated);
-            var now = moment();
-
-            return personRowTemplate.replace("_id", obj.PersonId)
-                .replace("_name", obj.Name)
-                .replace("_title", obj.Title)
-                .replace("_date_created", getDateDiff(obj.DateCreated));
-        }
-
         function getPeople() {
-
-            showLoading();
-            ajaxPost("PersonUI", "GetPeople", {}, function (success, data) {
-
-                hideLoading();
-                if (success) {
-
-                    if (data && data.length > 0) {
-
-                        for (var i = 0; i < data.length; i++) {
-
-                            var obj = data[i];
-                            var htmlElement = getHtmlPersonElement(obj);
-
-                            $("#laboru-table tbody").append(htmlElement);
-                        }
-
-                        if (lang[getLanguage().toString()] != null) {
-                            $("#laboru-table").DataTable({
-                                "language": lang[getLanguage().toString()].datatables
-                            });
-                        } else {
-                            $("#laboru-table").DataTable();
-                        }
-
-                    } else {
-                        console.log("no elements in table");
-                    }
-
-                } else {
-
-                    console.log("error");
-                    console.log(data);
-                }
-
-            });
+            getAndsetTableData("PersonUI", "GetPeople", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
         }
 
         function init() {
-
-            console.log(getLanguage());
 
             $("#candidates-table").DataTable({
                 "language": lang[getLanguage()].datatables

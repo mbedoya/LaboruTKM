@@ -48,10 +48,8 @@
                     </div>                    
                     <div class="form-group">
                         <label for="exampleSelect1">Cargo al que aspira</label>
-                        <select class="form-control" id="exampleSelect1">
-                            <option>Desarrollador .Net</option>
-                            <option>Desarrollador Java</option>
-                            <option>Analista QA</option>
+                        <select class="form-control" id="job-openings-select">
+                            <option value="-1">--Seleccione--</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -69,81 +67,10 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-
-                <div class="row">
-                    <div class="col-md-6">
-                        También puedes adicionar un xPer de Laboru 
-                    </div>
-                </div>
-
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="@UIHelpers.GetGlobalizedText("search")...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                        <!-- /input-group -->
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6" style="margin-top: 10px; margin-bottom: 10px;">
-                        Algunos de nuestros candidatos
-                    </div>
-                </div>
-
-                <div class="row">
-
-                    <table class="table table-hover" id="laboru-table">
-                        <thead>
-                            <tr>
-                                <th>@UIHelpers.GetGlobalizedText("name")</th>
-                                <th>Rol</th>
-                                <th>Miembro desde</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="@Url.Content("~/CompanyUI/Person")">Juana Gil</a></td>
-                                <td>Analista Experta en Mercadeo</td>
-                                <td>Abril 30 2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Susana Gómez</a></td>
-                                <td>Desarrollador Senior Java</td>
-                                <td>Abril 29 2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Johana Amariles</a></td>
-                                <td>Analista financiera</td>
-                                <td>Abril 29 2017</td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Carlos Giraldo</a></td>
-                                <td>Desarrollador Android</td>
-                                <td>Abril 25 2017</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-            </div>
-        </div>
+        <h4>También puedes adicionar un xPer de Laboru</h4>
+        
+        
+        @Html.Partial("LaboruXPers");
 
     </div>
     <!-- /.col-lg-12 -->
@@ -165,76 +92,18 @@
 
     <script>
 
-        var controllerName = "api/Evaluation";
-
-        var rowTemplate = '<tr >' +
-                                '<td>_id</td>' +
-                                '<td>_name</td>' +
-                                '<td>_description</td>' +
-                                '<td class="center">_date_created</td>' +
-                                '</tr>';
-
-        function getHtmlEvalElement(obj) {
-
-            var date = moment(obj.DateCreated);
-            var now = moment();
-
-            return rowTemplate.replace("_id", obj.Id)
-                .replace("_name", obj.Name)
-                .replace("_description", obj.Description)
-                .replace("_date_created", getDateDiff(obj.DateCreated));
+        function getJobOffers() {
+            getAndsetDropdownData("CompanyUI", "GetJobOpenings", {}, 'Name', 'JobOfferId', 'job-openings-select');
         }
 
-        function getAllEvaluations() {
-
-            showLoading();
-            ajaxGet(controllerName, {}, function (success, data) {
-
-                hideLoading();
-                if (success) {
-
-                    if (data && data.length > 0) {
-
-                        for (var i = 0; i < data.length; i++) {
-
-                            var obj = data[i];
-                            var htmlElement = getHtmlEvalElement(obj);
-
-                            $("#evals-table tbody").append(htmlElement);
-                        }
-
-                        if (lang[getLanguage().toString()] != null) {
-                            $("#evals-table").DataTable({
-                                "language": lang[getLanguage().toString()].datatables
-                            });
-                        } else {
-                            $("#evals-table").DataTable();
-                        }
-
-
-                    } else {
-                        console.log("no elements in table");
-                    }
-
-                } else {
-
-                    console.log("error");
-                    console.log(data);
-                }
-
-            });
+        function getPeople() {
+            getAndsetTableData("PersonUI", "GetPeople", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
         }
 
         function init() {
 
-            console.log(getLanguage());
-
-            $("#candidates-table").DataTable({
-                "language": lang[getLanguage()].datatables
-            });
-
-            //getAllEvaluations();
-            //getLanguage();
+            getJobOffers();
+            getPeople();
         }
 
         $(document).ready(function () {

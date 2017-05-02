@@ -91,3 +91,115 @@ function showLoading() {
 function hideLoading() {
     $("#waiting").css('display', 'none');
 }
+
+function parseJsonDate(jsonDateString) {
+    return new Date(parseInt(jsonDateString.replace('/Date(', '')));
+}
+
+function getRowElement(obj, properties, key, url) {
+
+    var date = moment(obj.DateCreated);
+    var now = moment();
+
+    var rowTemplate = '<tr>';
+    for (var i = 0; i < properties.length; i++) {
+        var property = properties[i];
+        if (i == 0) {
+            rowTemplate += '<td><a href="' + url + '/' + obj[key] + '">' + obj[property] + '</a></td>';
+        } else {
+            console.log(property);
+            if (property.toLowerCase().indexOf('date', 0) > -1) {
+                var date = moment(parseJsonDate(obj[property]));
+                console.log(date);
+                rowTemplate += '<td>' + getDateDiff(date) + '</td>';
+            } else {
+                rowTemplate += '<td>' + obj[property] + '</td>';
+            }            
+        }
+    }
+    rowTemplate += '</tr>';
+
+    return rowTemplate;
+}
+
+function getAndsetTableData(controllerName, method, parameters, url, properties, key, tableID) {
+
+    showLoading();
+    ajaxGet(controllerName, method, parameters, function (success, data) {
+
+        hideLoading();
+        if (success) {
+
+            console.log(data);
+
+            if (data && data.length > 0) {
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var obj = data[i];
+                    var htmlElement = getRowElement(obj, properties, key, url);
+
+                    console.log(htmlElement);
+
+                    $("#" + tableID + " tbody").append(htmlElement);
+                }
+
+                if (lang[getLanguage().toString()] != null) {
+                    $("#" + tableID).DataTable({
+                        "language": lang[getLanguage().toString()].datatables
+                    });
+                } else {
+                    $("#" + tableID).DataTable();
+                }
+
+            } else {
+                console.log("no elements in table");
+            }
+
+        } else {
+
+            console.log("error");
+            console.log(data);
+        }
+
+    });
+}
+
+function getSelectElement(obj, property, key) {
+
+    var rowTemplate = '<option value="' + obj[key] + '">' + obj[property] + '</option>';
+    return rowTemplate;
+}
+
+function getAndsetDropdownData(controllerName, method, parameters, property, key, selectID) {
+
+    ajaxGet(controllerName, method, parameters, function (success, data) {
+
+        if (success) {
+
+            console.log(data);
+
+            if (data && data.length > 0) {
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var obj = data[i];
+                    var htmlElement = getSelectElement(obj, property, key);
+
+                    console.log(htmlElement);
+
+                    $("#" + selectID).append(htmlElement);
+                }
+
+            } else {
+                console.log("no elements in table");
+            }
+
+        } else {
+
+            console.log("error");
+            console.log(data);
+        }
+
+    });
+}

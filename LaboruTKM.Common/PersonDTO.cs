@@ -27,7 +27,6 @@ namespace LaboruTKM.Common
         [Required]
         public string Email { get; set; }
 
-        [Required]
         public string Summary { get; set; }
 
         public ICollection<PersonDetailDTO> Skills { get; set; }

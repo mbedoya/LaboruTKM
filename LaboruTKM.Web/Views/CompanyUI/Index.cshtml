@@ -17,6 +17,30 @@
     </div>
     <!-- /.col-lg-12 -->
 </div>
+
+<div class="row">
+
+    <div class="panel">
+
+        <div class="panel-body">
+            <div class="col-md-3">
+                <p>
+                    Accesos rápidos
+                </p>
+                <ul class="list-group">
+                        <li class="list-group-item">
+                            <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-3 col-md-6">
@@ -27,8 +51,8 @@
                         <i class="fa fa-user-plus fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">5</div>
-                        <div>Cargos disponibles</div>
+                        <div class="huge">2</div>
+                        <div>@UIHelpers.GetCompanyGlobalizedText("jobOpenings")</div>
                     </div>
                 </div>
             </div>
@@ -49,8 +73,8 @@
                         <i class="fa fa-users fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        <div class="huge">50</div>
-                        <div>Candidatos en Proceso</div>
+                        <div class="huge">4</div>
+                        <div>@UIHelpers.GetCompanyGlobalizedText("activeApplicants")</div>
                     </div>
                 </div>
             </div>
@@ -72,7 +96,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">12</div>
-                        <div>Procesos pausados</div>
+                        <div>@UIHelpers.GetCompanyGlobalizedText("pausedApplicants")</div>
                     </div>
                 </div>
             </div>
@@ -94,7 +118,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">6</div>
-                        <div>Procesos con alerta</div>
+                        <div>@UIHelpers.GetCompanyGlobalizedText("alertApplicants")</div>
                     </div>
                 </div>
             </div>
@@ -111,18 +135,18 @@
 <!-- /.row -->
 <div class="row">
     <div class="col-lg-8">
-        
+
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-clock-o fa-fw"></i> Estado de los procesos de selección
-                       
+                <i class="fa fa-clock-o fa-fw"></i>@UIHelpers.GetCompanyGlobalizedText("recruitmentDetails")
+
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
 
                 <div class="row">
-                    <div class="col-lg-6 text-center" > Empresa</div>
-                    <div class="col-lg-6 text-center"> Candidatos</div>
+                    <div class="col-lg-6 text-center">@Model.Name</div>
+                    <div class="col-lg-6 text-center">@UIHelpers.GetCompanyGlobalizedText("applicants")</div>
                 </div>
 
                 <ul class="timeline">
@@ -134,14 +158,17 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Invitados a iniciar proceso</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 16 en Total</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>16 en Total</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-                                    5 Desarrolladores <br />
-                                    10 Analistas <br />
-                                    1 Gerente <br />
+                                    5 Desarrolladores
+                                    <br />
+                                    10 Analistas
+                                    <br />
+                                    1 Gerente
+                                    <br />
                                 </p>
                             </div>
                         </div>
@@ -154,13 +181,15 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Invitación aceptada</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 5 en Total</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>5 en Total</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-                                    4 Desarrolladores <br />
-                                    1 Analistas <br />
+                                    4 Desarrolladores
+                                    <br />
+                                    1 Analistas
+                                    <br />
                                 </p>
                             </div>
                         </div>
@@ -173,7 +202,7 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Evaluación finalizada</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 1 en Total</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>1 en Total</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
@@ -186,7 +215,7 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Evaluación no superada</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 2 en Total</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>2 en Total</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
@@ -204,17 +233,16 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Citados a entrevista</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> No hay citaciones</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>No hay citaciones</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-
                                 </p>
                             </div>
                         </div>
                     </li>
-                    <li >
+                    <li>
                         <div class="timeline-badge info">
                             <i class="fa fa-comments"></i>
                         </div>
@@ -222,12 +250,13 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Entrevistados</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 3 en Total</small>
-                                </p>                                
+                                    <small class="text-muted"><i class="fa fa-check"></i>3 en Total</small>
+                                </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-                                    2 Gerentes <br />
+                                    2 Gerentes
+                                    <br />
                                     1 Analista
                                 </p>
                             </div>
@@ -241,17 +270,16 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Propuesta enviada</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> No hay propuestas pendientes</small>
+                                    <small class="text-muted"><i class="fa fa-check"></i>No hay propuestas pendientes</small>
                                 </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-
                                 </p>
                             </div>
                         </div>
                     </li>
-                    <li >
+                    <li>
                         <div class="timeline-badge success">
                             <i class="fa fa-check-circle"></i>
                         </div>
@@ -259,12 +287,13 @@
                             <div class="timeline-heading">
                                 <h4 class="timeline-title">Contratados</h4>
                                 <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i> 2 en Total</small>
-                                </p>                                
+                                    <small class="text-muted"><i class="fa fa-check"></i>2 en Total</small>
+                                </p>
                             </div>
                             <div class="timeline-body">
                                 <p>
-                                    1 Desarrollador <br />
+                                    1 Desarrollador
+                                    <br />
                                     1 Analista
                                 </p>
                             </div>
@@ -282,7 +311,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Promedio de días de contratación
+                <i class="fa fa-area-chart fa-fw"></i>Promedio de días de contratación
                        
             </div>
             <div class="panel-body">
@@ -295,7 +324,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Brechas en Inglés
+                <i class="fa fa-area-chart fa-fw"></i>Brechas en Inglés
                        
             </div>
             <div class="panel-body">
@@ -308,7 +337,7 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Brechas en .Net
+                <i class="fa fa-area-chart fa-fw"></i>Brechas en .Net
                        
             </div>
             <div class="panel-body">
@@ -318,7 +347,7 @@
             <!-- /.panel-body -->
         </div>
         <!-- /.panel -->
-        
+
     </div>
     <!-- /.col-lg-4 -->
 </div>
@@ -334,7 +363,7 @@
     <script>
 
         function loadAverage() {
-            
+
             Morris.Bar({
                 element: 'morris-average-chart',
                 data: [
@@ -349,7 +378,7 @@
             });
 
         }
-               
+
 
         function loadGaps() {
 

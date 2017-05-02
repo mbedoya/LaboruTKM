@@ -70,6 +70,51 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Candidatos en proceso.
+        /// </summary>
+        internal static string activeApplicants {
+            get {
+                return ResourceManager.GetString("activeApplicants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Adicionar candidato.
+        /// </summary>
+        internal static string addApplicant {
+            get {
+                return ResourceManager.GetString("addApplicant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Adicionar cargo.
+        /// </summary>
+        internal static string addJobOpening {
+            get {
+                return ResourceManager.GetString("addJobOpening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Candidatos con alerta.
+        /// </summary>
+        internal static string alertApplicants {
+            get {
+                return ResourceManager.GetString("alertApplicants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Candidatos.
+        /// </summary>
+        internal static string applicants {
+            get {
+                return ResourceManager.GetString("applicants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Finalizados.
         /// </summary>
         internal static string done {
@@ -97,11 +142,29 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Candidatos en pausa.
+        /// </summary>
+        internal static string pausedApplicants {
+            get {
+                return ResourceManager.GetString("pausedApplicants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Reclutamiento.
         /// </summary>
         internal static string recruitment {
             get {
                 return ResourceManager.GetString("recruitment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Detalle de los procesos de selección.
+        /// </summary>
+        internal static string recruitmentDetails {
+            get {
+                return ResourceManager.GetString("recruitmentDetails", resourceCulture);
             }
         }
     }

@@ -37,6 +37,11 @@ namespace LaboruTKM.Web.Controllers.Company
             return CheckAndRoute();
         }
 
+        public ActionResult Employees()
+        {
+            return CheckAndRoute();
+        }
+
         public ActionResult Candidate()
         {
             return CheckAndRoute();
@@ -107,5 +112,23 @@ namespace LaboruTKM.Web.Controllers.Company
             return View((CompanyDTO)Session[SessionConstants.Company]);
         }
 
+        #region Job Openings
+
+        public ActionResult GetJobOpenings()
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return Json( null, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(model.GetJobOpenings(GetSessionCompany().CompanyId), JsonRequestBehavior.AllowGet);
+        }
+
+        private CompanyDTO GetSessionCompany()
+        {
+            return (CompanyDTO)Session[SessionConstants.Company];
+        }
+
+        #endregion
     }
 }

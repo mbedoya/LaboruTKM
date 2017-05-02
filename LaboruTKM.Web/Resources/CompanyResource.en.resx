@@ -120,6 +120,21 @@
   <data name="active" xml:space="preserve">
     <value>In Progress</value>
   </data>
+  <data name="activeApplicants" xml:space="preserve">
+    <value>Applicants in progress</value>
+  </data>
+  <data name="addApplicant" xml:space="preserve">
+    <value>Add Applicant</value>
+  </data>
+  <data name="addJobOpening" xml:space="preserve">
+    <value>Add Job Opening</value>
+  </data>
+  <data name="alertApplicants" xml:space="preserve">
+    <value>Applicants with alerts</value>
+  </data>
+  <data name="applicants" xml:space="preserve">
+    <value>Applicants</value>
+  </data>
   <data name="done" xml:space="preserve">
     <value>Done</value>
   </data>
@@ -129,7 +144,13 @@
   <data name="myEmployees" xml:space="preserve">
     <value>My Employees</value>
   </data>
+  <data name="pausedApplicants" xml:space="preserve">
+    <value>Applicants in pause</value>
+  </data>
   <data name="recruitment" xml:space="preserve">
     <value>Recruitment</value>
+  </data>
+  <data name="recruitmentDetails" xml:space="preserve">
+    <value>Recruitment Details</value>
   </data>
 </root>

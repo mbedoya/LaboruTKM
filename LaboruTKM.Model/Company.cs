@@ -63,5 +63,23 @@ namespace LaboruTKM.Model
 
             return element;
         }
+
+        public JobOfferDTO AddJobOpening(JobOfferDTO element, int companyID)
+        {
+            element.CompanyId = companyID;
+            element = db.JobOffers.Add(element);
+
+            return element;
+        }
+
+        public IEnumerable<JobOfferDTO> GetJobOpenings(int companyID)
+        {
+            var list =
+                from e in db.JobOffers
+                where e.CompanyId == companyID
+                select e;
+
+            return list;
+        }
     }
 }

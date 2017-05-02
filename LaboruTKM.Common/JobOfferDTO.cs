@@ -32,5 +32,8 @@ namespace LaboruTKM.Common
         [Required]
         public int RoleId { get; set; }
         public RoleDTO Role { get; set; }
+
+        [NotMapped]
+        public int ActiveApplicants { get; set; }
     }
 }

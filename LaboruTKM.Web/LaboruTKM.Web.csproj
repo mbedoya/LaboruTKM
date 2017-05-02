@@ -282,7 +282,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminCompany\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\LaboruTKM.pubxml" />
@@ -337,9 +337,9 @@
     <Content Include="Static\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Views\AdminHome\Evaluations.cshtml" />
+    <Content Include="Views\AdminCompany\AdminHome\Evaluations.cshtml" />
     <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
-    <Content Include="Views\AdminHome\Companies.cshtml" />
+    <Content Include="Views\AdminCompany\AdminHome\Companies.cshtml" />
     <Content Include="Views\AdminCompany\Index.cshtml" />
     <Content Include="Views\Shared\_CompanyLayout.cshtml" />
     <Content Include="Views\CompanyUI\Login.cshtml" />
@@ -353,6 +353,8 @@
     <Content Include="Views\CompanyUI\Person.cshtml" />
     <Content Include="Views\CompanyUI\AddApplicant.cshtml" />
     <Content Include="Views\CompanyUI\JobOpenings.cshtml" />
+    <Content Include="Views\CompanyUI\LaboruXPers.cshtml" />
+    <Content Include="Views\CompanyUI\Employees.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">
