@@ -17,5 +17,13 @@ namespace LaboruTKM.Data
         public DbSet<JobOfferDTO> JobOffers { get; set; }
         public DbSet<PersonDTO> People { get; set; }
         public DbSet<ApplicantDTO> Applicants { get; set; }
+        public DbSet<RecruitmentProcessDTO> RecruitmentProcesses { get; set; }
+        public DbSet<RecruitmentProcessStepDTO> RecruitmentProcessSteps { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<EvaluationDB>(null);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -46,6 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!--
                         <tr>
                             <td><a href="@Url.Content("~/CompanyUI/Candidate")">Andrea Herrera</a></td>
                             <td>Analista</td>
@@ -98,6 +99,7 @@
                             </td>
                             <td>Abril 25 2017</td>
                         </tr>
+                            -->
                     </tbody>
                 </table>
                 <!-- /.table-responsive -->
@@ -130,12 +132,19 @@
             getAndsetTableData("PersonUI", "GetPeople", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
         }
 
-        function init() {
+        function getActiveProcesses() {
+            getAndsetTableData("CompanyUI", "GetActiveRecruitments", {}, "@Url.Content("~/CompanyUI/Candidate")", ['Applicant.Person.Name', 'Applicant.JobOffer.Name', 'State', 'DateUpdated'], 'Applicant.ApplicantId', 'candidates-table');
+        }
 
+        function init() {
+            
+            /*
             $("#candidates-table").DataTable({
                 "language": lang[getLanguage()].datatables
             });
+            */
 
+            getActiveProcesses();
             getPeople();
         }
 

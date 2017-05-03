@@ -12,7 +12,7 @@ namespace LaboruTKM.Web.Controllers.Company
     {
         LaboruTKM.Model.Company model = new LaboruTKM.Model.Company();
         LaboruTKM.Model.Person personModel = new Model.Person();
-
+        LaboruTKM.Model.RecruitmentModel.RecruitmentProcess processModel = new Model.RecruitmentModel.RecruitmentProcess();
 
         public const string LoginPage = "Login";
         public const string DemoKey = "Demo";
@@ -122,6 +122,16 @@ namespace LaboruTKM.Web.Controllers.Company
             }
 
             return Json(model.GetJobOpenings(GetSessionCompany().CompanyId), JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetActiveRecruitments()
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(processModel.GetProcessesByCompany(GetSessionCompany().CompanyId), JsonRequestBehavior.AllowGet);
         }
 
         private CompanyDTO GetSessionCompany()

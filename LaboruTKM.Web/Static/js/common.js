@@ -96,6 +96,33 @@ function parseJsonDate(jsonDateString) {
     return new Date(parseInt(jsonDateString.replace('/Date(', '')));
 }
 
+function getObjectByNestedProperties(obj, property) {
+
+    console.log("---");
+    console.log(obj);
+    console.log(property);
+    console.log("...");
+
+    var propertyArray = property.split('.');
+    for (var i = 0; i < propertyArray.length; i++) {
+        obj = obj[propertyArray[i]];
+    }
+
+    console.log(obj);
+    console.log("xxxxx");
+
+    return obj;
+}
+
+function getValueFromState(state) {
+    if (state == 1) {
+        return 'Creado como candidato ' +
+                '<div class="progress">' +
+                 '<div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">10%</div>' +
+                '</div>';
+    }
+}
+
 function getRowElement(obj, properties, key, url) {
 
     var date = moment(obj.DateCreated);
@@ -105,16 +132,22 @@ function getRowElement(obj, properties, key, url) {
     for (var i = 0; i < properties.length; i++) {
         var property = properties[i];
         if (i == 0) {
-            rowTemplate += '<td><a href="' + url + '/' + obj[key] + '">' + obj[property] + '</a></td>';
+            rowTemplate += '<td><a href="' + url + '/' + getObjectByNestedProperties(obj, key) + '">' + getObjectByNestedProperties(obj, property) + '</a></td>';
         } else {
             console.log(property);
             if (property.toLowerCase().indexOf('date', 0) > -1) {
-                var date = moment(parseJsonDate(obj[property]));
+                var date = moment(parseJsonDate(getObjectByNestedProperties(obj, property)));
                 console.log(date);
                 rowTemplate += '<td>' + getDateDiff(date) + '</td>';
             } else {
-                rowTemplate += '<td>' + obj[property] + '</td>';
-            }            
+
+                var value = getObjectByNestedProperties(obj, property);
+                if (property.toLowerCase().indexOf('state', 0) > -1) {
+                    rowTemplate += '<td>' + getValueFromState(value) + '</td>';
+                } else {
+                    rowTemplate += '<td>' + getObjectByNestedProperties(obj, property) + '</td>';
+                }
+            }
         }
     }
     rowTemplate += '</tr>';
@@ -123,6 +156,8 @@ function getRowElement(obj, properties, key, url) {
 }
 
 function getAndsetTableData(controllerName, method, parameters, url, properties, key, tableID) {
+
+    console.log(tableID);
 
     showLoading();
     ajaxGet(controllerName, method, parameters, function (success, data) {
@@ -143,6 +178,7 @@ function getAndsetTableData(controllerName, method, parameters, url, properties,
 
                     $("#" + tableID + " tbody").append(htmlElement);
                 }
+
 
                 if (lang[getLanguage().toString()] != null) {
                     $("#" + tableID).DataTable({

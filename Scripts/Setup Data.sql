@@ -142,3 +142,34 @@ VALUES
 1,
 1,
 'Certificación de calidad en Java y .Net. Se requiere conocimientos avanzados en UnitTesting y TDD');
+
+INSERT INTO `laborutkm`.`applicant`
+(
+`PersonId`,
+`JobOfferId`)
+VALUES
+(
+1,
+1);
+
+INSERT INTO `laborutkm`.`recruitmentprocess`
+(
+`Comments`,
+`State`,
+`Applicant_ApplicantId`)
+VALUES
+(
+NULL,
+1,
+1);
+
+INSERT INTO `laborutkm`.`recruitmentprocessstepdtoes`
+(
+`Comments`,
+`RecruitmentProcessId`,
+`Name`)
+VALUES
+(
+NULL,
+1,
+'CandidateCreated');

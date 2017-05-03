@@ -8,11 +8,13 @@ namespace LaboruTKM.Tests
     [TestClass]
     public class CompanyTest
     {
+        private const string DefaultCompanyEmail = "intrepidez";
+
         [TestMethod]
         public void Login_CompanyFound_CompanyIsNotNull()
         {
             Company company = new Company();
-            CompanyDTO dto = company.Login("mauricio.bedoya@gmail.com", "1234");
+            CompanyDTO dto = company.Login(DefaultCompanyEmail, "1234");
             Assert.IsNotNull(dto);
         }
 
@@ -20,7 +22,7 @@ namespace LaboruTKM.Tests
         public void Login_CompanyFound_CompanyHasName()
         {
             Company company = new Company();
-            CompanyDTO dto = company.Login("mauricio.bedoya@gmail.com", "1234");
+            CompanyDTO dto = company.Login(DefaultCompanyEmail, "1234");
             Assert.IsNotNull(!String.IsNullOrEmpty(dto.Name));
         }
     }

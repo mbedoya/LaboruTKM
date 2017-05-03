@@ -52,6 +52,10 @@
     <Compile Include="Evaluation.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecruitmentModel\RecruitmentProcess.cs" />
+    <Compile Include="RecruitmentModel\RecruitmentState.cs" />
+    <Compile Include="RecruitmentModel\StartedRecruitmentState.cs" />
+    <Compile Include="RecruitmentModel\UnstartedRecruitmentState.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

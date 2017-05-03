@@ -13,3 +13,7 @@ h1 {
 .navbar-brand {
     padding: 10px 15px !important;
 }
+
+.borderless {
+    border: none !important;
+}

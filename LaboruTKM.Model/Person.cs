@@ -30,5 +30,15 @@ namespace LaboruTKM.Model
 
             return element;
         }
+
+        public PersonDTO GetByEmail(string email)
+        {
+            var element =
+                (from c in db.People
+                 where c.Email == email
+                 select c).FirstOrDefault();
+
+            return element;
+        }
     }
 }

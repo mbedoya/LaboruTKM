@@ -1,4 +1,23 @@
+ALTER TABLE `laborutkm`.`applicant` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `laborutkm`.`company` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `laborutkm`.`evaluation` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `laborutkm`.`joboffer` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `laborutkm`.`person` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `laborutkm`.`recruitmentprocessstepdtoes` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
 ALTER TABLE `laborutkm`.`role` 
 CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
 
-alter table `Person` modify `Summary` longtext;
+ALTER TABLE `laborutkm`.`section` 
+CHANGE COLUMN `DateCreated` `DateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;

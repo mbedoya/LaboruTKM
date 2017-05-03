@@ -18,31 +18,9 @@
     <!-- /.col-lg-12 -->
 </div>
 
-<div class="row">
-
-    <div class="panel">
-
-        <div class="panel-body">
-            <div class="col-md-3">
-                <p>
-                    Accesos rápidos
-                </p>
-                <ul class="list-group">
-                        <li class="list-group-item">
-                            <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
-                        </li>
-                    </ul>
-            </div>
-        </div>
-
-    </div>
-
-
-
-</div>
-
 <!-- /.row -->
 <div class="row">
+
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-green">
             <div class="panel-heading">
@@ -134,6 +112,67 @@
 </div>
 <!-- /.row -->
 <div class="row">
+
+    <div class="col-lg-4">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-share fa-fw"></i> Accesos directos
+                       
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item borderless">
+                        <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-area-chart fa-fw"></i> Promedio de días de contratación
+                       
+            </div>
+            <div class="panel-body">
+                <div id="morris-average-chart"></div>
+                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-area-chart fa-fw"></i> Brechas en Inglés
+                       
+            </div>
+            <div class="panel-body">
+                <div id="morris-english-chart"></div>
+                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-area-chart fa-fw"></i> Brechas en .Net
+                       
+            </div>
+            <div class="panel-body">
+                <div id="morris-net-chart"></div>
+                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+
+    </div>
+    <!-- /.col-lg-4 -->
+
     <div class="col-lg-8">
 
         <div class="panel panel-default">
@@ -307,49 +346,7 @@
     </div>
 
     <!-- /.col-lg-8 -->
-    <div class="col-lg-4">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i>Promedio de días de contratación
-                       
-            </div>
-            <div class="panel-body">
-                <div id="morris-average-chart"></div>
-                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i>Brechas en Inglés
-                       
-            </div>
-            <div class="panel-body">
-                <div id="morris-english-chart"></div>
-                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i>Brechas en .Net
-                       
-            </div>
-            <div class="panel-body">
-                <div id="morris-net-chart"></div>
-                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
-    </div>
-    <!-- /.col-lg-4 -->
+    
 </div>
 <!-- /.row -->
 

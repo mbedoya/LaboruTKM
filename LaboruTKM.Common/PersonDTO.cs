@@ -25,6 +25,7 @@ namespace LaboruTKM.Common
         public string PhoneNumber { get; set; }
 
         [Required]
+        [Index]
         public string Email { get; set; }
 
         public string Summary { get; set; }
