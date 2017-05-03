@@ -21,6 +21,19 @@ namespace LaboruTKM.Model
             return list;
         }
 
+        public IEnumerable<PersonDTO> GetVisibleToCompany(int companyID)
+        {
+            var list =
+                from c in db.People
+                where !(from a in db.Applicants
+                        where a.JobOffer.CompanyId == companyID
+                        select a.PersonId
+                        ).Contains(c.PersonId)
+                select c;
+
+            return list;
+        }
+
         public PersonDTO Get(int id)
         {
             var element =

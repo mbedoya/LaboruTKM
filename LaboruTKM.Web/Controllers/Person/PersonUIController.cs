@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LaboruTKM.Common;
+using LaboruTKM.Web.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,5 +22,21 @@ namespace LaboruTKM.Web.Controllers.Person
             return Json(people, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetVisibleToCompany()
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+
+            var people = model.GetVisibleToCompany(GetSessionCompany().CompanyId);
+
+            return Json(people, JsonRequestBehavior.AllowGet);
+        }
+
+        private CompanyDTO GetSessionCompany()
+        {
+            return (CompanyDTO)Session[SessionConstants.Company];
+        }
     }
 }

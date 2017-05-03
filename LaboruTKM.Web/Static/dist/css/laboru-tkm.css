@@ -17,3 +17,11 @@ h1 {
 .borderless {
     border: none !important;
 }
+
+h3 {
+    margin-top: 0px;
+}
+
+.small-title {
+    margin-bottom: 10px;
+}

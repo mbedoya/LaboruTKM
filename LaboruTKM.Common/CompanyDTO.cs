@@ -28,5 +28,8 @@ namespace LaboruTKM.Common
 
         [Required]
         public string ContactEmail { get; set; }
+
+        [NotMapped]
+        public CompanyRecruitmentStatsDTO RecruitmentStats { get; set; }
     }
 }

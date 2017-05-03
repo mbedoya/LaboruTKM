@@ -55,5 +55,15 @@ namespace LaboruTKM.Model.RecruitmentModel
 
             return element;
         }
+
+        public List<RecruitmentProcessDTO> GetProcessesByCompanyAndOpening(int companyID, int jobOpening)
+        {
+            var list =
+                (from p in db.RecruitmentProcesses.Include("Applicant").Include("Applicant.Person")
+                where p.Applicant.JobOffer.CompanyId == companyID && p.Applicant.JobOfferId == jobOpening
+                select p).ToList();
+
+            return list;
+        }
     }
 }

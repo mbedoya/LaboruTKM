@@ -33,6 +33,8 @@ namespace LaboruTKM.Model.RecruitmentModel
             //New Person? Then we need to create it
             if (process.Applicant.Person.PersonId == 0 && !PersonEmailExistsAlready(process.Applicant.Person.Email))
             {
+                process.Applicant.Person.DateCreated = DateTime.Now;
+                process.Applicant.Person.Title = "";
                 process.Applicant.Person = db.People.Add(process.Applicant.Person);
                 db.SaveChanges();
             }

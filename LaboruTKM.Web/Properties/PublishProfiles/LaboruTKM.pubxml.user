@@ -10,7 +10,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/en/LaboruTKM.Web.resources.dll">
-      <publishTime>05/02/2017 12:28:49</publishTime>
+      <publishTime>05/03/2017 12:01:25</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>04/26/2017 15:27:41</publishTime>
@@ -43,16 +43,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/26/2017 14:42:00</publishTime>
     </File>
     <File Include="bin/LaboruTKM.Common.dll">
-      <publishTime>05/02/2017 12:28:46</publishTime>
+      <publishTime>05/03/2017 12:01:21</publishTime>
     </File>
     <File Include="bin/LaboruTKM.Data.dll">
-      <publishTime>05/02/2017 12:28:47</publishTime>
+      <publishTime>05/03/2017 12:01:22</publishTime>
     </File>
     <File Include="bin/LaboruTKM.Model.dll">
-      <publishTime>05/02/2017 12:28:47</publishTime>
+      <publishTime>05/03/2017 12:01:24</publishTime>
     </File>
     <File Include="bin/LaboruTKM.Web.dll">
-      <publishTime>05/02/2017 12:28:48</publishTime>
+      <publishTime>05/03/2017 12:01:25</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/26/2017 14:41:52</publishTime>
@@ -112,7 +112,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2017 21:30:16</publishTime>
     </File>
     <File Include="Static/dist/css/laboru-tkm.css">
-      <publishTime>05/02/2017 14:16:07</publishTime>
+      <publishTime>05/03/2017 09:42:15</publishTime>
     </File>
     <File Include="Static/dist/css/sb-admin-2.css">
       <publishTime>04/04/2017 10:45:02</publishTime>
@@ -136,7 +136,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/04/2017 10:45:02</publishTime>
     </File>
     <File Include="Static/js/common.js">
-      <publishTime>05/02/2017 11:57:26</publishTime>
+      <publishTime>05/02/2017 22:38:20</publishTime>
     </File>
     <File Include="Static/js/lang.js">
       <publishTime>04/28/2017 14:50:23</publishTime>
@@ -631,7 +631,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2017 07:01:15</publishTime>
     </File>
     <File Include="Views/CompanyUI/AddApplicant.cshtml">
-      <publishTime>05/02/2017 11:46:00</publishTime>
+      <publishTime>05/03/2017 11:34:53</publishTime>
     </File>
     <File Include="Views/CompanyUI/Candidate.cshtml">
       <publishTime>04/30/2017 21:33:59</publishTime>
@@ -640,13 +640,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/02/2017 12:27:54</publishTime>
     </File>
     <File Include="Views/CompanyUI/Index.cshtml">
-      <publishTime>05/02/2017 14:16:22</publishTime>
+      <publishTime>05/03/2017 11:48:23</publishTime>
+    </File>
+    <File Include="Views/CompanyUI/JobOpening.cshtml">
+      <publishTime>05/03/2017 10:08:57</publishTime>
     </File>
     <File Include="Views/CompanyUI/JobOpenings.cshtml">
-      <publishTime>05/02/2017 12:02:57</publishTime>
+      <publishTime>05/03/2017 09:13:02</publishTime>
     </File>
     <File Include="Views/CompanyUI/LaboruXPers.cshtml">
-      <publishTime>05/02/2017 11:39:00</publishTime>
+      <publishTime>05/03/2017 11:18:22</publishTime>
     </File>
     <File Include="Views/CompanyUI/Login.cshtml">
       <publishTime>05/02/2017 13:58:47</publishTime>
@@ -655,10 +658,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/01/2017 17:48:16</publishTime>
     </File>
     <File Include="Views/CompanyUI/Recruitment.cshtml">
-      <publishTime>05/02/2017 11:43:08</publishTime>
+      <publishTime>05/03/2017 11:33:36</publishTime>
     </File>
     <File Include="Views/CompanyUI/RecruitmentDone.cshtml">
       <publishTime>05/02/2017 12:21:30</publishTime>
+    </File>
+    <File Include="Views/CompanyUI/XPers.cshtml">
+      <publishTime>05/03/2017 11:35:39</publishTime>
     </File>
     <File Include="Views/Shared/Loading.cshtml">
       <publishTime>04/30/2017 06:36:35</publishTime>

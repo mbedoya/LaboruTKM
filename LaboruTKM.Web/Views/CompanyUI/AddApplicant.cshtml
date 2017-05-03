@@ -38,9 +38,9 @@
             <div class="panel-body">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">@UIHelpers.GetGlobalizedText("email")</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label for="email">@UIHelpers.GetGlobalizedText("email")</label>
+                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">Correo electrónico personal.</small>
                     </div>
                     <div class="form-group">
                         <label for="name">@UIHelpers.GetGlobalizedText("name")</label>
@@ -53,8 +53,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleTextarea">Razones para seleccionar al candidato</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                        <label for="comments">Razones para seleccionar al candidato</label>
+                        <textarea class="form-control" id="comments" rows="3"></textarea>
                     </div>
                     
                 </form>
@@ -63,7 +63,7 @@
             <!-- /.panel-body -->
 
             <div class="panel-footer">
-                <input class="btn btn-primary" type="button" value="Guardar" />
+                <input id="btnSave" class="btn btn-primary" type="button" value="Guardar" />
             </div>
         </div>
 
@@ -97,7 +97,7 @@
         }
 
         function getPeople() {
-            getAndsetTableData("PersonUI", "GetPeople", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
+            getAndsetTableData("PersonUI", "GetVisibleToCompany", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
         }
 
         function init() {
@@ -106,9 +106,52 @@
             getPeople();
         }
 
+        function saveApplicant() {
+
+            var email = $("#email").val();
+            var name = $("#name").val();
+            var comments = $("#comments").val();
+            var jobOpening = $("#job-openings-select").val();
+
+            if (email.length == 0) {
+                alert("Ingresa el Correo");
+            }
+
+            if (name.length == 0) {
+                alert("Ingresa el Nombre");
+            }
+
+            if (jobOpening == "-1") {
+                alert("Seleciona el cargo");
+            }
+
+            showLoading();
+            ajaxPost("CompanyUI", "AddApplicantToJobOpening", {personId: 0, jobOpeningId: jobOpening, email: email, name: name, comments: comments}, function (success, data) {
+
+                hideLoading();
+                console.log(data);
+
+                alert("Candidato adicionado");
+
+                setTimeout(function () {
+                    location.href = '@Url.Content("~/CompanyUI/JobOpening/")' + jobOpening;
+                    }, 2000);
+
+                if (success) {
+                    
+                }
+
+            });
+            
+        }
+
         $(document).ready(function () {
 
             init();
+
+            $("#btnSave").on("click", function () {
+                saveApplicant();
+            });
 
         });
 

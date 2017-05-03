@@ -355,6 +355,8 @@
     <Content Include="Views\CompanyUI\JobOpenings.cshtml" />
     <Content Include="Views\CompanyUI\LaboruXPers.cshtml" />
     <Content Include="Views\CompanyUI\Employees.cshtml" />
+    <Content Include="Views\CompanyUI\JobOpening.cshtml" />
+    <Content Include="Views\CompanyUI\XPers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

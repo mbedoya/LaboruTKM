@@ -106,6 +106,10 @@
             </div>
         </div>
 
+        <h4>
+            Encuentra más candidatos en la Red de Laboru
+        </h4>
+
        @Html.Partial("LaboruXPers");
 
     </div>
@@ -129,7 +133,7 @@
     <script>
 
         function getPeople() {
-            getAndsetTableData("PersonUI", "GetPeople", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
+            getAndsetTableData("PersonUI", "GetVisibleToCompany", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'DateCreated'], 'PersonId', 'laboru-table');
         }
 
         function getActiveProcesses() {

@@ -29,7 +29,38 @@ namespace LaboruTKM.Model
                  where e.CompanyId == id
                  select e).FirstOrDefault();
 
+            element.RecruitmentStats = GetStats(id);
+
             return element;
+        }
+
+        public CompanyRecruitmentStatsDTO GetStats(int id){
+            CompanyRecruitmentStatsDTO stats = new CompanyRecruitmentStatsDTO();
+            stats.JopOpenings = GetTotalJobOpenings(id);
+            stats.ActiveProcesses = GetTotalActiveProcesses(id);
+
+            return stats;
+        }
+
+        public int GetTotalJobOpenings(int companyID)
+        {
+            int result =
+                (from p in db.JobOffers
+                 where p.CompanyId == companyID
+                 select p).Count();
+
+            return result;
+        }
+
+        public int GetTotalActiveProcesses(int companyID)
+        {
+            int result =
+                (from p in db.Applicants
+                 where p.JobOffer.CompanyId == companyID
+                 select p).Count();
+
+            return result;
+            
         }
 
         public bool Exists(int id)
@@ -61,6 +92,8 @@ namespace LaboruTKM.Model
                  where p.ContactEmail == email
                  select p).FirstOrDefault();
 
+            element.RecruitmentStats = GetStats(element.CompanyId);
+
             return element;
         }
 
@@ -72,12 +105,22 @@ namespace LaboruTKM.Model
             return element;
         }
 
-        public IEnumerable<JobOfferDTO> GetJobOpenings(int companyID)
+        public JobOfferDTO GetJobOpening(int id, int companyID)
         {
-            var list =
-                from e in db.JobOffers
+            var element =
+                (from e in db.JobOffers
+                 where e.CompanyId == companyID && e.JobOfferId == id
+                 select e).FirstOrDefault();
+
+            return element;
+        }
+
+        public List<JobOfferDTO> GetJobOpenings(int companyID)
+        {
+            var list = 
+                (from e in db.JobOffers
                 where e.CompanyId == companyID
-                select e;
+                select e).ToList();
 
             return list;
         }

@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LaboruTKM.Model;
 using LaboruTKM.Common;
+using System.Collections.Generic;
 
 namespace LaboruTKM.Tests
 {
@@ -24,6 +25,14 @@ namespace LaboruTKM.Tests
             Company company = new Company();
             CompanyDTO dto = company.Login(DefaultCompanyEmail, "1234");
             Assert.IsNotNull(!String.IsNullOrEmpty(dto.Name));
+        }
+
+        [TestMethod]
+        public void GetJobOpenings_JobOpeningsFound_ReturnHasRows()
+        {
+            Company company = new Company();
+            List<JobOfferDTO> list = company.GetJobOpenings(1);
+            Assert.IsTrue(list.Count > 0);
         }
     }
 }

@@ -3,12 +3,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LaboruTKM.Common;
 using LaboruTKM.Model;
 using LaboruTKM.Model.RecruitmentModel;
+using System.Collections.Generic;
 
 namespace LaboruTKM.Tests
 {
     [TestClass]
     public class RecruitmentTest
     {
+        RecruitmentProcess model = new RecruitmentProcess();
+
         [TestMethod]
         public void Start_JobOfferingIdIsNotSent_JobOpeningNotSentResult()
         {
@@ -72,7 +75,7 @@ namespace LaboruTKM.Tests
 
             RecruitmentProcessDTO dto = new RecruitmentProcess().Start(process, comments);
 
-            Assert.AreEqual(RecruitmentProcessState.Started, dto.State);
+            Assert.AreEqual(RecruitmentProcessState.PersonInProcessAlready, dto.State);
         }
 
         [TestMethod]
@@ -120,6 +123,20 @@ namespace LaboruTKM.Tests
             RecruitmentProcessDTO dto = new RecruitmentProcess().Start(process, comments);
 
             Assert.AreEqual(RecruitmentProcessState.PersonInProcessAlready, dto.State);
+        }
+
+        [TestMethod]
+        public void GetProcessesByCompanyAndOpening_ProcessesExists_ListIsNotNull()
+        {
+            List<RecruitmentProcessDTO> list = model.GetProcessesByCompanyAndOpening(1, 1);
+            Assert.IsTrue(list != null);
+        }
+
+        [TestMethod]
+        public void GetProcessesByCompanyAndOpening_ProcessesExists_ListhasRows()
+        {
+            List<RecruitmentProcessDTO> list = model.GetProcessesByCompanyAndOpening(1, 1);
+            Assert.IsTrue(list.Count > 0);
         }
 
     }
