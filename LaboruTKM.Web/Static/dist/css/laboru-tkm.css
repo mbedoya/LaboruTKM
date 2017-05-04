@@ -19,9 +19,40 @@ h1 {
 }
 
 h3 {
-    margin-top: 0px;
+    margin-top: 10px !important;
+    color: #777 !important;
+}
+
+h1 {
+    color: #777 !important;
 }
 
 .small-title {
     margin-bottom: 10px;
 }
+
+.navbar-default {
+    background-color: #fff;
+}
+
+.engagement {
+    background-color: #EEF6E6 !important;
+}
+
+.engagement-border {
+    border-color: #EEF6E6;
+}
+
+.knowledge-management {
+    background-color: #EAF0F3;
+}
+
+.blackish {
+    background-color: #2b3643;
+}
+
+.sidebar ul li a.active {
+    background-color: inherit;
+    font-weight: bold;
+}
+

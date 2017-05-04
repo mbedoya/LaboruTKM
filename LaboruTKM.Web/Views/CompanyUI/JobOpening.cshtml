@@ -76,6 +76,12 @@
             </div>
         </div>
 
+        <h4>
+            Estos XPers de Laboru cumplen con las características de tu cargo
+        </h4>
+
+        @Html.Partial("LaboruXPers");
+
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -103,9 +109,14 @@
             getAndsetTableData("CompanyUI", "GetJobOpeningApplicants", { jobOpeningId: id }, "@Url.Content("~/CompanyUI/Candidate")", ['Applicant.Person.Name', 'State', 'DateUpdated'], 'Applicant.ApplicantId', 'candidates-table');            
         }
 
+        function getLaboruXpers() {
+            getAndsetTableData("PersonUI", "GetVisibleToCompany", {}, "@Url.Content("~/CompanyUI/Person")", ['Name', 'Title', 'TotalRecommendations', 'DateCreated'], 'PersonId', 'laboru-table');
+        }
+
         function init() {
 
             getJobOpeningApplicants();
+            getLaboruXpers();
         }
 
         $(document).ready(function () {

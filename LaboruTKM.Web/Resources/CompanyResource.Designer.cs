@@ -61,7 +61,7 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Activos.
+        ///   Busca una cadena traducida similar a Procesos activos.
         /// </summary>
         internal static string active {
             get {
@@ -115,7 +115,7 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Finalizados.
+        ///   Busca una cadena traducida similar a Procesos Finalizados.
         /// </summary>
         internal static string done {
             get {

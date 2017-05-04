@@ -17,11 +17,11 @@
             <li>
                 <a href="@Url.Content("~/CompanyUI/")"><i class="fa fa-dashboard fa-fw"></i> @UIHelpers.GetGlobalizedText("dashboard")</a>
             </li>
-            <li>
-                <a href="@Url.Content("~/CompanyUI/JobOpenings")"><i class="fa fa-users fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("jobOpenings")</a>
+            <li class="engagement">
+                <a href="@Url.Content("~/CompanyUI/JobOpenings")"><i class="fa fa-user-plus fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("jobOpenings")</a>
             </li>
-            <li>
-                <a href="#"><i class="fa fa-user-plus fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("recruitment")<span class="fa arrow"></span></a>
+            <li class="engagement">
+                <a href="#"><i class="fa fa-users fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("recruitment")<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li >
                         <a href="@Url.Content("~/CompanyUI/Recruitment")"> @UIHelpers.GetCompanyGlobalizedText("active")</a>
@@ -32,98 +32,29 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-            <li>
-                <a href="@Url.Content("~/CompanyUI/Employees")"><i class="fa fa-users fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("myEmployees")</a>
+            <li class="knowledge-management">
+                <a href="@Url.Content("~/CompanyUI/Employees")"><i class="fa fa-user fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("myEmployees")</a>
+            </li>
+            <li class="knowledge-management">
+                <a href="@Url.Content("~/CompanyUI/KeySkills")"><i class="fa fa-star-o fa-fw"></i> Capacidades claves</a>
             </li>
             <li>
                 <a href="@Url.Content("~/Admin/Configuration")"><i class="fa fa-cog fa-fw"></i> @UIHelpers.GetGlobalizedText("configuration")</a>
             </li>
-            @*
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        *@
+            <li>
+                &nbsp;
+            </li>
+            <li class="shortcuts">
+                <a href="#"> <i class="fa fa-share fa-fw"></i> Accesos rápidos</a>
+            </li>
+
+            <li >
+                        <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
+                    </li>
+                    <li >
+                        <a href="@Url.Content("~/CompanyUI/XPers")">Expertos(XPers) Laboru</a>
+                    </li>
+            
         </ul>
     </div>
     <!-- /.sidebar-collapse -->

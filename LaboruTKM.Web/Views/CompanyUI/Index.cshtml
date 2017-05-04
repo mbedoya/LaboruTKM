@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">@UIHelpers.GetGlobalizedText("dashboard")</h1>
+        <h3 class="page-header">Contratación</h3>
     </div>
     <!-- /.col-lg-12 -->
 </div>
@@ -21,122 +21,473 @@
 <!-- /.row -->
 <div class="row">
 
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-green">
-            <div class="panel-heading">
+    <div class="col-lg-12">
+
+        <div class="panel">
+
+            <div class="panel-body engagement">
+
                 <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-user-plus fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.RecruitmentStats.JopOpenings</div>
-                        <div>@UIHelpers.GetCompanyGlobalizedText("jobOpenings")</div>
+                    <div class="col-lg-12">
+                        <h4>Estadísticas
+                        </h4>
+
                     </div>
                 </div>
-            </div>
-            <a href="@Url.Content("~/CompanyUI/JobOpenings")">
-                <div class="panel-footer">
-                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
+
                 <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-users fa-5x"></i>
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user-plus fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">@Model.RecruitmentStats.JopOpenings</div>
+                                        <div>@UIHelpers.GetCompanyGlobalizedText("jobOpenings")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/JobOpenings")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.RecruitmentStats.ActiveProcesses</div>
-                        <div>@UIHelpers.GetCompanyGlobalizedText("activeApplicants")</div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">@Model.RecruitmentStats.ActiveProcesses</div>
+                                        <div>@UIHelpers.GetCompanyGlobalizedText("activeApplicants")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-pause fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">@Model.RecruitmentStats.PausedProcesses</div>
+                                        <div>@UIHelpers.GetCompanyGlobalizedText("pausedApplicants")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment/?paused")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-exclamation fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">@Model.RecruitmentStats.AlertProcesses</div>
+                                        <div>@UIHelpers.GetCompanyGlobalizedText("alertApplicants")</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment/?alert")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-            <a href="@Url.Content("~/CompanyUI/Recruitment")">
-                <div class="panel-footer">
-                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-yellow">
-            <div class="panel-heading">
+
+                @*
+
                 <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-pause fa-5x"></i>
-                    </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.RecruitmentStats.PausedProcesses</div>
-                        <div>@UIHelpers.GetCompanyGlobalizedText("pausedApplicants")</div>
+                    <div class="col-lg-12">
+                        <h4>Pipeline de mi proceso de selección
+                        </h4>
+
                     </div>
                 </div>
-            </div>
-            <a href="@Url.Content("~/CompanyUI/Recruitment/?paused")">
-                <div class="panel-footer">
-                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6">
-        <div class="panel panel-red">
-            <div class="panel-heading">
+
                 <div class="row">
-                    <div class="col-xs-3">
-                        <i class="fa fa-exclamation fa-5x"></i>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-envelope fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">5</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Invitados a proceso</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="col-xs-9 text-right">
-                        <div class="huge">@Model.RecruitmentStats.AlertProcesses</div>
-                        <div>@UIHelpers.GetCompanyGlobalizedText("alertApplicants")</div>
+
+                    <!-- 
+
+                    <div class="col-lg-1 col-md-1">
+
+                        <div class="panel engagement engagement-border">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-arrow-right fa-2x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                        -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-check fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">1</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Invitación aceptada</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-check fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">6</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Evaluación finalizada</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-times-circle fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">15</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Descalificados</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-envelope fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">3</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Citados entrevista</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">3</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Entrevistados</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-times-circle fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">15</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Descalificados</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-usd fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">5</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Propuesta enviada</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-check fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge">5</div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Content("~/CompanyUI/Recruitment")">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Contratados</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
+
+                *@
+
             </div>
-            <a href="@Url.Content("~/CompanyUI/Recruitment/?alert")">
-                <div class="panel-footer">
-                    <span class="pull-left">@UIHelpers.GetGlobalizedText("viewDetails")</span>
-                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                    <div class="clearfix"></div>
-                </div>
-            </a>
+
         </div>
+
     </div>
+
+
+
+
 </div>
 <!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Gestión del conocimiento</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+
+    <div class="col-lg-12">
+
+        <div class="panel">
+
+            <div class="panel-body knowledge-management">
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-area-chart fa-fw"></i>Brechas en QA
+                       
+                            </div>
+                            <div class="panel-body">
+                                <div id="qa-net-chart"></div>
+                                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+
+                    </div>
+                    <!-- /.col-lg-4 -->
+
+                    <div class="col-lg-4">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-area-chart fa-fw"></i>Brechas en .Net
+                       
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-net-chart"></div>
+                                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <i class="fa fa-area-chart fa-fw"></i>Brechas en Inglés
+                       
+                            </div>
+                            <div class="panel-body">
+                                <div id="morris-english-chart"></div>
+                                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-4 -->
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- /.row -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Análisis</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
 <div class="row">
 
     <div class="col-lg-4">
 
         <div class="panel panel-default">
             <div class="panel-heading">
-                <i class="fa fa-share fa-fw"></i> Accesos directos
-                       
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item borderless">
-                        <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
-                    </li>
-                    <li class="list-group-item borderless">
-                        <a href="@Url.Content("~/CompanyUI/XPers")">Expertos(XPers) Laboru</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Promedio de días de contratación
+                <i class="fa fa-area-chart fa-fw"></i>Promedio de días de contratación
                        
             </div>
             <div class="panel-body">
@@ -147,209 +498,16 @@
         </div>
         <!-- /.panel -->
 
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Brechas en Inglés
-                       
-            </div>
-            <div class="panel-body">
-                <div id="morris-english-chart"></div>
-                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-area-chart fa-fw"></i> Brechas en .Net
-                       
-            </div>
-            <div class="panel-body">
-                <div id="morris-net-chart"></div>
-                <a href="#" class="btn btn-default btn-block">@UIHelpers.GetGlobalizedText("viewDetails")</a>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-
     </div>
     <!-- /.col-lg-4 -->
 
-    <div class="col-lg-8">
-
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <i class="fa fa-clock-o fa-fw"></i>@UIHelpers.GetCompanyGlobalizedText("recruitmentDetails")
-
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-
-                <div class="row">
-                    <div class="col-lg-6 text-center">@Model.Name</div>
-                    <div class="col-lg-6 text-center">@UIHelpers.GetCompanyGlobalizedText("applicants")</div>
-                </div>
-
-                <ul class="timeline">
-                    <li>
-                        <div class="timeline-badge warning">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Invitados a iniciar proceso</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>16 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                    5 Desarrolladores
-                                    <br />
-                                    10 Analistas
-                                    <br />
-                                    1 Gerente
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge success">
-                            <i class="fa fa-check"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Invitación aceptada</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>5 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                    4 Desarrolladores
-                                    <br />
-                                    1 Analistas
-                                    <br />
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-badge info">
-                            <i class="fa fa-pencil"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Evaluación finalizada</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>1 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>1 Sicóloga</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Evaluación no superada</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>2 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                    2 Desarrolladores
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge warning">
-                            <i class="fa fa-calendar"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Citados a entrevista</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>No hay citaciones</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info">
-                            <i class="fa fa-comments"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Entrevistados</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>3 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                    2 Gerentes
-                                    <br />
-                                    1 Analista
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge info">
-                            <i class="fa fa-envelope-o"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Propuesta enviada</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>No hay propuestas pendientes</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="timeline-badge success">
-                            <i class="fa fa-check-circle"></i>
-                        </div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4 class="timeline-title">Contratados</h4>
-                                <p>
-                                    <small class="text-muted"><i class="fa fa-check"></i>2 en Total</small>
-                                </p>
-                            </div>
-                            <div class="timeline-body">
-                                <p>
-                                    1 Desarrollador
-                                    <br />
-                                    1 Analista
-                                </p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
+    <div class="col-lg-4">
     </div>
 
-    <!-- /.col-lg-8 -->
-    
+    <div class="col-lg-4">
+    </div>
+    <!-- /.col-lg-4 -->
+
 </div>
 <!-- /.row -->
 
@@ -409,6 +567,42 @@
                     period: '2015',
                     esperado: 80,
                     real: 90
+                }],
+                xkey: 'period',
+                ykeys: ['esperado', 'real'],
+                labels: ['esperado', 'real'],
+                pointSize: 1,
+                hideHover: 'auto',
+                resize: true
+            });
+
+            new Morris.Area({
+                // ID of the element in which to draw the chart.
+                element: 'qa-net-chart',
+                data: [{
+                    period: '2012',
+                    esperado: 30,
+                    real: 20
+                }, {
+                    period: '2014',
+                    esperado: 50,
+                    real: 25
+                }, {
+                    period: '2014',
+                    esperado: 50,
+                    real: 25
+                }, {
+                    period: '2015',
+                    esperado: 50,
+                    real: 30
+                }, {
+                    period: '2016',
+                    esperado: 70,
+                    real: 60
+                }, {
+                    period: '2017',
+                    esperado: 10,
+                    real: 100
                 }],
                 xkey: 'period',
                 ykeys: ['esperado', 'real'],

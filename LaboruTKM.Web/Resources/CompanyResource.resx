@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="active" xml:space="preserve">
-    <value>Activos</value>
+    <value>Procesos activos</value>
   </data>
   <data name="activeApplicants" xml:space="preserve">
     <value>Candidatos en proceso</value>
@@ -136,7 +136,7 @@
     <value>Candidatos</value>
   </data>
   <data name="done" xml:space="preserve">
-    <value>Finalizados</value>
+    <value>Procesos Finalizados</value>
   </data>
   <data name="jobOpenings" xml:space="preserve">
     <value>Cargos disponibles</value>

@@ -12,6 +12,11 @@ namespace LaboruTKM.Common
     [Table("Person")]
     public class PersonDTO
     {
+        public PersonDTO()
+        {
+            TotalRecommendations = new Random().Next(20);
+        }
+
         [Key]
         public int PersonId { get; set; }
 
@@ -29,6 +34,9 @@ namespace LaboruTKM.Common
         public string Email { get; set; }
 
         public string Summary { get; set; }
+
+        [NotMapped]
+        public int TotalRecommendations { get; set; }
 
         public ICollection<PersonDetailDTO> Skills { get; set; }
 
