@@ -76,7 +76,7 @@
     <script>
 
         function getJobOpenings() {
-            getAndsetTableData("CompanyUI", "GetJobOpenings", {}, "@Url.Content("~/CompanyUI/JobOpening")", ['Name', 'Description', 'DateCreated'], 'JobOfferId', 'jobOpenings-table');
+            getAndsetTableData("CompanyUI", "GetJobOpenings", {}, "@Url.Content("~/CompanyUI/JobOpening")", ['CompanyRole.Name', 'CompanyRole.Description', 'DateCreated'], 'JobOfferId', 'jobOpenings-table');
         }
 
         function init() {

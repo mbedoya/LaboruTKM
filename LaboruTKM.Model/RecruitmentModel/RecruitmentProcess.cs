@@ -22,8 +22,8 @@ namespace LaboruTKM.Model.RecruitmentModel
         public IEnumerable<RecruitmentProcessDTO> GetProcessesByCompany(int companyID)
         {
             var list =
-                from p in db.RecruitmentProcesses.Include("Applicant").Include("Applicant.JobOffer").Include("Applicant.Person")
-                where p.Applicant.JobOffer.CompanyId == companyID
+                from p in db.RecruitmentProcesses.Include("Applicant").Include("Applicant.JobOffer.CompanyRole").Include("Applicant.Person")
+                where p.Applicant.JobOffer.CompanyRole.CompanyId == companyID
                 select p;
 
             return list;
@@ -60,7 +60,7 @@ namespace LaboruTKM.Model.RecruitmentModel
         {
             var list =
                 (from p in db.RecruitmentProcesses.Include("Applicant").Include("Applicant.Person")
-                where p.Applicant.JobOffer.CompanyId == companyID && p.Applicant.JobOfferId == jobOpening
+                where p.Applicant.JobOffer.CompanyRole.CompanyId == companyID && p.Applicant.JobOfferId == jobOpening
                 select p).ToList();
 
             return list;

@@ -98,18 +98,14 @@ function parseJsonDate(jsonDateString) {
 
 function getObjectByNestedProperties(obj, property) {
 
-    console.log("---");
-    console.log(obj);
-    console.log(property);
-    console.log("...");
-
     var propertyArray = property.split('.');
     for (var i = 0; i < propertyArray.length; i++) {
-        obj = obj[propertyArray[i]];
+        if (obj) {
+            obj = obj[propertyArray[i]];
+        } else {
+            return "N/D";
+        }
     }
-
-    console.log(obj);
-    console.log("xxxxx");
 
     return obj;
 }

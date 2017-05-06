@@ -41,30 +41,13 @@
                     <thead>
                         <tr>
                             <th>@UIHelpers.GetGlobalizedText("name")</th>
+                            <th>Email</th>
                             <th>Rol</th>
-                            <th>Evaluación Laboru</th>
-                            <th>Fecha Evaluación</th>
+                            <th>@UIHelpers.GetGlobalizedText("dateCreated")</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td><a href="@Url.Content("~/CompanyUI/Candidate")">Catalina Muñoz</a></td>
-                            <td>Gerente general</td>
-                            <td>Gerente Medio</td>
-                            <td>Abril 30 2017</td>
-                        </tr>
-                        <tr>
-                            <td><a href="#">Felipe Andrés Rios</a></td>
-                            <td>Desarrollador de Software</td>
-                            <td>N/D</td>
-                            <td>N/D</td>
-                        </tr>
-                        <tr>
-                            <td><a href="@Url.Content("~/CompanyUI/Candidate")">Camila Rivera</a></td>
-                            <td>Analista Desarrollador QA</td>
-                            <td>N/D</td>
-                            <td>N/D</td>
-                        </tr>
+                        
                     </tbody>
                 </table>
                 <!-- /.table-responsive -->
@@ -91,11 +74,13 @@
 
     <script>
 
+        function getEmployees() {
+            getAndsetTableData("CompanyUI", "GetEmployees", {}, "@Url.Content("~/CompanyUI/Employee")", ['Name', 'Email', 'Roles.0.Name', 'DateCreated'], 'EmployeeId', 'employees-table');
+        }
+
         function init() {
 
-            $("#employees-table").DataTable({
-                "language": lang[getLanguage()].datatables
-            });
+            getEmployees();
         }
 
         $(document).ready(function () {

@@ -1,5 +1,7 @@
 ﻿using LaboruTKM.Common;
 using LaboruTKM.Web.Common;
+using MvcSiteMapProvider;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,7 +44,8 @@ namespace LaboruTKM.Web.Controllers.Company
             return CheckAndRoute();
         }
 
-        public ActionResult Candidate()
+        [MvcSiteMapNode(Title = "Candidate", ParentKey = "ActiveApplicants", Key = "Candidate", PreservedRouteParameters = "id")]
+        public ActionResult Candidate(int id)
         {
             return CheckAndRoute();
         }
@@ -117,6 +120,7 @@ namespace LaboruTKM.Web.Controllers.Company
             return Json(processModel.GetProcessesByCompanyAndOpening(GetSessionCompany().CompanyId, jobOpeningId), JsonRequestBehavior.AllowGet);
         }
 
+        [MvcSiteMapNode(Title = "Job Opening", ParentKey = "JobOpenings", Key = "JobOpening", PreservedRouteParameters = "id")]
         public ActionResult JobOpening(int id)
         {
             if (Session[SessionConstants.Company] == null)
@@ -143,7 +147,40 @@ namespace LaboruTKM.Web.Controllers.Company
 
                 List<JobOfferDTO> list = model.GetJobOpenings(GetSessionCompany().CompanyId);
 
-                return Json(list, JsonRequestBehavior.AllowGet);
+                return Json(new { list }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetEmployees()
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return Json(null, JsonRequestBehavior.AllowGet);
+            }
+
+            var result = model.GetEmployees(GetSessionCompany().CompanyId);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [MvcSiteMapNode(Title = "Employee", ParentKey = "Employees", Key = "Employee", PreservedRouteParameters = "id")]
+        public ActionResult Employee(int id)
+        {
+            if (Session[SessionConstants.Company] == null)
+            {
+                return View(LoginPage);
+            }
+
+            ViewBag.Employee = model.GetEmployee(id, GetSessionCompany().CompanyId);
+
+            return View(GetSessionCompany());
+        }
+
+        private string SerializeObject(object value)
+        {
+            JsonSerializerSettings jss = new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore, Formatting = Formatting.None };
+            var result = JsonConvert.SerializeObject(value, jss);
+
+            return result;
         }
 
         public ActionResult GetActiveRecruitments()

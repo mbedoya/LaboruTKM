@@ -19,6 +19,7 @@ namespace LaboruTKM.Data
         public DbSet<ApplicantDTO> Applicants { get; set; }
         public DbSet<RecruitmentProcessDTO> RecruitmentProcesses { get; set; }
         public DbSet<RecruitmentProcessStepDTO> RecruitmentProcessSteps { get; set; }
+        public DbSet<EmployeeDTO> Employees { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

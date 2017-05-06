@@ -26,7 +26,7 @@ namespace LaboruTKM.Model
             var list =
                 from c in db.People
                 where !(from a in db.Applicants
-                        where a.JobOffer.CompanyId == companyID
+                        where a.JobOffer.CompanyRole.CompanyId == companyID
                         select a.PersonId
                         ).Contains(c.PersonId)
                 select c;

@@ -53,6 +53,8 @@
     <Compile Include="ApplicantDTO.cs" />
     <Compile Include="CompanyDTO.cs" />
     <Compile Include="CompanyRecruitmentStatsDTO.cs" />
+    <Compile Include="CompanyRoleDTO.cs" />
+    <Compile Include="EmployeeDTO.cs" />
     <Compile Include="EvaluationDTO.cs" />
     <Compile Include="JobOfferDTO.cs" />
     <Compile Include="PersonDetailDTO.cs" />

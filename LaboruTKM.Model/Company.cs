@@ -34,6 +34,40 @@ namespace LaboruTKM.Model
             return element;
         }
 
+        public IQueryable GetEmployees(int companyID)
+        {
+            var list =
+                from e in db.Employees.Include("Roles")
+                 where e.CompanyId == companyID
+                 orderby e.Name
+                 select new { e.EmployeeId, e.Name, e.Email, e.DateCreated, e.Roles };
+
+            return list;
+        }
+
+        public EmployeeDTO GetEmployee(int employeeID, int companyID)
+        {
+            var element =
+                (from e in db.Employees.Include("Roles")
+                where e.CompanyId == companyID && e.EmployeeId == employeeID
+                orderby e.Name
+                select e).FirstOrDefault();
+
+            return element;
+        }
+
+        /*
+        public IEnumerable<EmployeeDTO> GetEmployees(int companyID)
+        {
+            var list =
+                (from e in db.Employees.Include("Roles")
+                 where e.CompanyId == companyID
+                 orderby e.Name
+                 select e);
+
+            return list;
+        }*/
+
         public CompanyRecruitmentStatsDTO GetStats(int id){
             CompanyRecruitmentStatsDTO stats = new CompanyRecruitmentStatsDTO();
             stats.JopOpenings = GetTotalJobOpenings(id);
@@ -46,7 +80,7 @@ namespace LaboruTKM.Model
         {
             int result =
                 (from p in db.JobOffers
-                 where p.CompanyId == companyID
+                 where p.CompanyRole.CompanyId == companyID
                  select p).Count();
 
             return result;
@@ -56,7 +90,7 @@ namespace LaboruTKM.Model
         {
             int result =
                 (from p in db.Applicants
-                 where p.JobOffer.CompanyId == companyID
+                 where p.JobOffer.CompanyRole.CompanyId == companyID
                  select p).Count();
 
             return result;
@@ -99,7 +133,8 @@ namespace LaboruTKM.Model
 
         public JobOfferDTO AddJobOpening(JobOfferDTO element, int companyID)
         {
-            element.CompanyId = companyID;
+
+            element.CompanyRoleId = companyID;
             element = db.JobOffers.Add(element);
 
             return element;
@@ -108,8 +143,8 @@ namespace LaboruTKM.Model
         public JobOfferDTO GetJobOpening(int id, int companyID)
         {
             var element =
-                (from e in db.JobOffers
-                 where e.CompanyId == companyID && e.JobOfferId == id
+                (from e in db.JobOffers.Include("CompanyRole")
+                 where e.CompanyRole.CompanyId == companyID && e.JobOfferId == id
                  select e).FirstOrDefault();
 
             return element;
@@ -118,8 +153,8 @@ namespace LaboruTKM.Model
         public List<JobOfferDTO> GetJobOpenings(int companyID)
         {
             var list = 
-                (from e in db.JobOffers
-                where e.CompanyId == companyID
+                (from e in db.JobOffers.Include("CompanyRole")
+                where e.CompanyRole.CompanyId == companyID
                 select e).ToList();
 
             return list;

@@ -44,7 +44,7 @@ h1 {
 }
 
 .knowledge-management {
-    background-color: #EAF0F3;
+    background-color: #EAF0F3 !important;
 }
 
 .blackish {
@@ -53,6 +53,11 @@ h1 {
 
 .sidebar ul li a.active {
     background-color: inherit;
-    font-weight: bold;
+    font-style: italic;
 }
 
+.breadcrumb {
+    margin-bottom: 0px;
+    font-size: 12px;
+    background-color: #fff;
+}
