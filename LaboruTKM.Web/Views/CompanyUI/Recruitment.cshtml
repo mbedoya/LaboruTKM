@@ -137,7 +137,7 @@
         }
 
         function getActiveProcesses() {
-            getAndsetTableData("CompanyUI", "GetActiveRecruitments", {}, "@Url.Content("~/CompanyUI/Candidate")", ['Applicant.Person.Name', 'Applicant.JobOffer.Name', 'State', 'DateUpdated'], 'Applicant.ApplicantId', 'candidates-table');
+            getAndsetTableData("CompanyUI", "GetActiveRecruitments", {}, "@Url.Content("~/CompanyUI/Candidate")", ['Applicant.Person.Name', 'Applicant.JobOffer.CompanyRole.Name', 'State', 'DateUpdated'], 'Applicant.ApplicantId', 'candidates-table');
         }
 
         function init() {
