@@ -37,6 +37,7 @@ namespace LaboruTKM.Model
             this.id = id;
             EvaluationDTO eval = Get(id);
             sections = eval.Sections.Select(p=>p).ToList();
+            //sections = GetDbSections(id);
         }
 
         public List<SectionDTO> GetSections()
@@ -66,10 +67,17 @@ namespace LaboruTKM.Model
 
         private List<SectionDTO> GetDbSections(int id)
         {
-            List<SectionDTO> sections = 
-                (from s in db.Sections
-                where s.Evaluations.Any( p => p.Id == id)
-                     select s).ToList();
+            List<SectionDTO> sections =
+                (from s in db.Sections.AsNoTracking()
+                 where s.Evaluations.Any(p => p.Id == id)
+                 select new SectionDTO()
+                 {
+                     SectionId = s.SectionId,
+                     Name = s.Name,
+                     Description = s.Description,
+                     EstimatedDuration = s.EstimatedDuration,
+                     Type = s.Type
+                 }).ToList();
 
             return sections;
         }

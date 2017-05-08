@@ -58,6 +58,8 @@ LaboruTKM.Web/bin
 LaboruTKM.Web/obj
 LaboruTKM.Tests/bin
 LaboruTKM.Tests/obj
+LaboruTKM.Utilities/bin
+LaboruTKM.Utilities/obj
 LaboruTKM.Web/Properties/PublishProfiles/LaboruTKM.pubxml.user
 LaboruTKM.Web/LaboruTKM.Web.csproj.user
 LaboruTKM.Web/Properties/PublishProfiles/LaboruTKM.pubxml.user

@@ -1,4 +1,5 @@
 ﻿using LaboruTKM.Common.AssesmentAnalysis;
+using LaboruTKM.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace LaboruTKM.Model
 {
     public class AssesmentAnalysisModel
     {
+        static EvaluationDB db = new EvaluationDB();
+
         public static AssesmentAnalysisReportTO GetAssesmentAnalysis(int assesmentID)
         {
             AssesmentAnalysisReportTO analysis = new AssesmentAnalysisReportTO();
@@ -30,21 +33,16 @@ namespace LaboruTKM.Model
 
         public static String GetAssesmentRoleName(int assesmentID)
         {
-            string name = "";
+            string name;
 
-            /*
-            //Points
-            string execCommand = string.Format("SELECT r.Name " +
-                " FROM assesment a " +
-                " JOIN evaluation e on e.id = a.EvaluationID " +
-                " JOIN role r on  r.id= e.RoleID " +
-                " WHERE a.ID = {0} ", assesmentID);
-            DataTable table = ExecuteCommand(execCommand);
-            if (table != null && table.Rows.Count > 0)
-            {
-                name = Convert.ToString(table.Rows[0]["Name"]);
-            }
-             */
+            var query =
+                (from a in db.Assesments
+                 join e in db.Evaluations on a.EvaluationId equals e.Id
+                 join r in db.Roles on e.RoleId equals r.RoleId
+                 where a.AssesmentId == assesmentID
+                 select new { r.Name }).Single();
+
+            name = query.Name;
 
             return name;
         }
@@ -53,19 +51,14 @@ namespace LaboruTKM.Model
         {
             int points = 0;
 
-            /*
-            //Points
-            string execCommand = string.Format("SELECT IFNULL(SUM(Points), 0)  as Points " +
-                " FROM question q " +
-                " JOIN assesment_response ar on q.id = ar.questionid " +
-                " JOIN section s on  s.id=q.SectionID " +
-                " WHERE ar.assesmentid = {0} and ar.answerisright = 1 ", assesmentID);
-            DataTable table = ExecuteCommand(execCommand);
-            if (table != null && table.Rows.Count > 0)
-            {
-                points = Convert.ToInt32(table.Rows[0]["Points"]);
-            }
-             */
+            var query =
+                from q in db.Questions
+                join ar in db.AssesmentResponses on q.QuestionId equals ar.QuestionId
+                join s in db.Sections on q.SectionId equals s.SectionId
+                where ar.AssesmentID == assesmentID && ar.AnswerIsRight
+                select new { q.Points };
+
+            points = query.Sum(q => q.Points);
 
             return points;
         }
@@ -108,20 +101,18 @@ namespace LaboruTKM.Model
         {
             int points = 0;
 
-            /*
-            //Points
-            string execCommand = string.Format("SELECT IFNULL(SUM(Points), 0)  as Points " +
-                " FROM question q " +
-                " JOIN section s on  s.id=q.SectionID " +
-                " JOIN assesment a ON a.EvaluationID = s.EvaluationID " +
-                " WHERE a.ID = {0}", assesmentID);
-            DataTable table = ExecuteCommand(execCommand);
-            if (table != null && table.Rows.Count > 0)
-            {
-                points = Convert.ToInt32(table.Rows[0]["Points"]);
-            }
+            var evaluation = 
+                (from a in db.Assesments 
+                where a.AssesmentId == assesmentID
+                select new { a.EvaluationId }).Single();
 
-             */
+            var query =
+                from q in db.Questions
+                join s in db.Sections on q.SectionId equals s.SectionId
+                where s.Evaluations.Any(p => p.Id == evaluation.EvaluationId)
+                select new { q.Points };
+
+            points = query.Sum(q => q.Points);
  
             return points;
         }
@@ -130,27 +121,15 @@ namespace LaboruTKM.Model
         {
             List<AssesmentRoleLevelTO> levels = new List<AssesmentRoleLevelTO>();
 
-            /*
-            string roleLevelsCommando =
-                String.Format("SELECT Title, Points, Description " +
-                " FROM role_analysis " +
-                " WHERE RoleID = (SELECT RoleID from evaluation e JOIN assesment a on e.ID = a.EvaluationID WHERE a.ID = {0})", assesmentID);
-            DataTable levelsTable = ExecuteCommand(roleLevelsCommando);
+            var role =
+                (from e in db.Evaluations
+                join a in db.Assesments on e.Id equals a.EvaluationId
+                select new { e.RoleId }).Single();
 
-
-            if (levelsTable != null && levelsTable.Rows.Count > 0)
-            {
-                foreach (DataRow item in levelsTable.Rows)
-                {
-                    levels.Add(new AssesmentRoleLevelTO()
-                    {
-                        Name = Convert.ToString(item["Title"]),
-                        Description = Convert.ToString(item["Description"]),
-                        Points = Convert.ToInt32(item["Points"])
-                    });
-                }
-            }
-             */
+            levels = 
+                (from rl in db.AssementRoleLevels
+                where rl.RoleId == role.RoleId
+                select rl).ToList();
 
             return levels;
         }

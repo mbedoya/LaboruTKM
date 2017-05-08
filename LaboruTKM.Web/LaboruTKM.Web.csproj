@@ -120,7 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Areas\XPer\XPerAreaRegistration.cs" />
+    <Compile Include="Controllers\AssesmentController.cs" />
     <Compile Include="Common\SessionConstants.cs" />
     <Compile Include="Common\UIHelpers.cs" />
     <Compile Include="Controllers\Admin\AdminCompanyController.cs" />
@@ -162,10 +162,13 @@
     <Content Include="Global.asax" />
     <Content Include="Static\data\flot-data.js" />
     <Content Include="Static\data\morris-data.js" />
+    <Content Include="Static\dist\css\assesment.css" />
+    <Content Include="Static\dist\css\heroic-features.css" />
     <Content Include="Static\dist\css\laboru-tkm-profile.css" />
     <Content Include="Static\dist\css\laboru-tkm.css" />
     <Content Include="Static\dist\css\sb-admin-2.css" />
     <Content Include="Static\dist\css\sb-admin-2.min.css" />
+    <Content Include="Static\dist\css\shop-homepage.css" />
     <Content Include="Static\dist\images\ellipsis.gif" />
     <Content Include="Static\dist\images\logo-intrepidez.png" />
     <Content Include="Static\dist\images\logo-laboru.png" />
@@ -289,9 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\XPer\Controllers\" />
-    <Folder Include="Areas\XPer\Models\" />
-    <Folder Include="Areas\XPer\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -301,7 +301,6 @@
     <Content Include="Views\AdminCompany\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Areas\XPer\Views\Web.config" />
     <Content Include="Mvc.sitemap" />
     <None Include="MvcSiteMapSchema.xsd">
       <SubType>Designer</SubType>
@@ -387,6 +386,12 @@
     <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\CompanyUI\Employee.cshtml" />
+    <Content Include="Views\Assesment\AlreadyDone.cshtml" />
+    <Content Include="Views\Assesment\Done.cshtml" />
+    <Content Include="Views\Assesment\Execution.cshtml" />
+    <Content Include="Views\Assesment\Index.cshtml" />
+    <Content Include="Views\Assesment\Instructions.cshtml" />
+    <Content Include="Views\Shared\_AssesmentLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

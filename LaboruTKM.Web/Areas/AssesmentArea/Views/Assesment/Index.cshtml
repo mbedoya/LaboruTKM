@@ -1,0 +1,124 @@
+﻿@{
+    Layout = "~/Views/Shared/_AssesmentLayout.cshtml";
+}
+
+@section css{
+
+    <!-- Custom CSS -->
+    <link href='@Url.Content("~/Static/dist/css/heroic-features.css")' rel="stylesheet">
+}
+
+<!-- Header -->
+<header class="jumbotron hero-spacer">
+    <img id="company_logo" src="" style="visibility: hidden" />
+    <h2 id="title"></h2>
+    <p id="evaluation_description"></p>
+    <p id="duration"></p>
+    <p id="btnContinue" style="visibility: hidden">
+        <a class="btn btn-primary btn-block">Continuar</a>
+    </p>
+</header>
+
+<hr>
+
+<!-- Detail -->
+<div id="detail" style="visibility: hidden">
+
+    <!-- Title -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Listado de Pruebas</h3>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Page Features -->
+    <div id="sectionDiv1" class="row text-center">
+    </div>
+    <!-- /.row -->
+
+</div>
+
+@section scripts{
+
+    <script>
+
+        var controllerName = "Assesment";
+        var instructionsUrl = "/" + siteUrlPrefix + controllerName + "/Instructions";
+
+        var sectionTemplate = '<div class="col-md-3 col-sm-6 hero-feature">' +
+                                    '<div class="thumbnail" >' +
+                                        '<div class="caption" style="min-height:220px">' +
+                                            '<h3>_section_name</h3>' +
+                                            '<p>_section_description</p>' +
+                                            '<p>' +
+                                                'Duración: _section_duration horas' +
+                                            '</p>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+
+        function showSectionsData(data) {
+
+            if (data && data.length > 0) {
+                $("#detail").css("visibility", "visible");
+
+                var totalDuration = 0;
+                var sectionIndex = 1;
+                var currentIndex;
+                var sectionsPerRow = 4;
+                for (var i = 0; i < data.length; i++) {
+
+                    if (i % sectionsPerRow == 0) {
+                        $("#detail").append('<div id="sectionDiv' + sectionIndex + '" class="row text-center"></div>');
+                        currentIndex = sectionIndex;
+                        sectionIndex = sectionIndex + 1;
+                    }
+
+                    var sectionText = sectionTemplate.replace("_section_name", data[i].Name)
+                    .replace("_section_description", data[i].Description)
+                    .replace("_section_duration", data[i].EstimatedDuration);
+
+                    $("#sectionDiv" + currentIndex).append(sectionText);
+
+                    if (data[0].EstimatedDuration) {
+                        totalDuration = totalDuration + data[i].EstimatedDuration;
+                    }
+                }
+
+                $("#duration").css("visibility", "visible");
+                $("#duration").html("Duración estimada: " + totalDuration + " horas");
+            }
+        }
+
+        //Data Retrieved Event - Session Data
+        function handleAssementDataRetrieved(e) {
+
+            var data = e.detail.data;
+            var success = e.detail.success;
+
+            console.log(data);
+
+            if (success) {
+
+                if (data && data.Evaluation) {
+
+                    $("#evaluation_description").html(data.Evaluation.Description);
+                    $("#btnContinue").css("visibility", "visible");
+
+                    showSectionsData(data.Evaluation.Sections);
+
+                } 
+            } 
+        }
+
+        $(document).ready(function () {
+
+            $("#btnContinue").on("click", function () {
+                location.href = instructionsUrl;
+            });
+
+        });
+    </script>
+
+}

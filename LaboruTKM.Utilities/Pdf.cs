@@ -273,7 +273,7 @@ namespace LaboruTKM.Utilities
         {
             //Client Header
             XBrush brush = new XSolidBrush(XColor.FromArgb(0, 188, 188, 188));
-            XImage clientImage = XImage.FromFile(HttpContext.Current.Server.MapPath("~/img/" + report.AssesmentInfo.Company.Logo));
+            XImage clientImage = XImage.FromFile(HttpContext.Current.Server.MapPath("~/Static/dist/images/" + report.AssesmentInfo.Company.Logo));
             gfx.DrawRectangle(brush, 0, 50, page.Width, 1);
             gfx.DrawImage(clientImage, 2, 2, 180, 45);
 
@@ -308,7 +308,7 @@ namespace LaboruTKM.Utilities
             int aboutTextX = separatorX + 20;
             int imageY = 770;
 
-            XImage laboruImage = XImage.FromFile(HttpContext.Current.Server.MapPath("~/img/logo-laboru.png"));
+            XImage laboruImage = XImage.FromFile(HttpContext.Current.Server.MapPath("~/Static/dist/images/logo-laboru.png"));
             gfx.DrawImage(laboruImage, imageX, imageY, imageWidth, imageHeight);
             gfx.DrawLine(separatorsPen, separatorX, imageY, separatorX, imageY + imageHeight);
 

@@ -30,6 +30,7 @@ namespace LaboruTKM.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             Configuration.AutoDetectChangesEnabled = false;
+            Configuration.ProxyCreationEnabled = false;
             Database.SetInitializer<EvaluationDB>(null);
             base.OnModelCreating(modelBuilder);
         }

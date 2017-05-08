@@ -382,7 +382,7 @@ INSERT INTO `laborutkm`.`answer`
 `QuestionID`)
 VALUES
 ('10',
-2); COMMIT;
+3); COMMIT;
 
 INSERT INTO `laborutkm`.`answer`
 (
@@ -390,7 +390,7 @@ INSERT INTO `laborutkm`.`answer`
 `QuestionID`)
 VALUES
 ('8',
-2); COMMIT;
+3); COMMIT;
 
 
 INSERT INTO `laborutkm`.`answer`
@@ -399,7 +399,7 @@ INSERT INTO `laborutkm`.`answer`
 `QuestionID`)
 VALUES
 ('12',
-2); COMMIT;
+3); COMMIT;
 
 update `laborutkm`.`question` set RightAnswerID = 9 where questionid=3; commit;
 
@@ -711,3 +711,50 @@ VALUES
 'CLASE MUNDIAL',
 280,
 'Posee conocimiento de clase mundial, entiende las necesidades del negocio y sus empleados.');
+
+
+/* DESAROLLADOR */
+
+INSERT INTO `laborutkm`.`roleanalysis`
+(`RoleID`,
+`Name`,
+`Points`,
+`Description`)
+VALUES
+(1,
+'POCA CAPACIDAD',
+0,
+'No cuenta con los conocimientos básicos para desempeñar la función');
+
+INSERT INTO `laborutkm`.`roleanalysis`
+(`RoleID`,
+`Name`,
+`Points`,
+`Description`)
+VALUES
+(1,
+'JUNIOR',
+50,
+'Posee algunos conocimientos, no se recomienda que ejecute proyectos solo');
+
+INSERT INTO `laborutkm`.`roleanalysis`
+(`RoleID`,
+`Name`,
+`Points`,
+`Description`)
+VALUES
+(1,
+'MEDIO',
+100,
+'Cuenta con las habilidades necesarias ejecutar proyectos medianos.');
+
+INSERT INTO `laborutkm`.`roleanalysis`
+(`RoleID`,
+`Name`,
+`Points`,
+`Description`)
+VALUES
+(1,
+'CLASE MUNDIAL',
+150,
+'Posee alto conocimiento de clase mundial, entiende las necesidades del negocio y como implementar soluciones para cumplir con dichas necesidades.');

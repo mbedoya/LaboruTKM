@@ -1,0 +1,282 @@
+﻿@{
+    ViewBag.Title = "Execution";
+    Layout = "~/Views/Shared/_AssesmentLayout.cshtml";
+}
+
+@section css{
+
+    <!-- Custom CSS -->
+    <link href="@Url.Content("~/Static/dist/css/shop-homepage.css")" rel="stylesheet">
+}
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row" style="min-height: 400px;">
+
+        <div class="col-md-3">
+            <p class="lead">
+                <img id="company_logo" src="" style="visibility: hidden" />
+            </p>
+            
+            <div id="sections" class="list-group">
+            </div>
+
+            <hr />
+
+            <p>Pregunta <span id="questionIndex"></span> de <span id="totalQuestions"></span></p>
+
+            <p>
+                Te quedan <span id="minutesLeft"></span> minutos
+            </p>
+        </div>
+
+        <div class="col-md-9">
+
+            <!-- Header -->
+            <header>
+                <p id="title"></p>
+                <p id="sectionName"></p>
+            </header>
+
+            <div class="">
+
+                <h4 id="questionText"></h4>
+
+            </div>
+
+            <div id="questions" class="panel">
+               
+            </div>
+
+            <div class="row">
+                    <div class="col-md-9">
+                    </div>
+                    <div class="col-md-3">
+                        <input id="btnContinue" type="button" class="btn btn-primary" value="Continuar" /> 
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+@section scripts{
+
+    <script>
+
+        var sectionTemplate = '<a id="section_id_num" href="#" class="list-group-item">_section_name</a>';
+        var questionTemplate = '<div class="radio">' +
+                  '<label><input id="rbtn_index_id" type="radio" value="_value" name="answerRadio">_question_text</label>' +
+                '</div>';
+
+        var sectionLeftTime = 60;
+        var controllerName = "Assesment";
+        var timeoutInterval;
+        var currentContext;
+        var sections;
+        var sectionName;
+
+        function showSectionData(data) {
+
+            if (data && data.length > 0) {
+
+                var totalDuration = 0;
+                for (var i = 0; i < data.length; i++) {
+
+                    var sectionText = sectionTemplate.replace("_section_name", data[i].Name)
+                    .replace("_num", i+1);
+
+                    $("#sections").append(sectionText);
+
+                    if (data[0].EstimatedDuration) {
+                        totalDuration = totalDuration + data[i].EstimatedDuration;
+                    }
+                }
+            }
+        }
+
+        function getLetter(index) {
+            return String.fromCharCode(65 + index);
+        }
+
+        function checkLeftTime() {
+
+            $("#minutesLeft").html(sectionLeftTime);
+            if (timeoutInterval) {
+                clearInterval(timeoutInterval);
+            }
+
+            timeoutInterval = setInterval(function () {
+                sectionLeftTime--;
+                ajaxPost(controllerName, "UpdateLeftTime", {}, function () {
+
+                    if (sectionLeftTime == 0) {
+                        showMessage("Se te ha acabado el tiempo para la sección, debes continuar con la siguiente.", "warning");
+                        clearInterval(timeoutInterval);
+
+                        if (evaluationHasNoMoreQuestions()) {
+                            showMessage("Se te ha acabado el tiempo para tu evaluación.", "warning");
+                            setTimeout(function () {
+                                endEvaluation();
+                            }, 3000);
+                            
+                        } else {
+                            getContextInfo();
+                        }
+                        return;
+                    }
+
+                });
+
+                $("#minutesLeft").html(sectionLeftTime);
+
+            }, 60*1000);
+        }
+
+        function getContextInfo() {
+
+            if (currentContext && currentContext.SectionIndex) {
+                $("#section_id" + currentContext.SectionIndex).removeClass("active");
+            }
+
+            ajaxPost(controllerName, "GetContext", {}, function (success, data) {
+
+                console.log(data);
+
+                if (success) {
+
+                    $("#questions").empty();
+
+                    if (data && data.CurrentSectionQuestions && data.CurrentSectionQuestions[data.QuestionIndex - 1].Answers) {
+
+                        currentContext = data;
+                        sectionLeftTime = data.MinutesLeft;
+                        sectionIndex = data.SectionIndex;
+                        sectioName = sections[currentContext.SectionIndex - 1].Name;
+
+                        $("#questionText").html(data.QuestionIndex + ". " + data.CurrentSectionQuestions[data.QuestionIndex - 1].Text);
+                        $("#questionIndex").html(data.QuestionIndex);
+                        $("#totalQuestions").html(data.CurrentSectionQuestions.length);
+
+                        $("#section_id" + sectionIndex).addClass("active");
+                        $("#sectionName").html(sectioName);
+
+                        for (var i = 0; i < data.CurrentSectionQuestions[data.QuestionIndex - 1].Answers.length; i++) {
+
+                            var questionText = questionTemplate.replace("index_id", i + 1).
+                            replace("_value", i+1).
+                            replace("_question_text", getLetter(i) + ". " + data.CurrentSectionQuestions[data.QuestionIndex - 1].Answers[i].Text);
+
+                            $("#questions").append(questionText);
+                        }
+
+                        checkLeftTime();
+                    }
+
+                    
+                }
+            });
+        }
+
+        //Data Retrieved - Session Data
+        function handleAssementDataRetrieved(e) {
+
+            var data = e.detail.data;
+            var success = e.detail.success;
+
+            console.log(data);
+
+            if (success) {
+
+                var title = data.Evaluation.Name + " - " + data.Company.Name;
+
+                if (data.Company.Logo && data.Company.Logo.length > 0) {
+
+                    title = data.Evaluation.Name;
+
+                    $("#company_logo").attr("src", "/img/" + data.Company.Logo);
+                    $("#company_logo").css("visibility", "visible");
+                }
+
+                $("#title").html(title);
+                $("#company_name").html(data.Company.Name);
+                $("#btnContinue").css("visibility", "visible");
+
+                sections = data.Evaluation.Sections;
+                showSectionData(data.Evaluation.Sections);
+
+                getContextInfo();
+            }
+
+        }
+
+        function endEvaluation() {
+            location.href = "/" + siteUrlPrefix + controllerName + "/Done";
+        }
+
+        function answerQuestion(index, testDoneAfterThisAnswer) {
+
+            if (testDoneAfterThisAnswer) {
+                showLoading();
+            }
+            
+            ajaxPost(controllerName, "AnswerQuestion", { responseIndex: index }, function (success, data) {
+
+                console.log(data);
+                closeLoading();
+
+                if (success) {
+                    if (data) {
+                        if (data.result.toLowerCase() == "successful") {
+
+                            if (testDoneAfterThisAnswer) {
+                                endEvaluation();
+
+                            } else {
+                                getContextInfo();
+                            }
+                        } else {
+                            showMessage("Se ha presentado un error contestando la pregunta", "error");
+                        }
+                    }
+                }
+            });
+        }
+
+        function evaluationHasNoMoreQuestions(){
+            return sections.length == currentContext.SectionIndex && currentContext.CurrentSectionQuestions.length == currentContext.QuestionIndex;
+        }
+
+        $(document).ready(function () {
+
+            $("#btnContinue").on("click", function () {
+
+                var selected = $("#questions input[type='radio']:checked");
+                if (selected.length > 0) {
+                    
+                    if (evaluationHasNoMoreQuestions()) {
+                        
+                        answerQuestion(selected.val(), true);
+                        return;
+
+                    } else {
+                        if (currentContext.CurrentSectionQuestions.length == currentContext.QuestionIndex) {
+                            var message = "Has terminado la sección '" + sections[currentContext.SectionIndex - 1].Name + "' y has iniciado iniciado '" + sections[currentContext.SectionIndex].Name + "'";
+                            showMessage(message, "information");
+                        }
+                    }
+
+                    answerQuestion(selected.val());
+                } else {
+                    showMessage("Por favor selecciona una opción", "warning");
+                }
+            });
+
+        });
+    </script>
+
+}

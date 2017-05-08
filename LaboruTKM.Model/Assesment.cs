@@ -334,14 +334,6 @@ namespace LaboruTKM.Model
 
         private List<SectionPointsTO> GetDbAssesmentPoints(int id)
         {
-            /*
-            SELECT s.ID, SUM(Points) as Points " +
-                " FROM question q " +
-                " JOIN assesment_response ar on q.id = ar.questionid " +
-                " JOIN section s on  s.id=q.SectionID " +
-                " WHERE ar.assesmentid = {0} and ar.answerisright = 1 " +
-                " GROUP by s.ID */
-
             List<SectionPointsTO> list =
                 (from q in db.Questions
                 join ar in db.AssesmentResponses on q.QuestionId equals ar.QuestionId
@@ -353,10 +345,24 @@ namespace LaboruTKM.Model
             return list;
         }
 
+        private EmployeeDTO GetDbEmployee(int employeeId)
+        {
+            var employee =
+                (from e in db.Employees
+                 where e.EmployeeId == employeeId
+                 select e).FirstOrDefault();
+
+            return employee;
+        }
+
         private void GenerateAndSendResults()
         {
             AssesmentReportTO report = new AssesmentReportTO();
             report.AssesmentInfo = info;
+            if (report.AssesmentInfo.EmployeeId != null)
+            {
+                report.AssesmentInfo.Employee = GetDbEmployee((int)report.AssesmentInfo.EmployeeId);
+            }
             report.Sections = new List<SectionReportTO>();
 
             List<SectionPointsTO> list = GetDbAssesmentPoints(id);
