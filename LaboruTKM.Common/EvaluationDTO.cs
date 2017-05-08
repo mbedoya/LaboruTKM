@@ -17,6 +17,10 @@ namespace LaboruTKM.Common
 
         public string Description { get; set; }
 
+        [ForeignKey("Role")]
+        public int RoleId { get; set; }
+        public RoleDTO Role { get; set; }
+
         public ICollection<SectionDTO> Sections { get; set; }
     }
 }

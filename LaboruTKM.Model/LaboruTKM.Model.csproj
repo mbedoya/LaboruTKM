@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssesmentAnalysisModel.cs" />
+    <Compile Include="Assesment.cs" />
     <Compile Include="Company.cs" />
     <Compile Include="Evaluation.cs" />
     <Compile Include="Person.cs" />
@@ -56,6 +58,10 @@
     <Compile Include="RecruitmentModel\RecruitmentState.cs" />
     <Compile Include="RecruitmentModel\StartedRecruitmentState.cs" />
     <Compile Include="RecruitmentModel\UnstartedRecruitmentState.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="SectionData\InternalSectionData.cs" />
+    <Compile Include="SectionData\SectionDataFactory.cs" />
+    <Compile Include="SectionData\SectionDataProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">
@@ -65,6 +71,10 @@
     <ProjectReference Include="..\LaboruTKM.Data\LaboruTKM.Data.csproj">
       <Project>{af1b1220-e565-4d66-8ed7-306389696b76}</Project>
       <Name>LaboruTKM.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LaboruTKM.Utilities\LaboruTKM.Utilities.csproj">
+      <Project>{4e1088cf-93d1-40c7-bea2-efdfbc17ee18}</Project>
+      <Name>LaboruTKM.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

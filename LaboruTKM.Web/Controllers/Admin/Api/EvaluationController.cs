@@ -18,7 +18,6 @@ namespace LaboruTKM.Web.Controllers.Admin.Api
 
         public IEnumerable<EvaluationDTO> Get()
         {
-
             return model.GetAll();
         }
 

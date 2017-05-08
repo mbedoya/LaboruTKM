@@ -1,0 +1,15 @@
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\LaboruTKM.Utilities.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\LaboruTKM.Utilities.pdb
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\obj\Debug\LaboruTKM.Utilities.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\obj\Debug\LaboruTKM.Utilities.pdb
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\obj\Debug\LaboruTKM.Utilities.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\LaboruTKM.Common.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\PdfSharp.Charting.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\PdfSharp.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\EntityFramework.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\LaboruTKM.Common.pdb
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\PdfSharp.xml
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\PdfSharp.Charting.xml
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\EntityFramework.xml
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\de\PdfSharp.resources.dll
+C:\Users\USUARIO\Documents\Visual Studio 2012\Projects\LaboruTKM\LaboruTKM.Utilities\bin\Debug\de\PdfSharp.Charting.resources.dll

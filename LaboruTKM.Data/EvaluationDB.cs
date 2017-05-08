@@ -1,4 +1,5 @@
 ﻿using LaboruTKM.Common;
+using LaboruTKM.Common.AssesmentAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -20,9 +21,15 @@ namespace LaboruTKM.Data
         public DbSet<RecruitmentProcessDTO> RecruitmentProcesses { get; set; }
         public DbSet<RecruitmentProcessStepDTO> RecruitmentProcessSteps { get; set; }
         public DbSet<EmployeeDTO> Employees { get; set; }
+        public DbSet<AssesmentTO> Assesments { get; set; }
+        public DbSet<AssesmentContextTO> AssesmentsContexts { get; set; }
+        public DbSet<AssesmentResponseTO> AssesmentResponses { get; set; }
+        public DbSet<QuestionTO> Questions { get; set; }
+        public DbSet<AssesmentRoleLevelTO> AssementRoleLevels { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            Configuration.AutoDetectChangesEnabled = false;
             Database.SetInitializer<EvaluationDB>(null);
             base.OnModelCreating(modelBuilder);
         }

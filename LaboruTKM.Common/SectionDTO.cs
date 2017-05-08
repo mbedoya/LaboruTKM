@@ -9,13 +9,21 @@ using System.Threading.Tasks;
 namespace LaboruTKM.Common
 {
     [Table("section")]
-    public class SectionDTO : BaseDTO
+    public class SectionDTO
     {
+        [Key]
+        public int SectionId { get; set; }
+
+        public DateTime DateCreated { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public double EstimatedDuration { get; set; }
+        public string Type { get; set; }
 
         public ICollection<EvaluationDTO> Evaluations { get; set; }
     }
