@@ -34,12 +34,7 @@ namespace LaboruTKM.Model
 
             if (info != null)
             {
-                info =
-                (from a in db.Assesments.Include("Company").Include("Evaluation").AsNoTracking()
-                 where a.AssesmentId == id
-                 select a).FirstOrDefault();
-
-                InitAdditionalData();
+                SetData(info.AssesmentId);              
             }
         }
 
@@ -52,15 +47,31 @@ namespace LaboruTKM.Model
 
             if (info != null)
             {
-                info =
+                SetData(info.AssesmentId);
+            }
+        }
+
+        private void SetData(int id)
+        {
+            info =
                 (from a in db.Assesments.Include("Company").Include("Evaluation").AsNoTracking()
-                 where a.AssesmentKey == assesmentID
+                 where a.AssesmentId == id
                  select a).FirstOrDefault();
 
-                this.assesmentID = assesmentID;
-                this.id = info.AssesmentId;
-                InitAdditionalData();
+            this.assesmentID = info.AssesmentKey;
+            this.id = info.AssesmentId;
+
+            if (info.DateStarted != null )
+            {
+                info.Status = AssesmentStatus.Started;
             }
+
+            if (info.DateFinished != null)
+            {
+                info.Status = AssesmentStatus.Done;
+            }
+
+            InitAdditionalData();
         }
 
         private void InitAdditionalData()
@@ -270,7 +281,8 @@ namespace LaboruTKM.Model
         private void SetDbFinishDate(int id)
         {
             AssesmentTO assesment = db.Assesments.Find(id);
-            assesment.DateFinished = DateTime.Now;
+            assesment.DateFinished = info.DateFinished;
+            assesment.Status = info.Status;
             db.Entry(assesment).CurrentValues.SetValues(assesment);
             db.SaveChanges();
         }
@@ -332,15 +344,28 @@ namespace LaboruTKM.Model
             return AssesmentEndOperationState.Successful;
         }
 
-        private List<SectionPointsTO> GetDbAssesmentPoints(int id)
+        private List<SectionPointsTO> GetDbAssesmentPointsBySection(int id)
         {
             List<SectionPointsTO> list =
                 (from q in db.Questions
-                join ar in db.AssesmentResponses on q.QuestionId equals ar.QuestionId
-                 join s in db.Sections on q.QuestionId equals s.SectionId
+                 join s in db.Sections on q.SectionId equals s.SectionId                    
+                 join ar in db.AssesmentResponses on q.QuestionId equals ar.QuestionId
                 where ar.AssesmentID == id && ar.AnswerIsRight
                 group q by q.SectionId into g
                 select new SectionPointsTO { SectionID = g.Key, Points = g.Sum(x => x.Points) }).ToList();
+
+            return list;
+        }
+
+        private List<SectionPointsTO> GetDbPointsBySection(int id)
+        {
+            List<SectionPointsTO> list =
+                (from q in db.Questions
+                 join s in db.Sections on q.SectionId equals s.SectionId
+                 join ar in db.AssesmentResponses on q.QuestionId equals ar.QuestionId
+                 where ar.AssesmentID == id
+                 group q by q.SectionId into g
+                 select new SectionPointsTO { SectionID = g.Key, Points = g.Sum(x => x.Points) }).ToList();
 
             return list;
         }
@@ -357,6 +382,11 @@ namespace LaboruTKM.Model
 
         private void GenerateAndSendResults()
         {
+            SendResults(GetReport());
+        }
+
+        public AssesmentReportTO GetReport() {
+
             AssesmentReportTO report = new AssesmentReportTO();
             report.AssesmentInfo = info;
             if (report.AssesmentInfo.EmployeeId != null)
@@ -365,22 +395,30 @@ namespace LaboruTKM.Model
             }
             report.Sections = new List<SectionReportTO>();
 
-            List<SectionPointsTO> list = GetDbAssesmentPoints(id);
+            List<SectionPointsTO> list = GetDbAssesmentPointsBySection(id);
+            List<SectionPointsTO> possiblePointsList = GetDbPointsBySection(id);
             for (int i = 0; i < info.Evaluation.Sections.Count; i++)
             {
                 SectionReportTO section = new SectionReportTO();
                 section.Name = info.Evaluation.Sections.ElementAt(i).Name;
                 section.Percentage = 0;
                 SectionPointsTO sectionPoints = list.Find(x => x.SectionID == info.Evaluation.Sections.ElementAt(i).SectionId);
+                SectionPointsTO sectionPossiblePoints = possiblePointsList.Find(x => x.SectionID == info.Evaluation.Sections.ElementAt(i).SectionId);
                 if (sectionPoints != null)
                 {
-                    section.Percentage = sectionPoints.Points;
+                    section.Percentage = Math.Round(Convert.ToDouble(sectionPoints.Points) / Convert.ToDouble(sectionPossiblePoints.Points) * 100);
                 }
 
                 report.Sections.Add(section);
             }
 
             report.Analysis = GetAnalysis();
+
+            return report;
+        }
+
+        private void SendResults(AssesmentReportTO report)
+        {
             string savedFilePath = Pdf.GenerateSimplePdf(report);
             SendReport(savedFilePath);
         }

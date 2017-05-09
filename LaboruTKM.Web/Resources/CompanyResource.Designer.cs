@@ -133,7 +133,7 @@ namespace LaboruTKM.Web.Resources {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mis Empleados.
+        ///   Busca una cadena traducida similar a Empleados.
         /// </summary>
         internal static string myEmployees {
             get {

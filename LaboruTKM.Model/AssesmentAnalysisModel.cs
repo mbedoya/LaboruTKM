@@ -124,12 +124,15 @@ namespace LaboruTKM.Model
             var role =
                 (from e in db.Evaluations
                 join a in db.Assesments on e.Id equals a.EvaluationId
-                select new { e.RoleId }).Single();
+                select new { e.RoleId }).FirstOrDefault();
 
-            levels = 
+            if (role != null)
+            {
+                levels =
                 (from rl in db.AssementRoleLevels
-                where rl.RoleId == role.RoleId
-                select rl).ToList();
+                 where rl.RoleId == role.RoleId
+                 select rl).ToList();                
+            }           
 
             return levels;
         }

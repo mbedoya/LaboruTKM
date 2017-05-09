@@ -171,6 +171,7 @@
     <Content Include="Static\dist\css\shop-homepage.css" />
     <Content Include="Static\dist\images\ellipsis.gif" />
     <Content Include="Static\dist\images\logo-intrepidez.png" />
+    <Content Include="Static\dist\images\logo-konfirma.png" />
     <Content Include="Static\dist\images\logo-laboru.png" />
     <Content Include="Static\dist\js\sb-admin-2.js" />
     <Content Include="Static\dist\js\sb-admin-2.min.js" />
@@ -392,6 +393,8 @@
     <Content Include="Views\Assesment\Index.cshtml" />
     <Content Include="Views\Assesment\Instructions.cshtml" />
     <Content Include="Views\Shared\_AssesmentLayout.cshtml" />
+    <Content Include="Views\CompanyUI\KeySkills.cshtml" />
+    <Content Include="Views\CompanyUI\Diagnosis.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

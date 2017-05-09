@@ -1,0 +1,98 @@
+﻿@using LaboruTKM.Web.Common
+
+@{
+    Layout = "~/Views/Shared/_CompanyLayout.cshtml";
+}
+
+@section css{
+
+    <!-- DataTables CSS -->
+    <link href="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.css")" rel="stylesheet">
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Diagnóstico</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading engagement">
+
+                <div class="row">
+                    <div class="col-md-6">
+                        Diagnóstico
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <table class="table table-hover" id="skills-table">
+                    <thead>
+                        <tr>
+                            <th>@UIHelpers.GetGlobalizedText("role")</th>
+                            <th>Empleados</th>
+                            <th>Empleados necesarios</th>
+                            <th>Nivel promedio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">Desarrollador Junior</a></td>
+                            <td>3</td>
+                            <td>5</td>
+                            <td>Junior</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#">Analista Junior QA</a></td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>Medio</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- /.table-responsive -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+
+@section scripts{
+
+    <!-- Lang -->
+    <script src="@Url.Content("~/Static/js/lang.js")"></script>
+
+    <!-- Moments -->
+    <script src="@Url.Content("~/Static/js/moment-locales.min.js")"></script>
+
+    <!-- jQuery DataTables -->
+    <script src="@Url.Content("~/Static/vendor/datatables/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-plugins/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Static/vendor/datatables-responsive/dataTables.responsive.js")"></script>
+
+    <script>
+
+        function init() {
+
+            
+        }
+
+        $(document).ready(function () {
+
+            init();
+
+        });
+
+    </script>
+
+}

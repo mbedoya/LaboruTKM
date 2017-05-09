@@ -142,7 +142,7 @@
     <value>Cargos disponibles</value>
   </data>
   <data name="myEmployees" xml:space="preserve">
-    <value>Mis Empleados</value>
+    <value>Empleados</value>
   </data>
   <data name="pausedApplicants" xml:space="preserve">
     <value>Candidatos en pausa</value>

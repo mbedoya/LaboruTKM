@@ -1,4 +1,5 @@
 ﻿using LaboruTKM.Common;
+using LaboruTKM.Model;
 using LaboruTKM.Web.Common;
 using MvcSiteMapProvider;
 using Newtonsoft.Json;
@@ -35,6 +36,16 @@ namespace LaboruTKM.Web.Controllers.Company
         }
 
         public ActionResult Recruitment()
+        {
+            return CheckAndRoute();
+        }
+
+        public ActionResult KeySkills()
+        {
+            return CheckAndRoute();
+        }
+
+        public ActionResult Diagnosis()
         {
             return CheckAndRoute();
         }
@@ -145,9 +156,7 @@ namespace LaboruTKM.Web.Controllers.Company
                     return Json(null, JsonRequestBehavior.AllowGet);
                 }
 
-                List<JobOfferDTO> list = model.GetJobOpenings(GetSessionCompany().CompanyId);
-
-                return Json(new { list }, JsonRequestBehavior.AllowGet);
+                return Json( model.GetJobOpenings(GetSessionCompany().CompanyId), JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult GetEmployees()
@@ -171,6 +180,16 @@ namespace LaboruTKM.Web.Controllers.Company
             }
 
             ViewBag.Employee = model.GetEmployee(id, GetSessionCompany().CompanyId);
+
+            Assesment assesment = model.GetEmployeeAssesment(id, GetSessionCompany().CompanyId);
+            if (assesment != null)
+            {
+                ViewBag.Assesment = assesment.GetInfo();
+                if (assesment.GetInfo().Status == AssesmentStatus.Done)
+                {
+                    ViewBag.AssesmentReport = assesment.GetReport();                    
+                }
+            }
 
             return View(GetSessionCompany());
         }

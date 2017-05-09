@@ -159,5 +159,21 @@ namespace LaboruTKM.Model
 
             return list;
         }
+
+        public Assesment GetEmployeeAssesment(int employeeId, int companyId)
+        {
+            var result =
+                (from a in db.Assesments
+                 where a.CompanyId == companyId && a.EmployeeId == employeeId
+                 select new { a.AssesmentId }).FirstOrDefault();
+
+            if (result != null)
+            {
+                Assesment assesment = new Assesment(result.AssesmentId);
+                return assesment;                
+            }
+
+            return null;
+        }
     }
 }

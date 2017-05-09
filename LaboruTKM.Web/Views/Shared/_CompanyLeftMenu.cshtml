@@ -36,10 +36,21 @@
                 <a href="@Url.Content("~/CompanyUI/Employees")"><i class="fa fa-user fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("myEmployees")</a>
             </li>
             <li class="knowledge-management">
-                <a href="@Url.Content("~/CompanyUI/KeySkills")"><i class="fa fa-star-o fa-fw"></i> Capacidades claves</a>
+                <a href="@Url.Content("~/CompanyUI/Roles")"><i class="fa fa-users fa-fw"></i> Roles</a>
             </li>
-            <li>
-                <a href="@Url.Content("~/Admin/Configuration")"><i class="fa fa-cog fa-fw"></i> @UIHelpers.GetGlobalizedText("configuration")</a>
+            <li class="knowledge-management">
+                <a href="#"><i class="fa fa-thumbs-up fa-fw"></i> Gestión del conocimiento<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li class="knowledge-management">
+                        <a href="@Url.Content("~/CompanyUI/KeySkills")"> Capacidades clave</a>
+                    </li>
+                    <li class="knowledge-management">
+                        <a href="@Url.Content("~/CompanyUI/Diagnosis")"> Diagnóstico</a>
+                    </li>
+                </ul>
+            </li>            
+            <li class="analysis">
+                <a href="@Url.Content("~/CompanyUI/KeySkills")"><i class="fa fa-line-chart fa-fw"></i> Análisis</a>
             </li>
             <li>
                 &nbsp;

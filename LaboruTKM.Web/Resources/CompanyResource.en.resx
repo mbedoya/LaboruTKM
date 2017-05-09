@@ -142,7 +142,7 @@
     <value>Job Openings</value>
   </data>
   <data name="myEmployees" xml:space="preserve">
-    <value>My Employees</value>
+    <value>Employees</value>
   </data>
   <data name="pausedApplicants" xml:space="preserve">
     <value>Applicants in pause</value>

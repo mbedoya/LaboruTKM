@@ -2,11 +2,16 @@
 
 @using LaboruTKM.Web.Common
 @using LaboruTKM.Common
+@using LaboruTKM.Common.AssesmentAnalysis
+@using LaboruTKM.Common.AssesmentResults
 
 @{
     Layout = "~/Views/Shared/_CompanyLayout.cshtml";
     EmployeeDTO employee = ViewBag.Employee;
     List<CompanyRoleDTO> roles = employee.Roles.Select( p => p).ToList();
+
+    AssesmentTO assesment = ViewBag.Assesment;
+    AssesmentReportTO assesmentReport = ViewBag.AssesmentReport;
 }
 
 @section css{
@@ -53,10 +58,147 @@
 
     <div class="panel panel-default">
         <div class="panel-body">
-            Aún no se ha realizado ninguna evaluación
+            @if (assesment != null && assesment.Status == AssesmentStatus.Created)
+	        {
+		        <span>Evaluación enviada, esperando finalización</span>
+	        }else{
+                if (assesment != null && assesment.Status == AssesmentStatus.Started)
+	            {
+		            <span>Evaluación en proceso</span>
+	            }else{
+                    if (assesment != null && assesment.Status == AssesmentStatus.Done)
+	                {
+                        <div class="row">
+                            <div class="col-md-2">
+                                Evaluación:
+                            </div>
+                            <div class="col-md-10">
+                                @assesment.Evaluation.Name
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Resultado:
+                            </div>
+                            <div class="col-md-10">
+                                @assesmentReport.Analysis.RoleResult.Title
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                Puntos obtenidos:
+                            </div>
+                            <div class="col-md-10">
+                                @assesmentReport.Analysis.RoleResult.Points / @assesmentReport.Analysis.RoleResult.PossiblePoints
+                            </div>
+                        </div>
+                        
+                
+                        <div class="panel">
+                            <div class="panel-header">
+                                Detalle de las capacidades:
+                            </div>
+                            <div class="panel-body">
+                                @foreach (var item in assesmentReport.Sections)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            @item.Name
+                                        </div>
+                                        <div class="col-md-10">
+                                            @(item.Percentage + " %")
+                                        </div>
+                                    </div>
+                                }                    
+                            </div>
+                        </div>
+                
+                        <div class="row">
+                            <div class="col-md-2">
+                                Análisis de la solución y recomendaciones:
+                            </div>
+                            <div class="col-md-10">
+                                Para este ejercicio como tal, más allá da validar si la aplicación entregada funciona correctamente o no, es más importante la 
+                                forma de la solución, como se diseña, se implementa y entrega una solución verificando que se cumple con los requisitos no sólo 
+                                funcionales si no de calidad. Existen en la industria estándares, guías, metodologías que aseguran que una solución informática 
+                                pueda ser mantenible, escalable, segura y con un buen rendimiento, el uso de estas prácticas son las que diferencian a un programador Senior de un Junior.<br />
+
+                                En general se evidencia que se deberían seguir los siguientes elementos: <br />
+                                <p>
+                                    0. Diseño de soluciones con clases: Si la herramienta o lenguaje lo permite siempre usar clases para una solución, este
+                                es el paso inicial, estas tienen innumerables ventajas sobre desarrollos funcionales: Re uso, extendibilidad, organización
+                                de elementos, estandarización.<br />
+                                </p>
+                                <p>
+                                    1. Principios de orientación a objetos: Este permite que se tenga una estructura de clases acorde a la solución, garantizando
+                                que ante un cambio no se debe replantear lo construido.<br />
+                                Recomendados: <a target="_blank" href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124">Head First Design Patterns</a> <br />
+                                </p>
+                                <p>
+                                    2. Código limpio: Un buen código no necesita comentarios, basta con leerlo y se debería entender, tal cual como 
+                                si fuera un libro, acá se pueden usar prácticas como máximo 10-15 líneas por función. <br />
+                                3. Patrones de diseño: Estos entregan soluciones probadas a problemas comunes, ejemplo: Uso de memoria compartida para
+                                todos los objetos, notificaciones, máquinas de estado, creación de productos.<br />
+                                Recomendados: <a target="_blank" href="https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124">Head First Design Patterns</a> <br />
+                                </p>
+                                <p>
+                                    4. Pruebas Unitarias: Estas permiten asegurar que cada pequeña parte de código que hacemos cumple con lo esperado
+                                y está libre de defectos, a medida que se hace más compleja la solución para cualquier mente es imposible tener todos
+                                los casos en cuenta, y a un más asegurara que cuando se realiza un cambio no se está introduciedo también un defecto<br />
+                                Recomendados: <a target="_blank" href="http://artofunittesting.com/">Art of Unit Testing</a> <br />
+                                </p>
+                                <p>
+                                    5. TDD: Esta es una técnica para diseñar y desarrollar basada en pruebas unitarias, es bastante aceptada a nivel mundial.<br />
+                                Recomendados: <a target="_blank" href="http://artofunittesting.com/">Art of Unit Testing</a> <br />
+                                </p>
+                                <p>
+                                    En general, acá se pueden encontrar los temas que hoy se trabajan en el mundo del Software: 
+                                <a target="_blank" href="https://elmundodelsoftwareblog.wordpress.com/2017/04/05/escalas-para-desarrolladores-de-software-junior-middle-senior-arquitecto/">Blog</a><br />
+
+                                Este es un código realizado como una prueba de selección de una empresa reconocida, es .Net pero sirve para ilustrar las
+                                prácticas mencionadas, tiene similitudes con la prueba realizada. <br />
+                                El objetivo del código es dadas una serie de líneas, convertirlas a número digital.
+                                Se ingresa Tamaño,Número, así: <br />
+                                1,12<br />
+                                2,345<br />
+                                Verificar las validaciones. <br />
+                                <a target="_blank" href="http://laboru.co:8088/">Ejecución</a><br />
+                                <a target="_blank" href="https://github.com/mbedoya/LcdDisplay">Fuentes</a>
+                                </p>
+                                                               
+
+                            </div>
+                        </div>
+                
+                        <p>
+                            <span>Evaluación finalizada en @assesment.DateFinished</span>    
+                        </p>		                
+	                }else{
+                        <span>Aún no tiene evaluaciones</span>
+                    }
+                }
+            }            
         </div>
+        @if (assesment == null)
+            {
         <div class="panel-footer knowledge-management">
-            <input class="btn btn-primary" type="button" value="Evaluar" />
+          <input class="btn btn-primary" type="button" value="Evaluar" />
+        </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 >Mi plan carrera</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <div class="panel panel-default">
+            
+        <div class="panel-body">
+            Resumen: Aspirante a Arquitecto de Software en 2019.<br />
+            Las principales brechas son: Patrones de diseño, Arquitectura Empresarial, Francés.
         </div>
     </div>
 
@@ -125,11 +267,31 @@
                             </td>
                             <td>Abril 30 2017</td>
                         </tr>
+                        <tr>
+                            <td>
+                                Entrevista
+                            </td>
+                            <td>
+                                Posee una muy buena disposición, muy buena energía y ganas de aprender. Respetuoso y trabajador. Debe trabajar un poco
+                                más en comunicarse de manera asertiva.
+                            </td>
+                            <td>Mayo 2 2017</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Contratado
+                            </td>
+                            <td>
+                                Ingresa a la Empresa como Desarrollador Junior.
+                            </td>
+                            <td>Mayo 5 2017</td>
+                        </tr>
                     </tbody>
                 </table>
                 <!-- /.table-responsive -->
             </div>
         </div>
+
 
     <div class="row">
         <div class="col-lg-12">
@@ -190,44 +352,43 @@
                             <div class="col-xs-12 col-sm-8">
                                 <ul class="list-group">
                                     <li class="list-group-item">Analista Ingeniería de Software</li>
-                                    <li class="list-group-item">Perceptio</li>
+                                    <li class="list-group-item">Intrepidez</li>
                                     <li class="list-group-item"><i class="fa fa-phone"></i> 300 4802280</li>
-                                    <li class="list-group-item"><i class="fa fa-envelope"></i> andreaherre@gmail.com</li>
+                                    <li class="list-group-item"><i class="fa fa-envelope"></i> mauricio.bedoya@gmail.com</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="bs-callout bs-callout-danger">
-                    <h4>Summary</h4>
+                    <h4>Mi Perfil</h4>
                     <p>
-                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
-         te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-       
-                    </p>
-                    <p>
-                        Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
-            Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
-
+                        Ingeniero de sistemas con más de 14 años en la industria del Software, participando en proyectos para diversos sectores
+                        de la economía: Salud, Finanzas, Manufactura, Construcción, Educación. Mis principales fortalezas son las tecnologías Microsoft sin
+                        dejar de lado los temás Mobile.
        
                     </p>
                 </div>
                 <div class="bs-callout bs-callout-danger">
-                    <h4>Research Interests</h4>
+                    <h4>Intereses en investigación</h4>
                     <p>
-                        Software Engineering, Machine Learning, Image Processing,
-          Computer Vision, Artificial Neural Networks, Data Science,
-          Evolutionary Algorithms.
-       
+                        La comunicación como herramienta de productividad.
                     </p>
                 </div>
 
                 <div class="bs-callout bs-callout-danger">
-                    <h4>Prior Experiences</h4>
+                     <h4>Principales intereses</h4>
+                    <p>
+                        Ingeniería de Software, Minería de Datos, .Net, Maestría en sistemas de información.
+                    </p>
+                </div>
+
+                <div class="bs-callout bs-callout-danger">
+                    <h4>Empleos anteriores</h4>
                     <ul class="list-group">
                         <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Software Engineer at Twitter
-            </h4>
+                            <h4 class="list-group-item-heading">Ingeniero de Proyectos en Pragma
+                            </h4>
                             <p class="list-group-item-text">
                                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
          te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
@@ -235,43 +396,50 @@
                             </p>
                         </a>
                         <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Software Engineer at LinkedIn</h4>
+                            <h4 class="list-group-item-heading">Desarrollador .Net en Software Estratégico</h4>
                             <p class="list-group-item-text">
                                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
               Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
               nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                
                             </p>
-                            <ul>
-                                <li>Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                  </li>
-                                <li>Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-              Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-              nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                  </li>
-                            </ul>
-                            <p></p>
+                            
                         </a>
                     </ul>
                 </div>
-                <div class="bs-callout bs-callout-danger">
-                    <h4>Key Expertise</h4>
-                    <ul class="list-group">
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc </li>
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-                        <li class="list-group-item">Lorem ipsum dolor sit amet, ea vel prima adhuc</li>
-
-
-
-                    </ul>
                 </div>
                 <div class="bs-callout bs-callout-danger">
-                    <h4>Language and Platform Skills</h4>
+                    <h4>Experiencias claves</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">Computación en paralelo </li>
+                        <li class="list-group-item">Minería de datos</li>
+                        <li class="list-group-item">Aplicaciones web</li>
+                        <li class="list-group-item">Aplicaciones móviles</li>
+                      </ul>
+                </div>
+                
+                <div class="bs-callout bs-callout-danger">
+                    <h4>Educación</h4>
+                    <table class="table table-striped table-responsive ">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Año de graduación</th>
+                                <th>Institución</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ingeniero de sistemas</td>
+                                <td>2004</td>
+                                <td>Universidad de Medellín</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bs-callout bs-callout-danger">
+                    <h4>Evaluación Desarrollador Laboru: Desarrollador Intermedio (250/400 Puntos)</h4>
                     <ul class="list-group">
                         <a class="list-group-item inactive-link" href="#">
 
@@ -280,80 +448,56 @@
                                 <div data-placement="top" style="width: 80%;"
                                     aria-valuemax="100" aria-valuemin="0" aria-valuenow="80" role="progressbar" class="progress-bar progress-bar-success">
                                     <span class="sr-only">80%</span>
-                                    <span class="progress-type">Java/ JavaEE/ Spring Framework </span>
+                                    <span class="progress-type">Capacidad de análisis </span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
                                     <span class="sr-only">70%</span>
-                                    <span class="progress-type">PHP/ Lamp Stack</span>
+                                    <span class="progress-type">Bases de datos</span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 70%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-success">
                                     <span class="sr-only">70%</span>
-                                    <span class="progress-type">JavaScript/ NodeJS/ MEAN stack </span>
+                                    <span class="progress-type">Pruebas Unitarias </span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 65%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="1" role="progressbar" class="progress-bar progress-bar-warning">
                                     <span class="sr-only">65%</span>
-                                    <span class="progress-type">Python/ Numpy/ Scipy</span>
+                                    <span class="progress-type">Metodologías ágiles</span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-warning">
                                     <span class="sr-only">60%</span>
-                                    <span class="progress-type">C</span>
+                                    <span class="progress-type">Patrones de diseño</span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 50%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-warning">
                                     <span class="sr-only">50%</span>
-                                    <span class="progress-type">C++</span>
+                                    <span class="progress-type">Control de código fuente</span>
                                 </div>
                             </div>
                             <div class="progress">
                                 <div data-placement="top" style="width: 10%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" role="progressbar" class="progress-bar progress-bar-danger">
                                     <span class="sr-only">10%</span>
-                                    <span class="progress-type">Go</span>
+                                    <span class="progress-type">Arquitectura</span>
                                 </div>
                             </div>
 
                             <div class="progress-meter">
-                                <div style="width: 25%;" class="meter meter-left"><span class="meter-text">I suck</span></div>
-                                <div style="width: 25%;" class="meter meter-left"><span class="meter-text">I know little</span></div>
-                                <div style="width: 30%;" class="meter meter-right"><span class="meter-text">I'm a guru</span></div>
-                                <div style="width: 20%;" class="meter meter-right"><span class="meter-text">I''m good</span></div>
+                                <div style="width: 25%;" class="meter meter-left"><span class="meter-text">Muy bajo</span></div>
+                                <div style="width: 25%;" class="meter meter-left"><span class="meter-text">Medio</span></div>
+                                <div style="width: 30%;" class="meter meter-right"><span class="meter-text">Excelente</span></div>
+                                <div style="width: 20%;" class="meter meter-right"><span class="meter-text">Bueno</span></div>
                             </div>
 
                         </a>
 
                     </ul>
-                </div>
-                <div class="bs-callout bs-callout-danger">
-                    <h4>Education</h4>
-                    <table class="table table-striped table-responsive ">
-                        <thead>
-                            <tr>
-                                <th>Degree</th>
-                                <th>Graduation Year</th>
-                                <th>CGPA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Masters in Computer Science and Engineering</td>
-                                <td>2014</td>
-                                <td>3.50 </td>
-                            </tr>
-                            <tr>
-                                <td>BSc. in Computer Science and Engineering</td>
-                                <td>2011</td>
-                                <td>3.25 </td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
 
