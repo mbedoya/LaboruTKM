@@ -91,6 +91,13 @@ VALUES
 (
 'Psicóloga');
 
+INSERT INTO `laborutkm`.`role`
+(
+`Name`)
+VALUES
+(
+'Analista de informática');
+
 INSERT INTO `laborutkm`.`companyrole`
 (
 `Name`,
@@ -734,7 +741,7 @@ INSERT INTO `laborutkm`.`roleanalysis`
 VALUES
 (1,
 'JUNIOR',
-50,
+100,
 'Posee algunos conocimientos, no se recomienda que ejecute proyectos solo');
 
 INSERT INTO `laborutkm`.`roleanalysis`
@@ -745,7 +752,7 @@ INSERT INTO `laborutkm`.`roleanalysis`
 VALUES
 (1,
 'MEDIO',
-100,
+150,
 'Cuenta con las habilidades necesarias ejecutar proyectos medianos.');
 
 INSERT INTO `laborutkm`.`roleanalysis`
@@ -756,5 +763,1003 @@ INSERT INTO `laborutkm`.`roleanalysis`
 VALUES
 (1,
 'CLASE MUNDIAL',
-150,
+250,
 'Posee alto conocimiento de clase mundial, entiende las necesidades del negocio y como implementar soluciones para cumplir con dichas necesidades.');
+
+/* 3 */
+
+INSERT INTO `laborutkm`.`evaluation`
+(
+`Name`,
+`Description`,
+`RoleId`)
+VALUES
+(
+'Evaluación integral de desarrollador de Software',
+'Permite evaluar a los desarrolladores de Software en diversos aspectos, tanto de programación como de elementos base',
+1);
+
+/* Inglés */
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(3,
+5);
+
+/* 6*/
+INSERT INTO `laborutkm`.`section`
+(
+`Name`,
+`Description`,
+`Type`,
+`EstimatedDuration`)
+VALUES
+('Capacidad de análisis',
+'Esta prueba mide la capacidad de entendimiento y solución a diversos problemas.',
+'Internal',
+1); commit;
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(3,
+6);
+
+/* 8 */
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`Points`)
+VALUES
+('AZ, GT, MN, ?, YB',
+'Simple',
+6,
+50); commit;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('KF',
+8); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('RX',
+8); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('SH',
+8); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('TS',
+8); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 29 where questionid=8; commit;
+
+/* 9 */
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`Points`)
+VALUES
+('AZ, BY, CX, ? ',
+'Simple',
+6,
+50); commit;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('EF',
+9); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('GH',
+9); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('IJ',
+9); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('DW',
+9); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 34 where questionid=9; commit;
+
+/* 10 */
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`Points`)
+VALUES
+('Si TRANSFER is codificado como RTNAFSRE, entonces ELEPHANT sería ',
+'Simple',
+6,
+50); commit;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LEPEHATN',
+10); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LEPEAHTN',
+10); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LEEPAHTN',
+10); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LEPEAHNT',
+10); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 36 where questionid=10; commit;
+
+INSERT INTO `laborutkm`.`company`
+(
+`Name`,
+`Logo`,
+`ContactEmail`)
+VALUES
+('Konfirma',
+'logo-konfirma.png',
+'leon.quiroz@konfirma.com.co'); commit;
+
+INSERT INTO `laborutkm`.`employee`
+(
+`Name`,
+`Email`,
+`Password`,
+`ApplicantId`,
+`PersonId`,
+`CompanyId`)
+VALUES
+(
+'Mateo Arteaga',
+'mateo.arteaga@konfirma.com.co',
+'1234',
+NULL,
+NULL,
+2);
+
+INSERT INTO `laborutkm`.`assesment`
+(
+`AssesmentKey`,
+`CompanyID`,
+`EmployeeId`,
+`EvaluationID`,
+`Type`)
+VALUES
+('konfirma_ma',
+2,
+3,
+3,
+1); commit;
+
+INSERT INTO `laborutkm`.`companyrole`
+(
+`Name`,
+`Description`,
+`RoleSenority`,
+`CompanyId`,
+`RoleId`)
+VALUES
+('Desarrollador Analista Junior',
+'Desarrollador y Analista',
+1,
+2,
+1);
+
+INSERT INTO `laborutkm`.`employeedtocompanyroledtoes`
+(`EmployeeDTO_EmployeeId`,
+`CompanyRoleDTO_CompanyRoleId`)
+VALUES
+(3,
+3);
+
+
+
+INSERT INTO `laborutkm`.`role`
+(
+`Name`)
+VALUES
+(
+'Analista de informática');
+
+INSERT INTO `laborutkm`.`companyrole`
+(
+`Name`,
+`Description`,
+`RoleSenority`,
+`CompanyId`,
+`RoleId`)
+VALUES
+('Analista de informática',
+'Analista de requisitos y calidad',
+1,
+2,
+4);
+
+INSERT INTO `laborutkm`.`employee`
+(
+`Name`,
+`Email`,
+`Password`,
+`ApplicantId`,
+`PersonId`,
+`CompanyId`)
+VALUES
+(
+'Juan Fernando Giraldo',
+'juan.giraldo@konfirma.com.co',
+'1234',
+NULL,
+NULL,
+2);
+
+
+INSERT INTO `laborutkm`.`employeedtocompanyroledtoes`
+(`EmployeeDTO_EmployeeId`,
+`CompanyRoleDTO_CompanyRoleId`)
+VALUES
+(4,
+3);
+
+INSERT INTO `laborutkm`.`evaluation`
+(
+`Name`,
+`Description`,
+`RoleId`)
+VALUES
+(
+'Evaluación integral para analistas de Software',
+'Permite evaluar a los analistas de Software en diversos aspectos requeridos para su función',
+4);
+
+/* 6*/
+INSERT INTO `laborutkm`.`section`
+(
+`Name`,
+`Description`,
+`Type`,
+`EstimatedDuration`)
+VALUES
+('Capacidad de análisis',
+'Esta prueba mide la capacidad de entendimiento y solución a diversos problemas.',
+'Internal',
+1); commit;
+
+INSERT INTO `laborutkm`.`section`
+(
+`Name`,
+`Description`,
+`Type`,
+`EstimatedDuration`)
+VALUES
+('Bases de datos',
+'Esta prueba mide conocimientos básicos en bases de datos.',
+'Internal',
+1); commit;
+
+INSERT INTO `laborutkm`.`section`
+(
+`Name`,
+`Description`,
+`Type`,
+`EstimatedDuration`)
+VALUES
+('Fundamentos de informática',
+'Esta prueba mide conocimientos generales de informática.',
+'Internal',
+1); commit;
+
+INSERT INTO `laborutkm`.`section`
+(
+`Name`,
+`Description`,
+`Type`,
+`EstimatedDuration`)
+VALUES
+('Inglés básico',
+'Esta prueba mide conocimiento básico en inglés.',
+'Internal',
+1); commit;
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(4,
+7);
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(4,
+8);
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(4,
+9);
+
+INSERT INTO `laborutkm`.`evaluationdtosectiondtoes`
+(`EvaluationDTO_Id`,
+`SectionDTO_SectionId`)
+VALUES
+(4,
+10);
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('BXJ, ETL, HPN, KLP, ?',
+'Simple',
+7,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('NHR',
+11); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('MHQ',
+11); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('MIP',
+11); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('NIR',
+11); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 39 where questionid=11; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('En cierto código, PAINTER es escrito NCGPRGP, entonces REASON sería ',
+'Simple',
+7,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('PCYQMN',
+12); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('PGYQMN',
+12); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('PGYUMP',
+12); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('PGYUPM',
+12); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 45 where questionid=12; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('CMW, HRB, ?, RBL, WGQ, BLV',
+'Simple',
+7,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('MWG',
+13); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LVF',
+13); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('LWG',
+13); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('WMX',
+13); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 47 where questionid=13; commit;
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('ATTRIBUTION, TTRIBUTIO, RIBUTIO, IBUTI, ?',
+'Simple',
+7,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('IBU',
+14); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('UT',
+14); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('UTI',
+14); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('BUT',
+14); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 53 where questionid=14; commit;
+
+
+delete from `laborutkm`.`evaluationdtosectiondtoes` where `EvaluationDTO_Id` = 4 and `SectionDTO_SectionId` = 10;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('A relational database consists of a collection of',
+'Simple',
+8,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Tables',
+15); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Fields',
+15); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Records',
+15); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Keys',
+15); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 55 where questionid=15; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('The term _______ is used to refer to a row',
+'Simple',
+8,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Tables',
+16); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Fields',
+16); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Records',
+16); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Keys',
+16); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 60 where questionid=16; commit;
+
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('SQL can be used to:',
+'Simple',
+8,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('create database structures only.',
+18); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('query database data only.',
+18); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('modify database data only.',
+18); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('All of the above can be done by SQL.',
+18); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 70 where questionid=18; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('Cuál de los siguientes elementos no está relacionado con casos de uso',
+'Simple',
+9,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Actor',
+19); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Include',
+19); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Aggregate',
+19); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Extend',
+19); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 73 where questionid=19; commit;
+
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('¿Cuál de los siguientes elementos no está relacionado con alcance de visibilidad?',
+'Simple',
+9,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('private',
+20); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('protected',
+20); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('package',
+20); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('public',
+20); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 77 where questionid=20; commit;
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('¿Cuál de los siguientes elementos está relacionado con POO?',
+'Simple',
+9,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('interface',
+21); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('class',
+21); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('struct',
+21); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('abstract',
+21); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 81 where questionid=21; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('¿Cuál de los siguientes diagramas tiene una vista estática?',
+'Simple',
+9,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Colaboración',
+22); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Casos de uso',
+22); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Estado',
+22); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Actividad',
+22); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 84 where questionid=22; commit;
+
+
+INSERT INTO `laborutkm`.`question`
+(
+`Text`,
+`Type`,
+`SectionID`,
+`RightAnswerID`,
+`Points`)
+VALUES
+('¿Cuál de las siguientes acciones no es posible sobre una clase abstracta?',
+'Simple',
+9,
+NULL,
+30);
+
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Creación de objetos',
+23); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Herencia',
+23); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Sobre escritura de métodos',
+23); COMMIT;
+
+INSERT INTO `laborutkm`.`answer`
+(
+`Text`,
+`QuestionID`)
+VALUES
+('Encapsulación',
+23); COMMIT;
+
+update `laborutkm`.`question` set RightAnswerID = 87 where questionid=23; commit;
+
+
+INSERT INTO `laborutkm`.`assesment`
+(
+`AssesmentKey`,
+`CompanyID`,
+`EmployeeId`,
+`EvaluationID`,
+`Type`)
+VALUES
+('konfirma_jg',
+2,
+4,
+4,
+1); commit;

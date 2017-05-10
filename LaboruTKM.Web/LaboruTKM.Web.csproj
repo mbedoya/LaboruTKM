@@ -120,6 +120,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Admin\Api\SectionController.cs" />
     <Compile Include="Controllers\AssesmentController.cs" />
     <Compile Include="Common\SessionConstants.cs" />
     <Compile Include="Common\UIHelpers.cs" />
@@ -172,6 +173,7 @@
     <Content Include="Static\dist\images\ellipsis.gif" />
     <Content Include="Static\dist\images\logo-intrepidez.png" />
     <Content Include="Static\dist\images\logo-konfirma.png" />
+    <Content Include="Static\dist\images\logo-laboru-big.png" />
     <Content Include="Static\dist\images\logo-laboru.png" />
     <Content Include="Static\dist\js\sb-admin-2.js" />
     <Content Include="Static\dist\js\sb-admin-2.min.js" />
@@ -299,7 +301,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\AdminCompany\AdminHome\Index.cshtml" />
+    <Content Include="Views\AdminHome\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Mvc.sitemap" />
@@ -358,9 +360,9 @@
     <Content Include="Static\vendor\font-awesome\scss\_spinning.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_stacked.scss" />
     <Content Include="Static\vendor\font-awesome\scss\_variables.scss" />
-    <Content Include="Views\AdminCompany\AdminHome\Evaluations.cshtml" />
+    <Content Include="Views\AdminHome\Evaluations.cshtml" />
     <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
-    <Content Include="Views\AdminCompany\AdminHome\Companies.cshtml" />
+    <Content Include="Views\AdminHome\Companies.cshtml" />
     <Content Include="Views\AdminCompany\Index.cshtml" />
     <Content Include="Views\Shared\_CompanyLayout.cshtml" />
     <Content Include="Views\CompanyUI\Login.cshtml" />
@@ -395,6 +397,8 @@
     <Content Include="Views\Shared\_AssesmentLayout.cshtml" />
     <Content Include="Views\CompanyUI\KeySkills.cshtml" />
     <Content Include="Views\CompanyUI\Diagnosis.cshtml" />
+    <Content Include="Views\AdminHome\Evaluation.cshtml" />
+    <Content Include="Views\AdminHome\Section.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LaboruTKM.Common\LaboruTKM.Common.csproj">

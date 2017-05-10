@@ -26,5 +26,8 @@ namespace LaboruTKM.Common
         public string Type { get; set; }
 
         public ICollection<EvaluationDTO> Evaluations { get; set; }
+
+        [NotMapped]
+        public List<QuestionTO> Questions { get; set; }
     }
 }

@@ -68,7 +68,9 @@
 
         <div id="page-wrapper">
 
-            @Html.Partial("Loading")
+            <div class="breadcrumb">
+                @Html.MvcSiteMap().SiteMapPath()
+            </div>
 
             @RenderBody()
 
@@ -88,14 +90,11 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="@Url.Content("~/Static/vendor/metisMenu/metisMenu.min.js")" ></script>
 
-    @*
-    <!-- Morris Charts JavaScript -->
-    <script src="@Url.Content("~/Static/vendor/raphael/raphael.min.js")" ></script>
-    <script src="@Url.Content("~/Static/vendor/morrisjs/morris.min.js")" ></script>
-    <script src="@Url.Content("~/Static/data/morris-data.js")"> </script> *@
-
     <!-- Custom Theme JavaScript -->
     <script src="@Url.Content("~/Static/dist/js/sb-admin-2.js")" ></script>
+
+    <!-- Common JavaScript -->
+    <script src="@Url.Content("~/Static/js/common.js")" ></script>
 
     <script>
 

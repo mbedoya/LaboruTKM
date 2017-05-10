@@ -133,7 +133,6 @@ function getRowElement(obj, properties, key, url) {
             console.log(property);
             if (property.toLowerCase().indexOf('date', 0) > -1) {
                 var date = moment(parseJsonDate(getObjectByNestedProperties(obj, property)));
-                console.log(date);
                 rowTemplate += '<td>' + getDateDiff(date) + '</td>';
             } else {
 
@@ -153,8 +152,6 @@ function getRowElement(obj, properties, key, url) {
 
 function getAndsetTableData(controllerName, method, parameters, url, properties, key, tableID) {
 
-    console.log(tableID);
-
     showLoading();
     ajaxGet(controllerName, method, parameters, function (success, data) {
 
@@ -169,8 +166,6 @@ function getAndsetTableData(controllerName, method, parameters, url, properties,
 
                     var obj = data[i];
                     var htmlElement = getRowElement(obj, properties, key, url);
-
-                    console.log(htmlElement);
 
                     $("#" + tableID + " tbody").append(htmlElement);
                 }
