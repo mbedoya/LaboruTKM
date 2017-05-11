@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: #FFF;
 }
 
 h1 {
@@ -21,9 +22,10 @@ h1 {
 h3 {
     margin-top: 10px !important;
     color: #777 !important;
+    font-weight: bold;
 }
 
-h1 {
+h1, h4 {
     color: #777 !important;
 }
 
@@ -33,22 +35,6 @@ h1 {
 
 .navbar-default {
     background-color: #fff;
-}
-
-.engagement {
-    background-color: #EEF6E6 !important;
-}
-
-.engagement-border {
-    border-color: #EEF6E6;
-}
-
-.knowledge-management {
-    background-color: #EAF0F3 !important;
-}
-
-.analysis {
-    background-color: #ffffe6 !important;
 }
 
 .blackish {
@@ -68,4 +54,46 @@ h1 {
 
 .assesment-report .row {
     margin-bottom: 5px;
+}
+
+.engagement {
+    background-color: #e7fef3 !important;
+    border-radius: 4px !important;
+    border-bottom: 0px;
+}
+
+h3.engagement, h3.knowledge-management, h3.analysis {
+    padding: 10px;
+}
+
+.engagement-border {
+    border-color: #EEF6E6;
+}
+
+.knowledge-management {
+    background-color: #f1f8f9 !important;
+    border-radius: 4px !important;
+    border-bottom: 0px;
+}
+
+.analysis {
+    background-color: #ffffe6 !important;
+    border-radius: 4px !important;
+    border-bottom: 0px;
+}
+
+.nav>li>a {
+    color: #777 !important;
+}
+
+.panel-footer {
+    background-color: #FFF !important;
+}
+
+.logo-menu {
+    padding: 20px;
+}
+
+.last-element {
+    border-bottom: 0px !important;
 }

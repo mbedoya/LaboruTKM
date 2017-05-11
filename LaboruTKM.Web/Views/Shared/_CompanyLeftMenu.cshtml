@@ -23,7 +23,7 @@
             <li class="engagement">
                 <a href="#"><i class="fa fa-users fa-fw"></i> @UIHelpers.GetCompanyGlobalizedText("recruitment")<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                    <li >
+                    <li>
                         <a href="@Url.Content("~/CompanyUI/Recruitment")"> @UIHelpers.GetCompanyGlobalizedText("active")</a>
                     </li>
                     <li>
@@ -48,24 +48,29 @@
                         <a href="@Url.Content("~/CompanyUI/Diagnosis")"> Diagnóstico</a>
                     </li>
                 </ul>
-            </li>            
+            </li>
             <li class="analysis">
                 <a href="@Url.Content("~/CompanyUI/KeySkills")"><i class="fa fa-line-chart fa-fw"></i> Análisis</a>
             </li>
-            <li>
-                &nbsp;
+            <li>&nbsp;
             </li>
             <li class="shortcuts">
-                <a href="#"> <i class="fa fa-share fa-fw"></i> Accesos rápidos</a>
+                <a href="#"><i class="fa fa-share fa-fw"></i> Accesos rápidos</a>
             </li>
 
-            <li >
-                        <a href="@Url.Content("~/CompanyUI/AddApplicant")">@UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
-                    </li>
-                    <li >
-                        <a href="@Url.Content("~/CompanyUI/XPers")">Expertos(XPers) Laboru</a>
-                    </li>
-            
+            <li>
+                <a href="@Url.Content("~/CompanyUI/AddApplicant")"> @UIHelpers.GetCompanyGlobalizedText("addApplicant")</a>
+            </li>
+            <li>
+                <a href="@Url.Content("~/CompanyUI/XPers")"> Expertos(XPers) Laboru</a>
+            </li>
+            <li class="last-element" >
+                <div class="row text-center logo-menu">
+                    <div class="col-md-12">
+                        <img src="@Url.Content("~/Static/dist/images/logo-laboru-gray.png")" alt="Laboru" />
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar-collapse -->
