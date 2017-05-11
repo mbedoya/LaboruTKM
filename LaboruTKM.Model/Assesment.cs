@@ -274,6 +274,7 @@ namespace LaboruTKM.Model
         {
             AssesmentTO assesment = db.Assesments.Find(id);
             assesment.DateStarted = DateTime.Now;
+            assesment.Status = AssesmentStatus.Started;
             db.Entry(assesment).CurrentValues.SetValues(assesment);
             db.SaveChanges();
         }
@@ -281,8 +282,8 @@ namespace LaboruTKM.Model
         private void SetDbFinishDate(int id)
         {
             AssesmentTO assesment = db.Assesments.Find(id);
-            assesment.DateFinished = info.DateFinished;
-            assesment.Status = info.Status;
+            assesment.DateFinished = DateTime.Now;
+            assesment.Status = AssesmentStatus.Done;
             db.Entry(assesment).CurrentValues.SetValues(assesment);
             db.SaveChanges();
         }

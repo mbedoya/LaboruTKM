@@ -124,6 +124,7 @@ namespace LaboruTKM.Model
             var role =
                 (from e in db.Evaluations
                 join a in db.Assesments on e.Id equals a.EvaluationId
+                where a.AssesmentId == assesmentID
                 select new { e.RoleId }).FirstOrDefault();
 
             if (role != null)

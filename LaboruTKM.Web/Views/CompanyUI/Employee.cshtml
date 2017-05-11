@@ -17,8 +17,7 @@
 @section css{
 
     <!-- Laboru CSS - Profile -->
-    <link href="@Url.Content("~/Static/dist/css/laboru-tkm-profile.css")" rel="stylesheet">
-
+    <link href="@Url.Content("~/Static/dist/css/laboru-tkm-profile.css")" rel="stylesheet" />
 }
 
 <div class="resume">
@@ -57,7 +56,7 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-body">
+        <div class="panel-body assesment-report">
             @if (assesment != null && assesment.Status == AssesmentStatus.Created)
 	        {
 		        <span>Evaluación enviada, esperando finalización</span>
@@ -78,6 +77,14 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2">
+                                Fecha:
+                            </div>
+                            <div class="col-md-10">
+                                 @Convert.ToDateTime(assesment.DateFinished).ToString("MMMM dd, yyyy")
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
                                 Resultado:
                             </div>
                             <div class="col-md-10">
@@ -92,11 +99,35 @@
                                 @assesmentReport.Analysis.RoleResult.Points / @assesmentReport.Analysis.RoleResult.PossiblePoints
                             </div>
                         </div>
-                        
+                
+                        foreach (var item in assesmentReport.Analysis.RoleLevels)
+                        {
+                            if (assesmentReport.Analysis.RoleResult.Title.ToLower().Contains(item.Name.ToLower()))
+                            {
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        @assesmentReport.Analysis.RoleResult.Title:
+                                    </div>
+                                    <div class="col-md-10">
+                                        @item.Description
+                                    </div>
+                                </div>
+                                break;
+                            }                
+                        }
+                                                
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>
+                                    <br />
+                                    DETALLE
+                                </p>                                
+                            </div>
+                        </div>
                 
                         <div class="panel">
                             <div class="panel-header">
-                                Detalle de las capacidades:
+                                Capacidades
                             </div>
                             <div class="panel-body">
                                 @foreach (var item in assesmentReport.Sections)
@@ -105,7 +136,35 @@
                                         <div class="col-md-2">
                                             @item.Name
                                         </div>
-                                        <div class="col-md-10">
+
+                                        @{
+                                            string barClass ="progress-bar-danger";
+                                            if (item.Percentage >= 95){
+                                                barClass = "progress-bar-success";                                            
+                                            }else{
+                                                if (item.Percentage >=70)
+                                                {
+                                                    barClass = "progress-bar-info";
+                                                }
+                                                else
+                                                {
+                                                    if (item.Percentage >= 25)
+                                                    {
+                                                        barClass = "progress-bar-warning";
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        <div class="col-md-5">
+                                            <div class="progress">
+                                              <div class="progress-bar @barClass" role="progressbar" aria-valuenow="@(item.Percentage)"
+                                              aria-valuemin="0" aria-valuemax="100" style="width:@(item.Percentage + "%")">
+                                                <span class="sr-only">@(item.Percentage + "%")</span>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-5">
                                             @(item.Percentage + " %")
                                         </div>
                                     </div>
@@ -118,12 +177,28 @@
                                 Análisis de la solución y recomendaciones:
                             </div>
                             <div class="col-md-10">
-                                Para este ejercicio como tal, más allá da validar si la aplicación entregada funciona correctamente o no, es más importante la 
+
+                                @if(employee.EmployeeId == 3){
+                                    
+                                    <p>
+                                        Se encuentra un gran potencial debido a su alta capacidad de análisis de problemas y la solución a los mismos.
+                                    </p>
+                                    
+                                    <p>
+                                        Se encuentran dificultades en el dominio del idioma inglés, se sugiere trabajo en este aspecto.
+                                    </p>
+                                    
+                                    <p>
+                                    Para este ejercicio como tal, más allá da validar si la aplicación entregada funciona correctamente o no, es más importante la 
                                 forma de la solución, como se diseña, se implementa y entrega una solución verificando que se cumple con los requisitos no sólo 
                                 funcionales si no de calidad. Existen en la industria estándares, guías, metodologías que aseguran que una solución informática 
-                                pueda ser mantenible, escalable, segura y con un buen rendimiento, el uso de estas prácticas son las que diferencian a un programador Senior de un Junior.<br />
+                                pueda ser mantenible, escalable, segura y con un buen rendimiento, el uso de estas prácticas son las que diferencian a un programador Senior de un Junior.
+                                </p>                                
 
-                                En general se evidencia que se deberían seguir los siguientes elementos: <br />
+                                <p>
+                                    En general se evidencia que se deberían seguir los siguientes elementos: <br />
+                                </p>
+                                
                                 <p>
                                     0. Diseño de soluciones con clases: Si la herramienta o lenguaje lo permite siempre usar clases para una solución, este
                                 es el paso inicial, estas tienen innumerables ventajas sobre desarrollos funcionales: Re uso, extendibilidad, organización
@@ -165,14 +240,40 @@
                                 <a target="_blank" href="http://laboru.co:8088/">Ejecución</a><br />
                                 <a target="_blank" href="https://github.com/mbedoya/LcdDisplay">Fuentes</a>
                                 </p>
-                                                               
+                                    
+                                }else{
+                                    <p>
+                                        Se encuentra un gran potencial debido a su alta capacidad de análisis de problemas y la solución a los mismos.
+                                    </p>
+                                    
+                                    <p>
+                                        Se encuentra dominio del idioma inglés en cuanto a lectura, también es un tema que se debe seguir fortaleciendo, para
+                                        dominar también escritura y conversación.
+                                    </p>
+                                    
+                                    <p>
+                                        Se evidencian oportunidades de mejora en aspectos básicos de la programación y de la ingeniería de software, como los son
+                                        las clases, programación orientada a objetos, ingeniería de requisitos y UML.
+                                    
+                                        </p>
+                                    
+                                    <p>
+                                        Se recomienda un fuerte trabajo en las áreas fundamentales que le permitan ejercer de una mejor manera sus funciones: Programación, 
+                                        Bases de datos, Pruebas Unitarias, Pruebas de Integración, Levantamiento de requisitos, Herramientas de ejecución de pruebas.
+                                    </p>
+                                            
+                                        <p>
+                                    En general, acá se pueden encontrar los temas que hoy se trabajan en el mundo del Software: 
+                                <a target="_blank" href="https://elmundodelsoftwareblog.wordpress.com/2017/04/05/escalas-para-desarrolladores-de-software-junior-middle-senior-arquitecto/">Blog</a><br />
+                                            </p>
+                                    
+                                }
+                                                                                              
 
                             </div>
                         </div>
                 
-                        <p>
-                            <span>Evaluación finalizada en @assesment.DateFinished</span>    
-                        </p>		                
+                        
 	                }else{
                         <span>Aún no tiene evaluaciones</span>
                     }
